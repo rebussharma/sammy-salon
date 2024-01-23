@@ -1,0 +1,14 @@
+.header_box{
+    background-color: lightblue;
+    padding-bottom: 2%;
+}
+
+ .socials{
+    float: right;
+    margin-right: 10px;
+}
+
+.direct_call{
+    float: left;
+    margin-left: 10px;
+}
