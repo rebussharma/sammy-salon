@@ -1,8 +1,7 @@
-import React from 'react'
 
 const Services = () => {
   return (
-    <div className='services'>Services</div>
+    <div className='services'>Services we provide</div>
   )
 }
 

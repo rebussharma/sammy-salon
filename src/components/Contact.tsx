@@ -1,8 +1,7 @@
-import React from 'react'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div>Address and phone number and form</div>
   )
 }
 
