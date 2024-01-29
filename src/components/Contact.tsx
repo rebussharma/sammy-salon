@@ -1,7 +1,9 @@
+import React from "react"
+import '../css/Contact.css'
 
-const Contact = () => {
+const Contact: React.FC = () => {
   return (
-    <div>Address and phone number and form</div>
+    <div className="contact" id="contact">Address and phone number and form</div>
   )
 }
 

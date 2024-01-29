@@ -1,7 +1,13 @@
+import React from "react"
+import '../css/Home.css'
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
-    <div>Back to main page</div>
+    <div className="home" id="home">
+      <h1>
+        Back to main page
+      </h1>
+    </div>
   )
 }
 

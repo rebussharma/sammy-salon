@@ -1,6 +1,9 @@
-function About() {
+import React from 'react'
+import '../css/About.css'
+
+const About: React.FC = () => {
   return (
-    <div>Our Story is real</div>
+    <div className="about" id="about">Our Story is real</div>
   )
 }
 

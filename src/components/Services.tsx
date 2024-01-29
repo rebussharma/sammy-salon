@@ -1,7 +1,8 @@
-
-const Services = () => {
+import React from "react"
+import '../css/Services.css'
+const Services:React.FC = () => {
   return (
-    <div className='services'>Services we provide</div>
+    <div className="services" id="services">Services we provide</div>
   )
 }
 

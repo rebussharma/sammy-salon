@@ -1,7 +1,8 @@
+import React from "react"
 
-function Book() {
+const Book: React.FC = () => {
   return (
-    <div>Book an Appointment</div>
+    <div className="book" id="book">Book an Appointment</div>
   )
 }
 

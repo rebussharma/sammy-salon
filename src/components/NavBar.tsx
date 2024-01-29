@@ -1,24 +1,14 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import About from './About'
-import Book from './Book'
-import Contact from './Contact'
-import Home from './Home'
-import RightNav from './RightNav'
-import Services from './Services'
+import { BrowserRouter as Router } from 'react-router-dom'
+import '../css/NavBar.css'
+import NavElements from './NavElements'
 
-const NavBar = () => {
+const NavBar:React.FC = () => {
   return (
-    <Router>
-      <RightNav />
-      <Routes>
-        <Route path="/" element = {<Home />} />
-        <Route path="/services" element = {<Services />} />
-        <Route path="/about" element = {<About />} />
-        <Route path="/contact" element = {<Contact />} />
-        <Route path="/book" element = {<Book />} />
-
-      </Routes>
-    </Router>
+    <div className='navbar'>
+      <Router>
+        <NavElements />
+      </Router>
+    </div>
   )
 }
 
