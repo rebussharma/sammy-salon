@@ -9,18 +9,64 @@
  .socials{
     z-index: 1;
     margin-right: 10px;
+    margin-top:5px;
+    display: flex;
+}
+
+.svg-inline--fa:not(.fa-phone){
+    padding: 3px;
 }
 
 .direct_call{
     margin-left: 10px;
+    margin-top:5px;
+
+}
+
+.direct_call a {
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 .logo_img{    
     max-width: 100%;
     max-height: 100%;
+    
 }
 
 .logo {
     width: 50px;
     height: 50px;
+    margin-top:5px;
 }
+
+@media screen and (max-width: 600px) {
+    .header_box{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        /* z-index: 1; */
+        max-width: 90%;
+        height: 50px; /* height of navElements */
+    }
+    .logo_img{    
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .logo {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 5%;
+        top: 5%;
+    }
+
+    .socials {
+        display: none;
+    }
+
+    .direct_call{
+        position: absolute;
+    }
+}  

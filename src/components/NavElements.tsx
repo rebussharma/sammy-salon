@@ -1,8 +1,11 @@
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
 import { NavHashLink as Link } from 'react-router-hash-link';
-import { ReactComponent as Hamburger } from '../assets/hamburger.svg';
 import '../css/NavElements.css';
 import Header from "./Header";
+
+
 
 const NavElements: React.FC = () => {
   const [showNavbar, setShowNavbar] = useState(false)
@@ -18,9 +21,9 @@ const NavElements: React.FC = () => {
     <nav className="navElements">
       <Header></Header>
       <div className="container">
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          <Hamburger />
-        </div>
+          <div className="hamburger-icon" onClick={handleShowNavbar}>
+            <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} />
+          </div>
         <div className={`menu-items  ${showNavbar && 'active'}`}>
           <ul>
             <li>

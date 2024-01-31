@@ -1,84 +1,92 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-.container {
-  position: relative;
-  max-height: 60%;
+.navbar{
+  background-color: black;
+  height: 15vh;
 }
 
 .navElements {
   max-height: 90%;
 }
 
-.menu-icon {
+.container {
+  margin-top: 3vh;
+  max-height: 60%;
+}
+
+.hamburger-icon {
+  display: none;
+}
+
+.hamburger-wrapper {
   display: none;
 }
 
 .menu-items {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .menu-items ul {
-  display: inline-block;
   list-style-type: none;
-  text-transform: uppercase;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
-.menu-items ul li {
-  display: inline;
-  font-weight: bold;
+.menu-items li {
+  float: left;
+  padding: 2px 1vw;
+  border: 1px;
 }
-.menu-items ul li:not(:last-child) {
-  margin-right: 60px;
-}
-
-.menu-items ul Link {
-  font-size: 16px;
-  font-weight: 400;
-  text-decoration: none;
-}
-
 .menu-items ul li a {
   color: white;
   text-decoration: none;
-}
-
-.menu-items ul Link.active {
-  color: #574c4c;
-  font-weight: 500;
-  position: relative;
+  font-size: large;
+  font-size: 18px;
 }
 
 
-.menu-items ul a:hover{
-  border-bottom: 4px solid peachpuff;
+.menu-items ul li a:hover{
+  color: peachpuff;
 }
 
 
-@media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
   .menu-items ul li:not(:last-child) {
     margin-right: 30px;
   }
-}
+} */
 
-@media (max-width: 600px) {
-  .menu-icon {
+@media screen and (max-width: 600px) {
+  .navbar{
+    max-height: 55px;
+  }
+ 
+  .hamburger-icon {
+    position: absolute;
     display: block;
+    top: 25%;
+    right: 2%;
     cursor: pointer;
+    width: 20px;
+    height: 20px;
   }
 
   .menu-items {
-    position: absolute;
+    position: absolute; 
     right: 0;
-    top: 60px;
-    background-color: #fef7e5;
-    width: 0px;
-    height: calc(100vh - 60px);
+    width: 0;
+    background-color: black;
+    height: calc(100vh - 55px); 
     transition: all 0.3s ease-in;
     overflow: hidden;
   }
 
   .menu-items.active {
-    width: 270px;
+    top: 55px;
+    width: 50%;
   }
 
   .menu-items ul {
@@ -87,7 +95,19 @@
   }
 
   .menu-items ul li {
-    margin-right: unset;
-    margin-top: 22px;
+    border: 1px solid rgb(56, 54, 54);
+    height: 2.5rem;
+    padding: 0.5em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
   }
+
+  .menu-items ul a:hover{
+    box-shadow: #574c4c;
+  } 
+  
 }
