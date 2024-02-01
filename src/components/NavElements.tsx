@@ -1,7 +1,8 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
-import { NavHashLink as Link } from 'react-router-hash-link';
+// import { NavHashLink as Link } from 'react-router-hash-link';
+import { Link } from 'react-scroll';
 import '../css/NavElements.css';
 import Header from "./Header";
 
@@ -24,22 +25,22 @@ const NavElements: React.FC = () => {
           <div className="hamburger-icon" onClick={handleShowNavbar}>
             <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} />
           </div>
-        <div className={`menu-items  ${showNavbar && 'active'}`}>
+        <div className="menu-items">
           <ul>
-            <li>
-              <Link smooth to="#services">Services</Link>
+            <li className='nav-items'>
+              <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Services</Link>
+            </li>
+            <li className='nav-items'>
+              <Link to="about" spy={true} smooth={true} offset={0} duration={500}>Our Story</Link>
+            </li>
+            <li className='nav-items'>
+              <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>Contact</Link>
+            </li>
+            <li className='nav-items'>
+              <Link to="testimonials" spy={true} smooth={true} offset={0} duration={500}>Testimonials</Link>
             </li>
             <li>
-              <Link smooth to="#about">Our Story</Link>
-            </li>
-            <li>
-              <Link smooth to="#contact">Contact</Link>
-            </li>
-            <li>
-              <Link smooth to="#testimonials">Testimonials</Link>
-            </li>
-            <li>
-              <Link to="" onClick={handleBooking}>Book</Link>
+              <a href='/' onClick={handleBooking}>Book</a>
             </li>
           </ul>
         </div>

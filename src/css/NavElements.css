@@ -32,6 +32,8 @@
   display: inline-block;
   margin: 0;
   padding: 0;
+  cursor: pointer;
+
 }
 
 .menu-items li {
@@ -39,18 +41,24 @@
   padding: 2px 1vw;
   border: 1px;
 }
+
+
 .menu-items ul li a {
   color: white;
   text-decoration: none;
   font-size: large;
   font-size: 18px;
+  &:hover {
+    color: peachpuff;
+  }
 }
-
-
-.menu-items ul li a:hover{
+.menu-items ul li a.active {
   color: peachpuff;
 }
 
+/* .menu-items ul .nav-items li.active{
+  color: peachpuff;
+} */
 
 
 /* @media (max-width: 768px) {

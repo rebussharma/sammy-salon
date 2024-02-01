@@ -3,7 +3,7 @@ import { faInstagram, faSquareFacebook, faTiktok } from '@fortawesome/free-brand
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { NavHashLink as Link } from 'react-router-hash-link';
+import { Link } from 'react-scroll';
 import logo from '../assets/logo.svg';
 import '../css/Header.css';
 
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
           <a href="tel:832-935-0587"> : (832) 279 1992</a>
         </div>
         <div className="logo">
-            <Link smooth to="#home" className="home_btn">
+            <Link className="home_btn" to="home" smooth={true} offset={-100} duration={500}>
               <img className="logo_img" src={logo} alt="fireSpot"/>
             </Link>
         </div>

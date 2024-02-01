@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Services from './components/Services';
@@ -17,8 +18,9 @@ const App: React.FC = () => {
       <About></About>
       <Contact></Contact>
       <Testimonials></Testimonials>
+      <Footer></Footer>
      </div>
-    
+  
   );
 }
 
