@@ -25,7 +25,7 @@ const NavElements: React.FC = () => {
           <div className="hamburger-icon" onClick={handleShowNavbar}>
             <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} />
           </div>
-        <div className="menu-items">
+        <div className= {`menu-items  ${showNavbar && 'active'}`}>
           <ul>
             <li className='nav-items'>
               <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Services</Link>
