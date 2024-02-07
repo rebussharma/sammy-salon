@@ -1,5 +1,8 @@
 .navbar {
-    height: 15%;
+    background-color: black;
+    height: 15vh;
     top: 0;
     position: sticky;
+    z-index: 1;
 }
+  

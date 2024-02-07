@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   return (
     <div className='header_box'>
         <div className='direct_call'><FontAwesomeIcon icon={faPhone as IconProp} /> 
-          <a href="tel:832-935-0587"> : (832) 279 1992</a>
+          <a href="tel:832-935-0587">  (832) 279 1992</a>
         </div>
         <div className="logo">
             <Link className="home_btn" to="home" smooth={true} offset={-100} duration={500}>
