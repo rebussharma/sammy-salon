@@ -1,75 +1,13 @@
+import { Input } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Fade from '@mui/material/Fade';
 import Slide from '@mui/material/Slide';
 import Stack from '@mui/material/Stack';
 import React, { ChangeEvent, ChangeEventHandler } from 'react';
-import styled from 'styled-components';
+import '../../styles/Inputs.styles';
+import { InputSideWrapper, InputWrapper, MessageInput } from '../../styles/Inputs.styles';
 
-const InputSideWrapper = styled.form`
-  height: auto;
-  padding-bottom: 100px;
-  position: relative;
-  padding: 10px 10px 100px 10px;
-`;
-
-const InputWrapper = styled.div`
-  border: 2px solid transparent;
-  width: 90%;
-  padding-left: 10px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  color: #333;
-  width: 100%;
-  font-size: 15px;
-  padding: 8px;
-  border-bottom: 1px solid rgb(100, 21, 173);
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-top: 1px solid transparent;
-  outline: 0px transparent !important;
-`;
-
-const MessageInput = styled.textarea`
-  width: 100%;
-  color: #333;
-  font-size: 15px;
-  padding: 10px;
-  border-bottom: 1px solid rgb(100, 21, 173);
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-top: 1px solid transparent;
-  outline: 0px transparent !important;
-`;
-
-const SubMitButton = styled.input`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px;
-  background-color: rgb(8, 8, 63);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 12px 25px 12px 24px;
-  cursor: pointer;
-`;
-
-const LoadingButton = styled.button`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px;
-  background-color: rgb(8, 8, 63);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 12px 25px 12px 24px;
-  cursor: pointer;
-`;
 
 const Inputs = () => {
   const [name, setName] = React.useState('');
@@ -101,6 +39,10 @@ const Inputs = () => {
     const serviceId = "YOUR-SERVICE-ID-HERE";
     const templateId = "YOUR-TEMPLATE-ID-HERE";
 
+    // take the message
+    // send the message to support@sammysbrow.com
+    // if email is not null
+      // reply the sender from support@sammysbrow.com
     // if (message !== null){
     //   try {
     //     setLoading(true);
@@ -148,7 +90,7 @@ const Inputs = () => {
       <InputWrapper>
         <p>Phone</p>
         <Input
-          type="tel"       
+          type="number"   
           placeholder="512-123-4567"
           value={phone}
           onChange={phoneHandler}
@@ -157,6 +99,7 @@ const Inputs = () => {
       <InputWrapper>
         <p>Message</p>
         <MessageInput
+          maxLength={2000}
           required
           placeholder="Write your message here"
           value={message}
