@@ -4,9 +4,11 @@ import Button from '@mui/material/Button';
 import Fade from '@mui/material/Fade';
 import Slide from '@mui/material/Slide';
 import Stack from '@mui/material/Stack';
-import React, { ChangeEvent, ChangeEventHandler } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, useEffect } from 'react';
 import '../../styles/Inputs.styles';
 import { InputSideWrapper, InputWrapper, MessageInput } from '../../styles/Inputs.styles';
+
+import emailjs from '@emailjs/browser';
 
 
 const Inputs = () => {
@@ -33,33 +35,47 @@ const Inputs = () => {
     setMessage((e.target as HTMLInputElement).value);       
   };
 
+  useEffect(() => emailjs.init("48zrrLrcyVtY6tuNs"), []);
 
   const handleSubmit =  (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    const serviceId = "YOUR-SERVICE-ID-HERE";
-    const templateId = "YOUR-TEMPLATE-ID-HERE";
+    const serviceId = "service_hr7wfln";
+    const templateId = "template_y1syqfc";
 
-    // take the message
-    // send the message to support@sammysbrow.com
-    // if email is not null
-      // reply the sender from support@sammysbrow.com
-    // if (message !== null){
-    //   try {
-    //     setLoading(true);
-    //     await emailjs.send(serviceId, templateId, {
-    //       name: name,
-    //       recipient: email
-    //     });
-    //     alert("Message sent");
-    //   } catch (error) {
-    //     console.log(error);
-    //   } finally {
-    //     setLoading(false);
-    //   }
+    if(email !== null || email !== ''){
+      emailjs
+        .send(serviceId, templateId, {
+          to_name: name, recipient: email, message: message
+        })
+        .then(
+          () => {
+            console.log('SUCCESS!');
+            setSuccess(1);
+            setSuccessVal(true);
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+            setSuccess(-1);
+            setSuccessVal(true);
+          },
+        );
+    }
 
-    // }
-    setSuccess(1);
-    setSuccessVal(true);
+    emailjs
+    .send(serviceId, "template_wthysze", {
+      to_name: name, recipient: "sammysbrow@gmail.com", message: message, customer_phone: phone
+    })
+    .then(
+      () => {
+        console.log('Sent Email to Sammys Brow!');
+      },
+      (error) => {
+        console.log('Failed Sending Email to Sammys Brow!...', error.text);
+      },
+    );
+
+    
+
     setName('');
     setEmail('');
     setMessage('');
@@ -113,7 +129,7 @@ const Inputs = () => {
             <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>
               <Fade
                 in={successVal}
-                timeout={{ enter: 1000, exit: 1000 }} //Edit these two values to change the duration of transition when the element is getting appeared and disappeard
+                timeout={{ enter: 1000, exit: 1000 }} 
                 addEndListener={() => {
                   setTimeout(() => {
                     setSuccessVal(false)
@@ -126,10 +142,25 @@ const Inputs = () => {
                 </Stack>
               </Fade>
             </Slide>
-          ): (
-            ""
+          ): (success == -1) ?
+            <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>
+            <Fade
+              in={successVal}
+              timeout={{ enter: 1000, exit: 1000 }} 
+              addEndListener={() => {
+                setTimeout(() => {
+                  setSuccessVal(false)
+                }, 2000);
+                }
+              }   
+            >
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert severity="error">Something Went Wrong. Please Try Again Later</Alert>
+              </Stack>
+            </Fade>
+          </Slide>
 
-          )
+          : ("")
         }
     </InputSideWrapper>
     </div>
