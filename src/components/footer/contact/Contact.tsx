@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import '../../css/contact/Contact.css';
+import '../../../css/footer/contact/Contact.css';
 import Details from './Details';
 import Inputs from './Inputs';
 // import Form from './Form';

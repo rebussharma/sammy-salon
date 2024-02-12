@@ -2,9 +2,9 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEnvelope, faMapLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import '../../css/contact/Details.css';
-import '../../styles/Details.styles';
-import { BigCircle, ContactText, ContactsWrapper, DetailsBarWrapper, SmallCircle, TextOne, TextWrapper } from '../../styles/Details.styles';
+import '../../../css/footer/contact/Details.css';
+import '../../../styles/Details.styles';
+import { BigCircle, ContactText, ContactsWrapper, DetailsBarWrapper, SmallCircle, TextOne, TextWrapper } from '../../../styles/Details.styles';
 
 const Details: React.FC= () => {
   return (

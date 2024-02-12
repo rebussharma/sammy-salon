@@ -1,5 +1,5 @@
 import React from "react"
-import '../css/Services.css'
+import '../../css/services/Services.css'
 const Services:React.FC = () => {
   return (
     <div className="services" id="services">Services we provide</div>

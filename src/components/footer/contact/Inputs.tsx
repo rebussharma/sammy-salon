@@ -5,8 +5,8 @@ import Fade from '@mui/material/Fade';
 import Slide from '@mui/material/Slide';
 import Stack from '@mui/material/Stack';
 import React, { ChangeEvent, ChangeEventHandler, useEffect } from 'react';
-import '../../styles/Inputs.styles';
-import { InputBoxWrapper, InputWrapper, MessageInput } from '../../styles/Inputs.styles';
+import '../../../styles/Inputs.styles';
+import { InputBoxWrapper, InputWrapper, MessageInput } from '../../../styles/Inputs.styles';
 
 import emailjs from '@emailjs/browser';
 

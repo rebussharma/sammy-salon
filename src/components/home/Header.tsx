@@ -4,8 +4,8 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-scroll';
-import logo from '../assets/logo.svg';
-import '../css/Header.css';
+import logo from '../../assets/logo.svg';
+import '../../css/home/Header.css';
 
 
 const Header: React.FC = () => {

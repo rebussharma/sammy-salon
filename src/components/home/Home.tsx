@@ -2,8 +2,8 @@ import { Button } from "@mui/material";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Link } from 'react-scroll';
-import '../css/Home.css';
-import NavBar from "./NavBar";
+import '../../css/home/Home.css';
+import NavBar from "./navbar/NavBar";
 
 const Home: React.FC = () => {
   return (

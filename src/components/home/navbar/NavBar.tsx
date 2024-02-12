@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import '../css/NavBar.css';
+import '../../../css/home/navbar/NavBar.css';
 import NavElements from './NavElements';
 
 const NavBar:React.FC = () => {

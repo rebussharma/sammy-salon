@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
 // import { NavHashLink as Link } from 'react-router-hash-link';
 import { Link } from 'react-scroll';
-import '../css/NavElements.css';
-import Header from "./Header";
+import '../../../css/home/navbar/NavElements.css';
+import Header from "../Header";
 
 
 

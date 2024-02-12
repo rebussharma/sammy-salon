@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import About from './components/About';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import Services from './components/Services';
 import Testimonials from './components/Testimonials';
-import Contact from './components/contact/Contact';
+import Footer from './components/footer/Footer';
+import Contact from './components/footer/contact/Contact';
+import Home from './components/home/Home';
+import Services from './components/services/Services';
 
 
 const App: React.FC = () => {
