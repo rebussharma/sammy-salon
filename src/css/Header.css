@@ -3,7 +3,7 @@
     justify-content: space-between; 
     color: white;
     font-weight: bold;
-    height: 40%;
+    width: 100%;
 }
 
  .socials{
@@ -25,7 +25,7 @@
 
 .direct_call a {
     text-decoration: none;
-    color: whitesmoke;
+    color: white;
 }
 
 .logo_img{    

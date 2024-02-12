@@ -9,6 +9,16 @@ import Header from "./Header";
 
 
 const NavElements: React.FC = () => {
+  const [colorChange, setColorchange] = useState(false);
+  const changeNavbarColor = () => {
+      if (window.scrollY >= 80) {
+          setColorchange(true);
+      } else {
+          setColorchange(false);
+      }
+  };
+  window.addEventListener("scroll", changeNavbarColor);
+
   const [showNavbar, setShowNavbar] = useState(false)
 
   const handleShowNavbar = () => {
@@ -19,7 +29,7 @@ const NavElements: React.FC = () => {
     alert("Sorry we're still wokring on that")
   }
   return (
-    <nav className="navElements">
+    <nav className={colorChange ? "navElements scroll":"navElements"} id='navElements'>
       <Header></Header>
       <div className="container">
           <div className="hamburger-icon" onClick={handleShowNavbar}>

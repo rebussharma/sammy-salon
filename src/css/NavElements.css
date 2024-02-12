@@ -1,7 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 .navElements {
-  max-height: 90%;
+  position: fixed;
+  max-height: 100%;
+  width: 100%;
+  transition: all 0.5s linear;
+  &:hover{
+      background-color: black;
+  }
+}
+
+.scroll {
+  background-color: black;
 }
 
 .container {
@@ -39,7 +49,7 @@
 
 
 .menu-items ul li a {
-  color: white;
+  color: whitesmoke;
   text-decoration: none;
   font-size: large;
   font-size: 18px;
@@ -81,7 +91,6 @@
     position: absolute; 
     right: 0;
     width: 0;
-    background-color: black;
     height: calc(100vh - 55px); 
     transition: all 0.3s ease-in;
     overflow: hidden;

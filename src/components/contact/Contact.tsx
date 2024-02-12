@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../../css/contact/Contact.css';
 import Details from './Details';
 import Inputs from './Inputs';
 // import Form from './Form';
@@ -7,28 +8,30 @@ import Inputs from './Inputs';
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 50vh;
+  max-height: 70vh;
   align-items: center;
   background-color: whitesmoke;
-  padding-bottom: 50px;
+  padding-bottom: 5px;
+  width: 30vw;
 `;
 
 const PageHeadingWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 10px;
 `;
 
 const FormContainer = styled.div`
-  width: 65%;
-  min-width: 600px;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  width: 95%;
+  display: flex;
+  position:relative;
+  justify-content: flex-start;
   background-color: #fff;
   padding: 5px;
   border-radius: 5px;
   height: auto;
-  grid-gap: 10px;
+  max-height:90%;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     width: 90%;
@@ -42,13 +45,14 @@ const TextOne = styled.b`
   font-size: 30px;
   color: rgb(4, 4, 59);
   text-align: center;
+  padding-bottom:10px;
 `;
 
-const TextTwo = styled.p`
-  color: rgb(4, 4, 34);
-  font-size: 15px;
-  text-align: center;
-`;
+// const TextTwo = styled.p`
+//   color: rgb(4, 4, 34);
+//   font-size: 15px;
+//   text-align: center;
+// `;
 
 const Conact: React.FC = () => {
   return (
@@ -56,7 +60,6 @@ const Conact: React.FC = () => {
       <PageWrapper className='page-wrapper'>
         <PageHeadingWrapper className='page-heading-wrapper'>
           <TextOne className='contact-text'>Contact Us</TextOne>
-          <TextTwo className='contact-subtitle'>Any questions or suggestions? Write to us, we reply within 24 hrs!</TextTwo>
         </PageHeadingWrapper>
         <FormContainer className='form-container'>
           <Details />

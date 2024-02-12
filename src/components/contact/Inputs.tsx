@@ -6,7 +6,7 @@ import Slide from '@mui/material/Slide';
 import Stack from '@mui/material/Stack';
 import React, { ChangeEvent, ChangeEventHandler, useEffect } from 'react';
 import '../../styles/Inputs.styles';
-import { InputSideWrapper, InputWrapper, MessageInput } from '../../styles/Inputs.styles';
+import { InputBoxWrapper, InputWrapper, MessageInput } from '../../styles/Inputs.styles';
 
 import emailjs from '@emailjs/browser';
 
@@ -85,39 +85,36 @@ const Inputs = () => {
 
   return (
     <div className='inputs'>
-    <InputSideWrapper>
-      <InputWrapper>
-        <p>Name</p>
-        <Input type="text" 
-          placeholder="Your name here" 
+    <InputBoxWrapper className='InputBoxWrapper'>
+      <InputWrapper className='InputWrapper'>
+        <Input className='Input'
+          type="text" 
+          placeholder="Full Name" 
           value={name} 
           onChange={nameHandler} />
       </InputWrapper>
-      <InputWrapper>
-        <p>Email</p>
-        <Input
+      <InputWrapper className='InputWrapper'>
+        <Input className='Input'
           type="email"
-          placeholder="your_email@gmail.com"
+          placeholder="Email"
           value={email}
           onChange={emailHandler}
           
         />
       </InputWrapper>
-      <InputWrapper>
-        <p>Phone</p>
-        <Input
+      <InputWrapper className='InputWrapper'>
+        <Input className='Input'
           type="number"   
-          placeholder="512-123-4567"
+          placeholder="Phone Number"
           value={phone}
           onChange={phoneHandler}
         />
       </InputWrapper>
-      <InputWrapper>
-        <p>Message</p>
-        <MessageInput
+      <InputWrapper className='InputWrapper'>
+        <MessageInput className='MessageInput'
           maxLength={2000}
           required
-          placeholder="Write your message here"
+          placeholder="Write Your Hessage here"
           value={message}
           onChange={messageHandler}
         />
@@ -162,7 +159,7 @@ const Inputs = () => {
 
           : ("")
         }
-    </InputSideWrapper>
+    </InputBoxWrapper>
     </div>
   );
 };

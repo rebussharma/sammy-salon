@@ -8,22 +8,22 @@ import { BigCircle, ContactText, ContactsWrapper, DetailsBarWrapper, SmallCircle
 
 const Details: React.FC= () => {
   return (
-    <DetailsBarWrapper>
-      <TextWrapper>
-        <TextOne>Contact Information</TextOne>
+    <DetailsBarWrapper className = 'DetailsBarWrapper'>
+      <TextWrapper className = 'TextWrapper'>
+        <TextOne className = 'TextOne'>Contact Information</TextOne>
       </TextWrapper>
       <div>
-        <ContactsWrapper href="tel:8329350587">
+        <ContactsWrapper className = 'ContactsWrapper' href="tel:8329350587">
           <FontAwesomeIcon icon={faPhone as IconProp} /> 
-          <ContactText>(832) 935 0587</ContactText>
+          <ContactText className = 'ContactText'>(832) 935 0587</ContactText>
         </ContactsWrapper>
 
-        <ContactsWrapper href="mailto:support@sammysbrow.com">
+        <ContactsWrapper className = 'ContactsWrapper' href="mailto:support@sammysbrow.com">
           <FontAwesomeIcon icon={faEnvelope as IconProp} /> 
-          <ContactText>support@sammysbrow.com</ContactText>
+          <ContactText className = 'ContactText'>support@sammysbrow.com</ContactText>
         </ContactsWrapper>
 
-        <ContactsWrapper href="https://maps.app.goo.gl/aYPwHmEqT6tA63d28">
+        <ContactsWrapper className = 'ContactsWrapper' href="https://maps.app.goo.gl/aYPwHmEqT6tA63d28">
           <FontAwesomeIcon icon={faMapLocationDot as IconProp} />
           <div className='address-display'>
             <ContactText className='street-address'>123 Some Street </ContactText>
@@ -34,8 +34,8 @@ const Details: React.FC= () => {
       </div>
 
       <div className='design-circles'>
-        <BigCircle></BigCircle>
-        <SmallCircle></SmallCircle>
+        <BigCircle className = 'BigCircle'></BigCircle>
+        <SmallCircle className = 'SmallCircle'></SmallCircle>
       </div>
     </DetailsBarWrapper>
   );

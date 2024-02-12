@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 export const DetailsBarWrapper = styled.div`
   background-color: rgb(8, 8, 63);
-  border-radius: 7px;
+  margin-right: 50px;
+  border-radius: 5px;
   position: relative;
-  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
-  padding-bottom: 100px;
+  height: 50%;
+  max-width: 60%;
+  padding: 5px;
+  padding-bottom: 40px;
   @media (max-width: 768px) {
     padding-bottom: 80px;
     grid-row: 2;
@@ -38,11 +40,10 @@ export const TextTwo = styled.p`
 
 export const BigCircle = styled.div`
   height: 50px;
-  margin-top: 30px;
+  margin-top: 10px;
   width: 50px;
   background-color: rgb(100, 21, 173);
   border-radius: 100%;
-  z-index: 22;
   margin-left: 10px;
 `;
 
@@ -59,7 +60,7 @@ export const ContactsWrapper = styled.a`
   display: flex;
   width: 100%;
   height: 10px;
-  margin-top: 50px;
+  margin-top: 20px;
   cursor: pointer;
   text-decoration: none;
 `;
@@ -70,25 +71,25 @@ export const ContactText = styled.div`
   margin-left: 10px;
 `;
 
-export const SocialsWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  display: flex;
-  height: 10px;
-  justify-content: center;
-  bottom: 30px;
-  position: absolute;
-  cursor: pointer;
-`;
+// export const SocialsWrapper = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   display: flex;
+//   height: 10px;
+//   justify-content: center;
+//   bottom: 30px;
+//   position: absolute;
+//   cursor: pointer;
+// `;
 
-export const SocialIconWrapper = styled.a`
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:hover {
-    background-color: rgb(252, 113, 137);
-  }
-`;
+// export const SocialIconWrapper = styled.a`
+//   width: 35px;
+//   height: 35px;
+//   border-radius: 50%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   &:hover {
+//     background-color: rgb(252, 113, 137);
+//   }
+// `;
