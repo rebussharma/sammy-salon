@@ -1,4 +1,7 @@
 .services {
-    height: 500px;
+    height:50vh;
     background-color: aliceblue;
+    display: flex;
+    justify-content: space-evenly;
 }
+    
