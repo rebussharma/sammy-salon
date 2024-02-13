@@ -4,7 +4,7 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-scroll';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/home/logo.svg';
 import '../../css/home/Header.css';
 
 
