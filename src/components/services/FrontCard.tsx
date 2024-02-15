@@ -8,28 +8,6 @@ import '../../css/services/FrontCard.css';
 const FrontCard = ({param, props}:any) => {
     return(
         <div className="front">
-            {/* <Card className="front-card">
-                <CardActionArea className="CardActionArea">
-                    <div className='image-wrapper'>
-                        <CardMedia className="CardMedia"
-                            component="img"
-                            image={props.content.main_img}
-                            alt="threading img"
-                        />
-                    </div>
-                    <CardContent className="CardContent">
-                        <Typography className="Typography" gutterBottom variant="h5" component="div">
-                            {props.content.title}
-                        </Typography>
-                        <Typography className="Typography" variant="body2" color="text.secondary">
-                            {props.content.description}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <CardActions className="CardActions">
-                    <Button size="small" onClick={() => param(true)}>More Info</Button>
-                </CardActions>
-            </Card> */}
             <div className='front-card'>
                 <div className='title'>
                     {props.content.title}

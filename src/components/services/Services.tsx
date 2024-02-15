@@ -18,7 +18,7 @@ const Services:React.FC = () => {
       cost: 10,
       time: '15 mins',
       back_img: logo,
-      back_essay: 'Threading essay',
+      back_essay: 'Threading is done using a thread. It is better than waxing',
       mini_content:[
         {
           title:"Eyebrow",
@@ -55,7 +55,7 @@ const Services:React.FC = () => {
       cost: 15,
       time: '10 mins',
       back_img: logo,
-      back_essay: 'lash essay',
+      back_essay: 'Done using equiptments. Lasts for 1 month',
       mini_content:[
         {
           title:"Extentions",
@@ -75,7 +75,7 @@ const Services:React.FC = () => {
       cost: 40,
       time: '30 mins',
       back_img: logo,
-      back_essay: 'Facial essay',
+      back_essay: 'Ease up your face. Exfoliate it and let it breathe',
       mini_content:[
         {
           title:"Hydra Facil",
@@ -95,7 +95,7 @@ const Services:React.FC = () => {
       cost: 40,
       time: '30 mins',
       back_img: logo,
-      back_essay: 'Facial essay',
+      back_essay: 'Easy waxing procedure that doesn not hurt. You will be good for 1 month',
       mini_content:[
         {
           title:"Uder Arms",
@@ -115,7 +115,7 @@ const Services:React.FC = () => {
       cost: 40,
       time: '30 mins',
       back_img: logo,
-      back_essay: 'Tinting essay',
+      back_essay: 'Tinting brows to make them look darker in shade. It lasts up to 1 month',
       mini_content:[
         {
           title:"Single Brow",
