@@ -33,6 +33,9 @@
     justify-content: flex-end;
 }
 
+.media {
+    display: none;
+}
 .mini-content {
     width: 100%;
     display: flex;
@@ -51,6 +54,74 @@
     justify-content: space-between;
     padding-right: 2px;
 }
+
+@media screen and (max-width: 600px) {
+
+    .front-card {
+        height: inherit;
+    }
+    .time-cost-icon {
+        display: none;
+    }
+    .media {
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        width: 50%;
+        height: 10%;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+    .icon-cost, .icon-time{
+        width: 25%;
+        color: #2fb2c4;
+        font-size: 1rem;
+    }
+
+    .title {
+        width: 50%;
+        margin-bottom: 1px;
+        height: 10%;
+    }
+
+    .card-media {
+        display: flex;
+        height: 90%;
+    }
+
+    .image-wrapper{
+        max-width: 50%;
+        height: 99%;
+    }
+
+    .text-wrapper{
+        display: block;
+        width: 50%;
+    }
+
+    .mini-content {
+        display: flex;
+        justify-content: space-between;
+        height: 32px;
+    }
+    .mini-content .mini-title{
+        width: 50%;
+    }
+
+    .mini-content .time-cost {
+        width: 50%;
+    }
+
+    .btn-wrapper{
+        position: absolute;
+        bottom: 0;
+        left: 60%;
+    }
+
+}
+
 /* .CardActions{
     justify-content: center;
 }

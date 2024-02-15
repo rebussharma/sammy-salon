@@ -20,7 +20,14 @@
     --rotate-y: 180deg;
 }
   
-.card .back{
-    transform: rotateY(180deg);
-    position: absolute;
+
+@media screen and (max-width: 600px) {
+    .card{
+        height: 200px;
+        width: 95%;
+        padding: 2px;
+        margin: 2px;
+        margin-bottom: 5px;
+    }
+
 }

@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-
+import '../../css/services/BackCard.css';
 
 const BackCard = ({param, props}:any) => {
     return(
