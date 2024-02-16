@@ -97,17 +97,18 @@
   }
 
   .menu-items.active {
-    top: 55px;
+    position: absolute;
     width: 50%;
   }
 
   .menu-items ul {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .menu-items ul li {
-    border: 1px solid rgb(56, 54, 54);
+    border: 1px solid rgb(102, 92, 92);
     height: 2.5rem;
     padding: 0.5em;
     width: 100%;
@@ -116,6 +117,7 @@
     color: white;
     text-align: center;
     vertical-align: middle;
+    background-color: #000000b8;
   }
 
   .menu-items ul a:hover{
