@@ -133,7 +133,12 @@ const Services:React.FC = () => {
   
   return (
   <div className="services" id="services">
-    {contents.map((content) => (<Cards content = {content} key={content.title}></Cards>))}
+    <div className="our-services">
+      <h1> Our Services </h1>
+    </div>
+    <div className="service-cards">
+      {contents.map((content) => (<Cards content = {content} key={content.title}></Cards>))}
+    </div>
   </div>
   )
 }

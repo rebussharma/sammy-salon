@@ -1,4 +1,101 @@
 .back{
-    transform: rotateY(180deg);
+    height: 100%;
+    width: 100%;
+}
+
+.back-card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.back-img {
+    height: 100%;
+    width: 100%;
+}
+
+
+.back-img img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%)
+}
+
+.back-btn-wrapper Button{
+    color: white;
+    border: 1px solid white;
+}
+
+.back-details{
+    height: 100%;
+    width: 100%;
     position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.icon-cost, .icon-time{
+    width: 25%;
+    color: #2fb2c4;
+    font-size: 1.5rem;
+}
+
+.time-cost-icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.mini-content {
+    width: 100%;
+    display: flex;
+}
+
+.mini-title{
+    width: 50%;
+    padding-left: 2px;
+    text-align: start;
+}
+
+.time-cost{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 2px;
+}
+
+@media screen and (max-width: 600px) {
+    .time-cost-icon {
+        display: none;
+    }
+
+    .icon-cost, .icon-time{
+        width: 25%;
+        color: #2fb2c4;
+        font-size: 1rem;
+    }
+
+
+    .text-wrapper{
+        display: block;
+        width: 50%;
+    }
+
+    .mini-content {
+        display: flex;
+        justify-content: space-between;
+        height: 32px;
+    }
+
+    .mini-content .mini-title{
+        width: 50%;
+    }
+
+    .mini-content .time-cost {
+        width: 50%;
+    }
 }

@@ -4,65 +4,51 @@
 }
 
 .front-card {
-    height: 100%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    max-height: 100%;
 }
 
-.title {
-    height: 4%
+.card-media {
+    height: 200px;
+    width: 200px;
 }
+
 .image-wrapper{
     width: 100%;
-    height: 65%;
+    height: 100%;
 }
 
 .image-wrapper img{
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 10px solid bisque;
 }
 
-.icon-cost, .icon-time{
-    width: 25%;
-    color: #2fb2c4;
-    font-size: 1.5rem;
+.btn-wrapper Button{
+    color: white;
+    border: 1px solid white;
 }
 
-.time-cost-icon {
-    display: flex;
-    justify-content: flex-end;
+.btn-wrapper :hover{
+    background-color: red;
+    font-weight: bold;
 }
 
 .media {
     display: none;
 }
-.mini-content {
-    width: 100%;
-    display: flex;
-}
 
-.mini-title{
-    width: 50%;
-    padding-left: 2px;
-    text-align: start;
-}
 
-.time-cost{
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 2px;
-}
 
 @media screen and (max-width: 600px) {
 
-    .front-card {
-        height: inherit;
-    }
-    .time-cost-icon {
-        display: none;
-    }
     .media {
         position: absolute;
         left: 50%;
@@ -71,54 +57,8 @@
         height: 10%;
         display: flex;
         justify-content: flex-end;
-
     }
 
-    .icon-cost, .icon-time{
-        width: 25%;
-        color: #2fb2c4;
-        font-size: 1rem;
-    }
-
-    .title {
-        width: 50%;
-        margin-bottom: 1px;
-        height: 10%;
-    }
-
-    .card-media {
-        display: flex;
-        height: 90%;
-    }
-
-    .image-wrapper{
-        max-width: 50%;
-        height: 99%;
-    }
-
-    .text-wrapper{
-        display: block;
-        width: 50%;
-    }
-
-    .mini-content {
-        display: flex;
-        justify-content: space-between;
-        height: 32px;
-    }
-    .mini-content .mini-title{
-        width: 50%;
-    }
-
-    .mini-content .time-cost {
-        width: 50%;
-    }
-
-    .btn-wrapper{
-        position: absolute;
-        bottom: 0;
-        left: 60%;
-    }
 
 }
 

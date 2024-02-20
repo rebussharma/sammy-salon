@@ -1,6 +1,3 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faSackDollar, faStopwatch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@mui/material';
 import '../../css/services/FrontCard.css';
 
@@ -9,20 +6,17 @@ const FrontCard = ({param, props}:any) => {
     return(
         <div className="front">
             <div className='front-card'>
-                <div className='title'>
-                    {props.content.title}
-                </div>
                 <div className='card-media'>
                     <div className='image-wrapper'>
                         <img src={props.content.main_img} />
                     </div>
-                    <div className='time-cost-icon'>
+                    {/* <div className='time-cost-icon'>
 
                         <FontAwesomeIcon className="icon-cost" icon={faSackDollar as IconProp} />
                         <FontAwesomeIcon className="icon-time" icon={faStopwatch as IconProp} />
 
-                    </div>
-                    <div className='text-wrapper'>
+                    </div> */}
+                    {/* <div className='text-wrapper'>
                         <div className='time-cost-icon media'>
                             <FontAwesomeIcon className="icon-cost" icon={faSackDollar as IconProp} />
                             <FontAwesomeIcon className="icon-time" icon={faStopwatch as IconProp} />
@@ -45,10 +39,26 @@ const FrontCard = ({param, props}:any) => {
                                 ) )
                             )
                         }
-                    </div>
+                    </div> */}
                 </div>
-                <div className='btn-wrapper'>
-                    <Button size="small" onClick={() => param(true)}>More Info</Button>
+                <div className='details-wrapper'>
+                    <div className='service cost title'>
+                        <div className='title'>
+                            <h1>{props.content.title}</h1>
+                        </div>
+                        <h3 className='cost'> ${props.content.cost} & Up</h3>
+                        </div>
+                    <div className='btn-wrapper'>
+                        <Button   sx={{
+                                        ':hover': {
+                                        bgcolor: 'primary.main', // theme.palette.primary.main
+                                        color: 'white',
+                                        },
+                                     }} 
+                                     variant="outlined" 
+                                     size="small" 
+                                     onClick={() => param(true)}>More Info</Button>
+                    </div>
                 </div>
             </div>
         </div>
