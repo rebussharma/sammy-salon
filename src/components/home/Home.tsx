@@ -15,11 +15,23 @@ const Home: React.FC = () => {
 
       <div className="menu">
         <BrowserRouter>
-        <Button variant="outlined" id="home-services">
-          <Link to="services" smooth={true}>Our Service Menu</Link>
+          <Button 
+            sx={{
+              ':hover': {
+              bgcolor: '#e7b791c4',
+              },
+          }} 
+            variant="outlined" 
+            id="home-services">
+            <Link to="services" smooth={true}>Our Service Menu</Link>
           </Button>
         </BrowserRouter>
-        <Button href='tel:832-935-0587' variant="outlined" id="home-phone">Give Us a Call
+        <Button sx={{
+              ':hover': {
+              bgcolor: '#e7b791c4',
+              },
+          }} 
+          href='tel:832-935-0587' variant="outlined" id="home-phone">Give Us a Call
         </Button >
       </div>
 

@@ -51,8 +51,8 @@ const FrontCard = ({param, props}:any) => {
                     <div className='btn-wrapper'>
                         <Button   sx={{
                                         ':hover': {
-                                        bgcolor: 'primary.main', // theme.palette.primary.main
-                                        color: 'white',
+                                        bgcolor: 'white',
+                                        color: 'black',
                                         },
                                      }} 
                                      variant="outlined" 

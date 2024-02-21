@@ -32,10 +32,20 @@ const BackCard = ({param, props}:any) => {
                                 )
                             }
                         </div>
-                    
-                    <div className='back-btn-wrapper'>
-                        <Button size="small" onClick={() => param(false)}>Go Back</Button>
-                    </div>
+                </div>
+                                    
+                <div className='back-btn-wrapper'>
+                    <Button   sx={{
+                                        ':hover': {
+                                        bgcolor: 'white',
+                                        color: 'black',
+                                        },
+                                     }} 
+                                     variant="outlined" 
+                                     size="small" 
+                                     onClick={() => param(false)}>
+                            Go Back
+                    </Button>
                 </div>
             </div>
         </div>

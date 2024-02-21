@@ -31,6 +31,15 @@
     border: 10px solid bisque;
 }
 
+.details-wrapper{
+    margin-bottom: 5px;
+}
+
+.btn-wrapper {
+    position: relative;
+    bottom: 5px;
+}
+
 .btn-wrapper Button{
     color: white;
     border: 1px solid white;
@@ -44,7 +53,6 @@
 .media {
     display: none;
 }
-
 
 
 @media screen and (max-width: 600px) {
