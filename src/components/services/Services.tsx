@@ -15,29 +15,44 @@ const Services:React.FC = () => {
     {
       main_img: threading,
       title: 'Threading',
-      cost: 10,
+      cost: 5,
       time: '15 mins',
       back_img: logo,
       back_essay: 'Threading is done using a thread. It is better than waxing',
       mini_content:[
         {
-          title:"Eyebrow",
+          title:"Eyebrow Threading",
           cost:10,
           time: "5 mins"
         },
         {
+          title:"Eyebrow Shaping",
+          cost:10,
+          time: "5 mins"
+        },
+        {
+          title:"Eyebrow Lamination",
+          cost:55,
+          time: "5 mins"
+        },
+        {
           title:"Upper-Lip",
-          cost:15,
+          cost:5,
           time: "5 mins"
         },
         {
           title:"Chin",
-          cost:25,
+          cost:5,
           time: "5 mins"
         },
         {
-          title:"Fore-head",
-          cost:55,
+          title:"Forehead",
+          cost:5,
+          time: "5 mins"
+        },
+        {
+          title:"Cheek-Sideburns",
+          cost:15,
           time: "5 mins"
         },
         {
@@ -52,19 +67,30 @@ const Services:React.FC = () => {
     {
       main_img: lashes,
       title: 'Lashes',
-      cost: 15,
+      cost: 20,
       time: '10 mins',
       back_img: logo,
       back_essay: 'Done using equiptments. Lasts for 1 month',
       mini_content:[
         {
-          title:"Extentions",
-          cost:10,
+          title:"Individual Extentions",
+          cost:100,
           time: "35 mins"
         },
         {
-          title:"Individual Extentions",
-          cost:15,
+          title:"Cluster Extentions",
+          cost:50,
+          time: "25 mins"
+        },
+        {
+          title:"Lashes Lifts",
+          cost:65,
+          time: "25 mins"
+        }
+        ,
+        {
+          title:"Lashes Tintings",
+          cost:30,
           time: "25 mins"
         }
       ]   
@@ -78,7 +104,7 @@ const Services:React.FC = () => {
       back_essay: 'Ease up your face. Exfoliate it and let it breathe',
       mini_content:[
         {
-          title:"Hydra Facil",
+          title:"Hydra Facial",
           cost:50,
           time: "55 mins"
         },
@@ -92,7 +118,7 @@ const Services:React.FC = () => {
     {
       main_img: waxing,
       title: 'Waxing',
-      cost: 40,
+      cost: 15,
       time: '30 mins',
       back_img: logo,
       back_essay: 'Easy waxing procedure that doesn not hurt. You will be good for 1 month',
@@ -103,9 +129,59 @@ const Services:React.FC = () => {
           time: "25 mins"
         },
         {
-          title:"Legs",
+          title:"Belly Wax",
           cost:15,
+          time: "25 mins"
+        },
+        {
+          title:"Bikini Line",
+          cost:30,
+          time: "25 mins"
+        },
+        {
+          title:"Brazilian",
+          cost:50,
+          time: "25 mins"
+        },
+        {
+          title:"Butt Wax",
+          cost:20,
+          time: "25 mins"
+        },
+        {
+          title:"Chest Wax",
+          cost:10,
+          time: "25 mins"
+        },
+        {
+          title:"Full Arms",
+          cost:40,
+          time: "25 mins"
+        },
+        {
+          title:"Half Arms",
+          cost:25,
+          time: "25 mins"
+        },
+        {
+          title:"Full Back",
+          cost:50,
+          time: "25 mins"
+        },
+        {
+          title:"Full Body",
+          cost:200,
           time: "15 mins"
+        },
+        {
+          title:"Full legs",
+          cost:60,
+          time: "25 mins"
+        },
+        {
+          title:"Half leg",
+          cost:30,
+          time: "25 mins"
         }
       ]
     },
@@ -118,13 +194,13 @@ const Services:React.FC = () => {
       back_essay: 'Tinting brows to make them look darker in shade. It lasts up to 1 month',
       mini_content:[
         {
-          title:"Single Brow",
-          cost:10,
+          title:"Brow Tinting",
+          cost:20,
           time: "25 mins"
         },
         {
-          title:"Both Brow",
-          cost:15,
+          title:"Lash Tinting",
+          cost:30,
           time: "15 mins"
         }
       ]
