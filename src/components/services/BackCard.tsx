@@ -1,3 +1,6 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faSackDollar, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@mui/material';
 import '../../css/services/BackCard.css';
 
@@ -13,6 +16,15 @@ const BackCard = ({param, props}:any) => {
                         <h1>{props.content.title} Prices</h1>
                     </div>
                     <div className='back-mini'>
+                    <div className='time-cost-icon'>
+                        <div className='back-services'>
+                            Services
+                        </div>
+                        <div className='cost-time-wrapper'>
+                            <FontAwesomeIcon className="icon-cost" icon={faSackDollar as IconProp} />
+                            <FontAwesomeIcon className="icon-time" icon={faStopwatch as IconProp} />
+                        </div>
+                    </div>
                         {
                                 (props.content.mini_content.map((mini:any) => (
                                     <div className='mini-content'>

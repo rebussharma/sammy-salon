@@ -63,61 +63,69 @@
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-evenly;
+    padding: 0 5px;
 }
 
-.mini-title{
-    width: 50%;
-    padding-left: 2px;
-    text-align: start;
+.mini-content:nth-child(odd){
+    background-color: rgb(191 185 185 / 34%)
 }
 
 .mini-content {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-
-.icon-cost, .icon-time{
-    width: 25%;
-    color: #2fb2c4;
-    font-size: 1.5rem;
-}
-
-.time-cost-icon {
-    display: flex;
-    justify-content: flex-end;
+.mini-title{
+    width: 60%;
+    padding-left: 2px;
+    text-align: start;
 }
 
 .time-cost{
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-right: 2px;
 }
 
+.time-cost-icon {
+    position: relative;
+    /* left: 50%;
+    width: 50%; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: #bac3c7e6;
+    border-radius: 3px;
+}
+
+.back-services {
+    font-weight: bold;
+    padding-left: 2px;
+    font-size: 1.15rem;
+    width: 50%;
+    text-align: left;
+}
+
+.cost-time-wrapper{
+    display: flex;
+    font-size: 1.15rem;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.icon-cost, .icon-time{
+    width: 25%;
+    color: #2fb2c4;
+}
+
+
 
 @media screen and (max-width: 600px) {
-    /* .back-title{
-        position: relative;
-        height: 10%;
-    }
-
-    .back-mini{
-        position: relative;
-    } */
-
-    .time-cost-icon {
-        display: none;
-    }
-
-    .icon-cost, .icon-time{
-        width: 25%;
-        color: #2fb2c4;
-        font-size: 1rem;
-    }
-
+   
 
     .text-wrapper{
         display: block;
