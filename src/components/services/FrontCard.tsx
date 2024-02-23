@@ -10,36 +10,6 @@ const FrontCard = ({param, props}:any) => {
                     <div className='image-wrapper'>
                         <img src={props.content.main_img} />
                     </div>
-                    {/* <div className='time-cost-icon'>
-
-                        <FontAwesomeIcon className="icon-cost" icon={faSackDollar as IconProp} />
-                        <FontAwesomeIcon className="icon-time" icon={faStopwatch as IconProp} />
-
-                    </div> */}
-                    {/* <div className='text-wrapper'>
-                        <div className='time-cost-icon media'>
-                            <FontAwesomeIcon className="icon-cost" icon={faSackDollar as IconProp} />
-                            <FontAwesomeIcon className="icon-time" icon={faStopwatch as IconProp} />
-                        </div>
-                        {
-                            (props.content.mini_content.map((mini:any) => (
-                                <div className='mini-content'>
-                                    <div className='mini-title'>
-                                        {mini.title}
-                                    </div> 
-                                    <div className='time-cost'>
-                                        <div className='mini-cost'>
-                                            ${mini.cost}
-                                        </div>
-                                        <div className='mini-time'>
-                                            {mini.time}
-                                        </div>
-                                    </div>
-                                </div>
-                                ) )
-                            )
-                        }
-                    </div> */}
                 </div>
                 <div className='details-wrapper'>
                     <div className='service cost title'>

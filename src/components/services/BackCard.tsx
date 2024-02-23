@@ -16,18 +16,18 @@ const BackCard = ({param, props}:any) => {
                         <h1>{props.content.title} Prices</h1>
                     </div>
                     <div className='back-mini'>
-                    <div className='time-cost-icon'>
-                        <div className='back-services'>
-                            Services
+                        <div className='time-cost-icon'>
+                            <div className='back-services'>
+                                Services
+                            </div>
+                            <div className='cost-time-wrapper'>
+                                <FontAwesomeIcon className="icon-cost" icon={faSackDollar as IconProp} />
+                                <FontAwesomeIcon className="icon-time" icon={faStopwatch as IconProp} />
+                            </div>
                         </div>
-                        <div className='cost-time-wrapper'>
-                            <FontAwesomeIcon className="icon-cost" icon={faSackDollar as IconProp} />
-                            <FontAwesomeIcon className="icon-time" icon={faStopwatch as IconProp} />
-                        </div>
-                    </div>
                         {
                                 (props.content.mini_content.map((mini:any) => (
-                                    <div className='mini-content'>
+                                    <div className='mini-content'  key={mini.title}>
                                         <div className='mini-title'>
                                             {mini.title}
                                         </div> 
@@ -40,15 +40,16 @@ const BackCard = ({param, props}:any) => {
                                             </div>
                                         </div>
                                     </div>
-                                    ) )
+                                    ) ) 
                                 )
+                                
                             }
-                        </div>
+                    </div>
                 </div>
                                     
                 <div className='back-btn-wrapper'>
                     <Button   sx={{
-                                        ':hover': {
+                                    ':hover': {
                                         bgcolor: 'white',
                                         color: 'black',
                                         },

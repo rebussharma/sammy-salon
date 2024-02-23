@@ -25,10 +25,10 @@ const Cards:React.FC<ContentList> = (props: ContentList) => {
     
     return(
         <div className="card" id="card">
-            <FrontCard param = {setflip} props={props}></FrontCard>
+            <FrontCard param = {setflip} props={props} key={props}></FrontCard>
             {
                 flip? <div className="card-flip" style={{height:"100%"}}>
-                    <BackCard param = {setflip} props={props}></BackCard>
+                    <BackCard param = {setflip} props={props} key={props}></BackCard>
                 </div> 
                 :
                  <div className="card-flip"></div>
@@ -36,20 +36,6 @@ const Cards:React.FC<ContentList> = (props: ContentList) => {
         </div>
     )
 
-    // if (!flip){
-    //     return(
-    //         <div className={`card ${flip ? "flip":""}`} id="card">
-    //             <FrontCard param = {setflip} props={props}></FrontCard>
-    //         </div>
-    //     )
-    // }
-    // else {
-    //     return ( 
-    //         <div className={`card ${flip ? "flip":""}`} id="card">
-    //             <BackCard param = {setflip} props={props}></BackCard>
-    //         </div>
-    //     )
-    // }
 }
 
 export default Cards

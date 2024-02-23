@@ -46,11 +46,6 @@
     border: 1px solid white;
 }
 
-.btn-wrapper :hover{
-    background-color: red;
-    font-weight: bold;
-}
-
 .media {
     display: none;
 }
