@@ -27,6 +27,7 @@
     height: 10%;
     width: 100%;
     bottom: 5px;
+    cursor: pointer;
 }
 .back-btn-wrapper Button{
     color: white;
@@ -45,7 +46,7 @@
 
 .back-title{
     position: relative;
-    top: 0;
+    top: 0.5;
     height: 10%;
     font-size: .9em;
     padding-bottom: 5px;
@@ -63,7 +64,6 @@
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    padding: 0 5px;
 }
 
 .mini-content:nth-child(odd){
@@ -71,16 +71,48 @@
 }
 
 .mini-content {
-    width: 100%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1%;
 }
 
 .mini-title{
     width: 60%;
     padding-left: 2px;
     text-align: start;
+}
+
+.time-cost-icon {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: #bac3c7e6;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    height: 30px;
+    align-items: center;
+}
+
+.back-services {
+    font-weight: bold;
+    padding-left: 2px;
+    font-size: 1.15rem;
+    width: 50%;
+    text-align: left;
+    padding-left: 6px;
+    height: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.cost-time-wrapper{
+    display: flex;
+    font-size: 1.15rem;
+    width: 50%;
+    justify-content: space-around;
 }
 
 .time-cost{
@@ -91,58 +123,19 @@
     padding-right: 2px;
 }
 
-.time-cost-icon {
-    position: relative;
-    /* left: 50%;
-    width: 50%; */
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    background-color: #bac3c7e6;
-    border-radius: 3px;
-}
-
-.back-services {
-    font-weight: bold;
-    padding-left: 2px;
-    font-size: 1.15rem;
-    width: 50%;
-    text-align: left;
-}
-
-.cost-time-wrapper{
-    display: flex;
-    font-size: 1.15rem;
-    width: 50%;
-    justify-content: space-around;
-}
-
 .icon-cost, .icon-time{
     width: 25%;
     color: #2fb2c4;
+    cursor: pointer;
+    
 }
 
 
 
 @media screen and (max-width: 600px) {
-   
-
-    .text-wrapper{
-        display: block;
-        width: 50%;
-    }
-
     .mini-content {
-        display: flex;
-        justify-content: space-between;
         height: 32px;
     }
 
-    .mini-content .mini-title{
-        width: 50%;
-    }
-
-    .mini-content .time-cost {
-        width: 50%;
-    }
+    
 }

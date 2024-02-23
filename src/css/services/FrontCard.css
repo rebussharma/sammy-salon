@@ -38,6 +38,7 @@
 .btn-wrapper {
     position: relative;
     bottom: 5px;
+    cursor: pointer;
 }
 
 .btn-wrapper Button{
