@@ -1,4 +1,203 @@
 .about {
-    height: 20vh;
-    background-color: blue;
+    height: 60vh;
+    background-color: #f6ebe7;
+    color: black;
+    padding: 0 10px ;
+    position: relative;
+    top: 0;
+    padding-top: 20px;
+}
+
+ .about .title{
+    display: none;
+}
+
+.about .contents{
+    display: block;
+}
+
+.mini-circle{
+    height: 200px;
+    width: 200px;
+    border: 50px solid #f1c50e;
+    border-radius: 50%;
+}
+
+.story-box{
+    /* border: 1px solid white; */
+}
+
+.story {
+    font-size: 1rem;
+}
+
+.one{
+   /* border:  20px solid #c1902f */
+}
+
+.team {
+    height: 50%;
+}
+
+.sammy {
+    height: inherit;
+}
+
+
+.one{
+    padding: 5px;
+    padding-top: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+ }
+
+ .team {
+    height: auto;
+    padding-top: 20px;
+}
+
+.headshot-name {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.headshot {
+    height: var(--headshot-area);
+    width: var(--headshot-area);
+}
+
+.headshot img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.name{
+    position: absolute;
+    bottom: var(--name-bottom-margin);
+    background-color: #d8b4c0;
+    height: var(--name-height);
+    width: 75%;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.name-text{
+    float: right;
+    font-size: 2rem;
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: black;
+}
+
+.sammy .info{
+    display: block;
+    position: relative;
+    top: 50px;
+    padding: 5px;
+    padding-top: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+}
+
+@media screen and (max-width: 600px) {
+    .mini-circle, .web-title {
+        display: none;
+    }
+    .about {
+        --name-height:80px;
+        --headshot-area: 210px;
+        --name-bottom-margin: -20%;
+       height: auto;
+    }
+
+    .about .title{
+        position: relative; 
+        height: 50px;
+        top: 0;
+        font-size: 2.5rem;
+        font-family: 'Playfair Display', serif !important;
+        font-weight: bold;
+        padding: 10px 0;
+        border: 10px solid #d8b4c0;
+    }
+    .about .contents{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 700px;
+    }
+    
+    .story-box {
+        height: auto;
+    }
+
+    .one{
+        padding: 5px;
+        padding-top: 5px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.25rem;
+     }
+
+     .team {
+        height: auto;
+        padding-top: 20px;
+    }
+    
+    .headshot-name {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+
+    .headshot {
+        height: var(--headshot-area);
+        width: var(--headshot-area);
+    }
+
+    .headshot img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    .name{
+        position: absolute;
+        bottom: var(--name-bottom-margin);
+        background-color: #d8b4c0;
+        height: var(--name-height);
+        width: 75%;
+        border-radius: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .name-text{
+        float: right;
+        font-size: 2rem;
+        font-family: 'Playfair Display';
+        font-weight: bold;
+        color: black;
+    }
+
+    .sammy .info{
+        display: block;
+        position: relative;
+        top: 50px;
+        padding: 5px;
+        padding-top: 5px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.25rem;
+    }
+    
 }
