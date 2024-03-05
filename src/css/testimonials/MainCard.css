@@ -1,0 +1,82 @@
+.main-card{
+    --image-wrapper-hw: 180px;
+    --height-main-bg: 80%;
+    --card-border-rad: 5%;
+    position: relative;
+    height: var(--height-main-bg);
+    width: 25%;
+    color: white;
+    background-color: white;
+    font-family: 'Playfair Display', serif;
+    border-radius: 0 0 var(--card-border-rad) var(--card-border-rad);
+}
+
+.body-card{
+    height: 95%;
+    padding-top: 20px;
+    background-color: white;
+    border-radius: 0 0 var(--card-border-rad) var(--card-border-rad);
+}
+
+.image-wrapper{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: var(--image-wrapper-hw);
+    width: var(--image-wrapper-hw);
+    padding-bottom: 5px;
+    z-index: 1;
+}
+
+.bg-card{
+    position: absolute;
+    top: calc(var(--image-wrapper-hw)/2);
+    height: var(--height-main-bg);
+    width: 100%;
+    border-radius: 0 0 var(--card-border-rad) var(--card-border-rad);
+}
+
+
+.image-wrapper img{
+    object-fit: cover;
+    width: 83%;
+    border-radius: 50%;
+    border: 15px solid white;
+}
+
+.container {
+    position: relative;
+    bottom: 0%;
+    border-radius: 0 0 5% 5%;
+    color: white;
+    margin-top: 5%;
+    height: 50%;
+}
+
+.container .review-details{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-size: 1.25rem;
+}
+.reviewer-name{
+    position: relative;
+    display: block;
+}
+
+.reviewer-name h3{
+    margin-block-start: 0;
+    text-transform: uppercase;
+}
+
+.container .review{
+    padding: 5px 10px;
+    overflow-y: scroll;
+    font-family:Helvetica, sans-serif
+}
+
+
+
