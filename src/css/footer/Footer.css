@@ -1,3 +1,11 @@
 .footer{
-    height: 500px;
+    height: 400px;
+    background-color: #4b4747c9;
+    display: flex;
 }
+
+.contact-wrapper, .footer-details{
+    position: relative;
+    width: 50%;
+}
+
