@@ -4,7 +4,7 @@
     --card-border-rad: 5%;
     position: relative;
     height: var(--height-main-bg);
-    width: 25%;
+    width: 65%;
     color: white;
     background-color: white;
     font-family: 'Playfair Display', serif;
@@ -18,7 +18,7 @@
     border-radius: 0 0 var(--card-border-rad) var(--card-border-rad);
 }
 
-.image-wrapper{
+.main-card .image-wrapper{
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -37,9 +37,10 @@
 }
 
 
-.image-wrapper img{
+.main-card .image-wrapper img{
     object-fit: cover;
     width: 83%;
+    height: 83%;
     border-radius: 50%;
     border: 15px solid white;
 }
@@ -57,14 +58,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
-    font-size: 1.25rem;
 }
 .reviewer-name{
     position: relative;
     display: block;
+    font-size: 1.5rem;
 }
 
 .reviewer-name h3{
@@ -75,8 +76,27 @@
 .container .review{
     padding: 5px 10px;
     overflow-y: scroll;
-    font-family:Helvetica, sans-serif
+    font-family:Helvetica, sans-serif;
+    font-size: 1.4rem;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.container .review::--webkit-scrollbar{
+    display: none;
 }
 
 
+@media screen and (max-width: 1024px) {
+    .main-card{
+        width: 350px;
+    }
+    
+}
 
+@media screen and (max-width: 800px) {
+    .main-card{
+        width: 320px;
+    }
+    
+}

@@ -1,5 +1,6 @@
 import React from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import angie from '../../assets/testimonials/angie.png';
 import cheryl from '../../assets/testimonials/cheryl.png';
 import jassie from '../../assets/testimonials/jassie.png';
@@ -9,6 +10,30 @@ import tina from '../../assets/testimonials/tina.png';
 import '../../css/testimonials/Testimonials.css';
 import MainCard from './MainCard';
 
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 4,
+    slidesToSlide: 3 // optional, default to 1
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3 // optional, default to 1
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1
+  }
+};
+
 const Testimonials: React.FC = () => {
   var testimonials = [
     {
@@ -16,93 +41,65 @@ const Testimonials: React.FC = () => {
       reviewer: "Jewell Medina",
       img: jewell,
       date: "8 months Ago",
-      bgc: "rgb(9 149 206)"
+      bgc: "#5885c3"
     }, {
       review:"Good service, ask for Sammy, haven't been in a year, eyebrows threaded and tinted, omg, my eyebrows are beautiful",
       reviewer:"Cheryl Sandidge",
       img: cheryl,
       date: "4 year ago",
-      bgc:"black"
+      bgc:"#4fbdc0"
     },
     {
       review:"This place is a great find! I came in for an eyebrow wax and Sammy recommended a threading. It was my first time and it was so fast! Pricing is fantastic on all services, and my eyebrows look fantastic! Definitely recommend!",
       reviewer:"Jassie Zaidi ",
       img:jassie,
       date:"1 year ago",
-      bgc:"red"
+      bgc:"#e73d71"
     },
     {
       review:"Sammy was awesome she did my threading and tinting and did amazing !",
       reviewer:"Angie c ",
       img:angie,
       date:" 2 years ago",
-      bgc:"yellow"
+      bgc:"#5885c3"
     },
     {
       review:"Sammy did excellent job on threading my face! Least painful experience in the last 15 years! Sweet girl and thanks Sammy",
       reviewer:"Tina Herr",
       img:tina,
       date:" 3 years ago",
-      bgc:"blue"
+      bgc:"#4fbdc0"
     }, {
       review: "I get my eyebrows done by Sammy and she’s very good with her job! :)",
       reviewer: "Jolette",
       img:jolette,
       date: "5 years ago",
-      bgc:"green"
+      bgc:"#e73d71"
     }
   ]
   return (
     <div className='testimonials' id='testimonials'>
-      <div className='testimonial-wrapper'>
-        {testimonials.map((testimonial) => (<MainCard testimonails={testimonial} key={testimonial.reviewer}></MainCard>))}
-
-        {/* <Carousel
-          showArrows={true}
-          infiniteLoop={true}
-          showThumbs={false}
-          showStatus={false}
-          autoPlay={true}
-          interval={6100}
-        >
-        <div>
-          <img src="/images/shirley.png" />
-          <div className="myCarousel">
-            <h3>Shirley Fultz</h3>
-            <h4>Designer</h4>
-            <p>
-              It's freeing to be able to catch up on customized news and not be
-              distracted by a social media element on the same site
-            </p>
-          </div>
+      <div className='testimonial-title'>
+        <div className='main-title'>
+          Our Clients Love Us
         </div>
-
-        <div>
-          <img src="/images/daniel.png" />
-          <div className="myCarousel">
-            <h3>Daniel Keystone</h3>
-            <h4>Designer</h4>
-            <p>
-              The simple and intuitive design makes it easy for me use. I highly
-              recommend Fetch to my peers.
-            </p>
-          </div>
+        <div className='sub-title'>
+        Read what they say about us
         </div>
-
-        <div>
-          <img src="/images/theo.png" />
-          <div className="myCarousel">
-            <h3>Theo Sorel</h3>
-            <h4>Designer</h4>
-            <p>
-              I enjoy catching up with Fetch on my laptop, or on my phone when
-              I'm on the go!
-            </p>
-          </div>
-        </div>
-      </Carousel> */}
       </div>
-    </div>
+      <Carousel
+          responsive={responsive}
+          autoPlay={false}
+          swipeable={true}
+          draggable={true}
+          showDots={true}
+          infinite={true}
+          partialVisible={false}
+          dotListClass="custom-dot-list-style"
+      >
+          {testimonials.map((testimonial) => (<MainCard testimonails={testimonial} key={testimonial.reviewer}></MainCard>))}
+        </Carousel> 
+        </div>
   )
 }
 
