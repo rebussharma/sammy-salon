@@ -45,7 +45,7 @@
     border: 15px solid white;
 }
 
-.container {
+.testimonial-container {
     position: relative;
     bottom: 0%;
     border-radius: 0 0 5% 5%;
@@ -54,7 +54,7 @@
     height: 50%;
 }
 
-.container .review-details{
+.testimonial-container .review-details{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@
     text-transform: uppercase;
 }
 
-.container .review{
+.testimonial-container .review{
     padding: 5px 10px;
     overflow-y: scroll;
     font-family:Helvetica, sans-serif;
@@ -82,7 +82,7 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-.container .review::--webkit-scrollbar{
+.testimonial-container .review::--webkit-scrollbar{
     display: none;
 }
 

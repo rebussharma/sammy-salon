@@ -17,7 +17,7 @@ const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
             <div className="image-wrapper">
                     <img src={props.testimonails.img}/>
             </div>
-            <div className="container">
+            <div className="testimonial-container">
                 <div className='review-details'>
                     <div className="reviewer-name">
                         <h3>{props.testimonails.reviewer}</h3>
