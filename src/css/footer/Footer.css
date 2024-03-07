@@ -153,3 +153,40 @@
         right: 40%;
     }
 }
+
+@media screen and (max-width: 640px) {
+    .footer{
+        height: auto;
+        width: 99%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .footer-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .motto-logo, .footer-services, .contact-wrapper {
+        width: 95%;
+    }
+
+    .footer-services {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .copyrights{
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center;
+        padding: 30px 0px 15px;
+    }
+
+    .copyright, .credit{
+        padding: 0 5px;
+    }
+
+}
