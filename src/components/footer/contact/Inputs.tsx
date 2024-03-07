@@ -9,6 +9,7 @@ import '../../../styles/Inputs.styles';
 import { InputBoxWrapper, InputWrapper, MessageInput } from '../../../styles/Inputs.styles';
 
 import emailjs from '@emailjs/browser';
+import '../../../css/footer/contact/Inputs.css';
 
 
 const Inputs = () => {

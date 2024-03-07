@@ -12,11 +12,17 @@ export const InputBoxWrapper = styled.form`
 
 export const InputWrapper = styled.div`
   border: 1px solid transparent;
-  width: 100%%;
+  width: 100%;
   max-height: 15%;
   padding-left: 10px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    padding-left:0;
+  }
+  @media (max-width: 1024px) {
+    padding-left:0;
+  }
 `;
 
 export const Input = styled.input`

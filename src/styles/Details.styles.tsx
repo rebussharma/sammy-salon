@@ -15,6 +15,12 @@ export const DetailsBarWrapper = styled.div`
   @media (max-width: 768px) {
     padding-bottom: 80px;
     grid-row: 2;
+    margin-right:5px;
+  }
+  @media (max-width: 1150px) {
+    padding-bottom: 80px;
+    grid-row: 2;
+    margin-right:5px;
   }
 `;
 
@@ -69,6 +75,9 @@ export const ContactText = styled.div`
   color: #fff;
   font-size: 15px;
   margin-left: 10px;
+  @media (max-width: 768px) {
+    font-size:.75rem;
+  }
 `;
 
 // export const SocialsWrapper = styled.div`

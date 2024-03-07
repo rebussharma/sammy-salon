@@ -8,12 +8,7 @@ import Inputs from './Inputs';
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 50vh;
-  max-height: 70vh;
   align-items: center;
-  background-color: whitesmoke;
-  padding-bottom: 5px;
-  width: 30vw;
 `;
 
 const PageHeadingWrapper = styled.div`
@@ -23,10 +18,10 @@ const PageHeadingWrapper = styled.div`
 `;
 
 const FormContainer = styled.div`
-  width: 95%;
+  width: 80%;
   display: flex;
   position:relative;
-  justify-content: flex-start;
+  justify-content: flex-end;
   background-color: #fff;
   padding: 5px;
   border-radius: 5px;
@@ -34,10 +29,16 @@ const FormContainer = styled.div`
   max-height:90%;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    width: 90%;
+    width: 97%;
     max-width: 500px;
     min-width: 0px;
     grid-gap: 0px;
+  }
+  @media (min-width: 1600px) {
+    width:60%
+  }
+  @media (min-width: 1850px) {
+    width:50%
   }
 `;
 

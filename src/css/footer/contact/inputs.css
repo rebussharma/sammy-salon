@@ -1,3 +1,8 @@
+.inputs{
+    height: 100% !important;
+    width: 50%;
+}
+
 .alert-box{
     display: block;
     z-index: 1;
