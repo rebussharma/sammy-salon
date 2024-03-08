@@ -1,6 +1,5 @@
 .inputs{
-    height: 100% !important;
-    width: 50%;
+    height: inherit !important;
 }
 
 .alert-box{
