@@ -46,6 +46,9 @@ export const MessageInput = styled.textarea`
   border-right: 1px solid transparent;
   border-top: 1px solid transparent;
   outline: 0px transparent !important;
+  @media (max-width: 640px) {
+    width:93%;
+  }
 `;
 
 export const SubMitButton = styled.input`

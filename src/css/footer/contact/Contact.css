@@ -10,10 +10,6 @@
     color:white;
 }
 
-.contact-text{
-    color: white !important;
-}
-
 .form-container{
     height: 100%;
 }
@@ -22,9 +18,5 @@
     .form-container{
         width: 100% !important;
     }
-    
-}
-
-@media screen and (max-width:600) {
     
 }

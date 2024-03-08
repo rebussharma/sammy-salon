@@ -9,6 +9,9 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 640px) {
+    width:100% !important;
+  }
 `;
 
 const PageHeadingWrapper = styled.div`
@@ -44,9 +47,12 @@ const FormContainer = styled.div`
 
 const TextOne = styled.b`
   font-size: 30px;
-  color: rgb(4, 4, 59);
+  color: white;
   text-align: center;
   padding-bottom:10px;
+  @media (max-width:600px) {
+    color: peachpuff !important;
+  }
 `;
 
 // const TextTwo = styled.p`

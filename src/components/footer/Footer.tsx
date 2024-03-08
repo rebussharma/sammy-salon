@@ -61,7 +61,7 @@ const Footer:React.FC = () => {
           © Sammy's Beauty Solutions. All rights reserved
         </div>
           <div className='credit'>
-            Made by <a href="https://www.ribashsharma.com">Ribash Sharma</a>
+            Made by <a href="https://www.ribashsharma.com" target='_blank'>Ribash Sharma</a>
           </div>
       </div>
 
