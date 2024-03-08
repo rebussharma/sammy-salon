@@ -42,8 +42,12 @@ const Inputs = () => {
     e.preventDefault();
     const serviceId = "service_hr7wfln";
     const templateId = "template_y1syqfc";
+    if(!email){
+      console.log("email empty");
+      
+    }
 
-    if(email !== null || email !== ''){
+    if(email !== null || email !== '' || !email){
       emailjs
         .send(serviceId, templateId, {
           to_name: name, recipient: email, message: message
@@ -51,31 +55,31 @@ const Inputs = () => {
         .then(
           () => {
             console.log('SUCCESS!');
-            setSuccess(1);
             setSuccessVal(true);
           },
           (error) => {
             console.log('FAILED...', error.text);
-            setSuccess(-1);
             setSuccessVal(true);
           },
         );
+    }else{
+      console.log("Email not sent to customer as email was not provided")
     }
 
     emailjs
     .send(serviceId, "template_wthysze", {
-      to_name: name, recipient: "sammysbrow@gmail.com", message: message, customer_phone: phone
+      to_name: name, recipient: "sammysbrow@gmail.com", message: message, customer_phone: phone, customer_email:email
     })
     .then(
       () => {
         console.log('Sent Email to Sammys Brow!');
+        setSuccess(1);
       },
       (error) => {
         console.log('Failed Sending Email to Sammys Brow!...', error.text);
+        setSuccess(-1);
       },
     );
-
-    
 
     setName('');
     setEmail('');
