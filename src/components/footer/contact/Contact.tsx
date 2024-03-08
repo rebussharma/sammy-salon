@@ -30,6 +30,11 @@ const FormContainer = styled.div`
   border-radius: 5px;
   height: auto;
   max-height:90%;
+  @media (max-width: 640px) {
+    width:98% !important;
+    justify-content: flex-start;
+    padding:2px;
+  }
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     width: 97%;

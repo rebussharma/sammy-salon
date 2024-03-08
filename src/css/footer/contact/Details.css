@@ -18,3 +18,12 @@
     margin-top: 20px;
     margin-left: 5px;
 }
+
+@media screen and (max-width:640px) {
+    .DetailsBarWrapper .ContactsWrapper .svg-inline--fa:not(.fa-phone){
+        padding: 0;
+    }
+    .DetailsBarWrapper .ContactsWrapper .address-display .street-address {
+        margin-left: 1% !important;
+    }
+}

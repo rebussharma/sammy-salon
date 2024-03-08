@@ -22,6 +22,10 @@ export const DetailsBarWrapper = styled.div`
     grid-row: 2;
     margin-right:5px;
   }
+  @media (max-width: 640px) {
+    grid-row: 2;
+    font-size: .75rem;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -77,6 +81,7 @@ export const ContactText = styled.div`
   margin-left: 10px;
   @media (max-width: 768px) {
     font-size:.75rem;
+    margin-left: 2%;
   }
 `;
 
