@@ -26,4 +26,8 @@
     .DetailsBarWrapper .ContactsWrapper .address-display .street-address {
         margin-left: 1% !important;
     }
+
+    .design-circles {
+        margin-top: 35px;
+    }
 }

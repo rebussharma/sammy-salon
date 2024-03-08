@@ -6,25 +6,29 @@ import Inputs from './Inputs';
 // import Form from './Form';
 
 const PageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   @media (max-width: 640px) {
     width:100% !important;
   }
 `;
 
 const PageHeadingWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  height: 45px;
   margin-top: 10px;
+  width:80%;
+  float:right;
+
+  @media (max-width:640px){
+    width:100%;
+    float:none;
+  }
 `;
 
 const FormContainer = styled.div`
+  float:right;
   width: 80%;
   display: flex;
   position:relative;
-  justify-content: flex-end;
+  justify-content: flex-start;
   background-color: #fff;
   padding: 5px;
   border-radius: 5px;
@@ -41,20 +45,28 @@ const FormContainer = styled.div`
     max-width: 500px;
     min-width: 0px;
     grid-gap: 0px;
+    height:80%
   }
   @media (min-width: 1600px) {
-    width:60%
+    width: 85%
   }
-  @media (min-width: 1850px) {
-    width:50%
+
+  @media (min-width: 2100px) {
+    width: 75%
+  }
+  @media (min-width: 2300px) {
+    width: 70%
   }
 `;
 
 const TextOne = styled.b`
   font-size: 30px;
   color: white;
-  text-align: center;
   padding-bottom:10px;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right: auto;
   @media (max-width:600px) {
     color: peachpuff !important;
   }

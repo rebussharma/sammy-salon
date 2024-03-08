@@ -2,29 +2,21 @@ import styled from 'styled-components';
 
 export const DetailsBarWrapper = styled.div`
   background-color: rgb(8, 8, 63);
-  margin-right: 50px;
+  margin-right: 5px;
   border-radius: 5px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50%;
+  height: 55%;
   max-width: 60%;
   padding: 5px;
   padding-bottom: 40px;
-  @media (max-width: 768px) {
-    padding-bottom: 80px;
-    grid-row: 2;
-    margin-right:5px;
-  }
-  @media (max-width: 1150px) {
-    padding-bottom: 80px;
-    grid-row: 2;
-    margin-right:5px;
-  }
-  @media (max-width: 640px) {
-    grid-row: 2;
+  @media (max-width:640px){
+    width:54%;
     font-size: .75rem;
+    padding: 1px;
+    padding-bottom: 40px;
   }
 `;
 
@@ -39,6 +31,10 @@ export const TextOne = styled.p`
   color: #fff;
   font-size: 18px;
   font-weight: bold;
+
+  @media (max-width: 640px){
+    margin-block-end: 0;
+  }
 `;
 
 export const TextTwo = styled.p`

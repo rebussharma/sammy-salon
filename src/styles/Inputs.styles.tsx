@@ -5,9 +5,11 @@ export const InputBoxWrapper = styled.form`
   position: absolute;
   padding-bottom: 10px;
   display:flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-direction: column;
   align-items: stretch;
+  padding-right:3px;
+
 `;
 
 export const InputWrapper = styled.div`
@@ -38,7 +40,7 @@ export const Input = styled.input`
 `;
 
 export const MessageInput = styled.textarea`
-  width: 100%;
+  width: 95%;
   color: #333;
   font-size: 15px;
   border-bottom: 1px solid rgb(100, 21, 173);
@@ -46,9 +48,10 @@ export const MessageInput = styled.textarea`
   border-right: 1px solid transparent;
   border-top: 1px solid transparent;
   outline: 0px transparent !important;
-  @media (max-width: 640px) {
-    width:93%;
+  @media (min-width: 1024px) {
+    width:85%;
   }
+
 `;
 
 export const SubMitButton = styled.input`
