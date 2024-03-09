@@ -1,4 +1,5 @@
 .about {
+    --main-color: #f1c50e;
     --info-box-margin: 3%;
     display: flex;
     justify-content: center;
@@ -32,7 +33,7 @@
     height: 0;
     max-width: 15%;
     padding-bottom: 15%;
-    border: 40px solid #f1c50e;
+    border: 40px solid var(--main-color);
     border-radius: 50%;
 }
 
@@ -42,9 +43,9 @@
     max-width: 60%;
     top: -14%;
     left: 12%;
-    border: 5px solid #f1c50e;
+    border: 5px solid var(--main-color);
     background-color: white;
-    box-shadow: 145px 150px #f1c50e;
+    box-shadow: 145px 150px var(--main-color);
 }
 
 .web-title{
@@ -110,7 +111,7 @@
 
 .web-name{
     position: relative;
-    background-color: #f1c50e;
+    background-color: var(--main-color);
     display: flex;
     align-items: center;
     margin: 0 auto;
@@ -130,7 +131,7 @@
 .sammy .info{
     display: block;
     position: relative;
-    border:5px solid #f1c50e;
+    border:5px solid var(--main-color);
     width: 40%;
     max-height: 80%;
     right:var(--info-box-margin);
@@ -147,7 +148,7 @@
 }
 @media screen and (min-width: 1200px) {
     .story-box{
-        border: 10px solid #f1c50e;
+        border: 10px solid var(--main-color);
         max-height: 45%;
         position: relative;
     }
@@ -257,7 +258,7 @@
     .name{
         position: absolute;
         bottom: var(--name-bottom-margin);
-        background-color: #f1c50e;
+        background-color: var(--main-color);
         height: var(--name-height);
         width: 75%;
         border-radius: 5%;
@@ -302,7 +303,7 @@
 @media screen and (max-width:768px) {
     .story-box {
         max-width: 70%;
-        box-shadow: 117px 150px #f1c50e
+        box-shadow: 117px 150px var(--main-color)
     }
     .web-headshot {
         height: 68%;
