@@ -7,7 +7,6 @@ type ContentList = {
     content:{
         main_img: string,
         title: string,
-        back_img: string,
         back_essay: string,
         mini_content: 
             {

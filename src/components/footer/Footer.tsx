@@ -3,7 +3,7 @@ import { faInstagram, faSquareFacebook, faTiktok } from '@fortawesome/free-brand
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-scroll';
-import logo from '../../assets/home/logo3.png';
+import logo from '../../assets/home/main_logo.png';
 import '../../css/footer/Footer.css';
 import Conact from './contact/Contact';
 

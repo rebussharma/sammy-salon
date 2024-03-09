@@ -178,7 +178,7 @@
        margin-left: auto;
        margin-right: auto;
        display: block;
-       padding: 0 15px 10% 0;
+       padding: 0 15px 15% 0;
        background-color: #000000c7;
        color: white;
     }
@@ -210,11 +210,11 @@
         height: auto;
         position: relative;
         min-height: inherit;
-        max-width: none;
+        max-width: 99% !important;
         top: 0;
         left: 0;
         background-color:inherit;
-        box-shadow: none;
+        box-shadow: 45px 150px var(--main-color) !important;
     }
 
     .one{
@@ -283,7 +283,7 @@
         padding: 10px;
         font-family: 'Playfair Display', serif !important;
         font-size: 1.25rem;
-        width: auto;
+        width: auto !important;
         max-height: none;
         right: inherit;
         background-color: #00000029;

@@ -13,9 +13,9 @@ const Details: React.FC= () => {
         <TextOne className = 'TextOne'>Contact Information</TextOne>
       </TextWrapper>
       <div>
-        <ContactsWrapper className = 'ContactsWrapper' href="tel:8329350587">
+        <ContactsWrapper className = 'ContactsWrapper' href="tel:1234560587">
           <FontAwesomeIcon icon={faPhone as IconProp} /> 
-          <ContactText className = 'ContactText'>(832) 935 0587</ContactText>
+          <ContactText className = 'ContactText'>(123) 456 0587</ContactText>
         </ContactsWrapper>
 
         <ContactsWrapper className = 'ContactsWrapper' href="mailto:support@sammysbrow.com">

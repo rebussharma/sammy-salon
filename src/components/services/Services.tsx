@@ -1,5 +1,4 @@
 import React from "react"
-import logo from '../../assets/home/logo.png'
 import facial from '../../assets/services/facial.jpeg'
 import lashes from '../../assets/services/lashes.jpeg'
 import threading from '../../assets/services/threading.png'
@@ -17,7 +16,6 @@ const Services:React.FC = () => {
       title: 'Threading',
       cost: 5,
       time: '15 mins',
-      back_img: logo,
       back_essay: 'Threading is done using a thread. It is better than waxing',
       mini_content:[
         {
@@ -69,7 +67,6 @@ const Services:React.FC = () => {
       title: 'Lashes',
       cost: 20,
       time: '10 mins',
-      back_img: logo,
       back_essay: 'Done using equiptments. Lasts for 1 month',
       mini_content:[
         {
@@ -100,7 +97,6 @@ const Services:React.FC = () => {
       title: 'Facial',
       cost: 40,
       time: '30 mins',
-      back_img: logo,
       back_essay: 'Ease up your face. Exfoliate it and let it breathe',
       mini_content:[
         {
@@ -120,7 +116,6 @@ const Services:React.FC = () => {
       title: 'Waxing',
       cost: 15,
       time: '30 mins',
-      back_img: logo,
       back_essay: 'Easy waxing procedure that doesn not hurt. You will be good for 1 month',
       mini_content:[
         {
@@ -190,7 +185,6 @@ const Services:React.FC = () => {
       title: 'Tinting',
       cost: 40,
       time: '30 mins',
-      back_img: logo,
       back_essay: 'Tinting brows to make them look darker in shade. It lasts up to 1 month',
       mini_content:[
         {

@@ -1,12 +1,9 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
-// import { NavHashLink as Link } from 'react-router-hash-link';
 import { Link } from 'react-scroll';
 import '../../../css/home/navbar/NavElements.css';
 import Header from "../Header";
-
-
 
 const NavElements: React.FC = () => {
   const [colorChange, setColorchange] = useState(false);
@@ -25,32 +22,34 @@ const NavElements: React.FC = () => {
     setShowNavbar(!showNavbar)
   }
 
-  const handleBooking = () => {
-    alert("Sorry we're still wokring on that")
+  const handleBooking = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    alert("Sorry, we're still working on that.")
   }
   return (
     <nav className={colorChange ? "navElements scroll":"navElements"} id='navElements'>
       <Header></Header>
       <div className="container">
           <div className="hamburger-icon" onClick={handleShowNavbar}>
-            <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} />
+            <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} />
           </div>
         <div className= {`menu-items  ${showNavbar && 'active'}`}>
           <ul>
             <li className='nav-items'>
-              <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Services</Link>
+              <Link to="services" spy={true} smooth={true} offset={-100} duration={500} onClick={handleShowNavbar}>Services</Link>
             </li>
             <li className='nav-items'>
-              <Link to="about" spy={true} smooth={true} offset={0} duration={500}>Our Story</Link>
+              <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onClick={handleShowNavbar}>Our Story</Link>
             </li>
             <li className='nav-items'>
-              <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>Contact</Link>
+              <Link to="testimonials" spy={true} smooth={true} offset={-100} duration={500} onClick={handleShowNavbar}>Testimonials</Link>
             </li>
             <li className='nav-items'>
-              <Link to="testimonials" spy={true} smooth={true} offset={0} duration={500}>Testimonials</Link>
+              <Link to="contact" spy={true} smooth={true} offset={0} duration={500} onClick={handleShowNavbar}>Contact</Link>
             </li>
-            <li>
-              <a href='/' onClick={handleBooking}>Book</a>
+            <li className='nav-items'>
+              <button className="book-button" onClick={handleBooking}>Book</button> 
+
             </li>
           </ul>
         </div>
