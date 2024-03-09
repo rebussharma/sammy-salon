@@ -51,6 +51,9 @@ export const MessageInput = styled.textarea`
   @media (min-width: 1024px) {
     width:85%;
   }
+  @media (max-width: 640px){
+    width: 90%;
+  }
 
 `;
 
