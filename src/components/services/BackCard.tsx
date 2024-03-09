@@ -9,7 +9,7 @@ const BackCard = ({param, props}:any) => {
         <div className="back">
              <div className='back-card'>
                 <div className='back-img'>
-                    <img src={props.content.main_img} />
+                    <img src={props.content.main_img} alt='back-img'/>
                 </div>
                 <div className='back-details'>
                     <div className='back-title'>

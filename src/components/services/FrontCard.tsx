@@ -8,7 +8,7 @@ const FrontCard = ({param, props}:any) => {
             <div className='front-card'>
                 <div className='card-media'>
                     <div className='image-wrapper'>
-                        <img src={props.content.main_img} />
+                        <img src={props.content.main_img} alt='main-img'/>
                     </div>
                 </div>
                 <div className='details-wrapper'>

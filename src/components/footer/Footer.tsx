@@ -13,7 +13,7 @@ const Footer:React.FC = () => {
       <div className='footer-wrapper'>
       <div className='motto-logo'>
         <div className='footer-logo'>
-          <img src={logo} />
+          <img src={logo} alt='logo'/>
         </div>
         <div className='business-name'>
           Sammy's Brow Bar & Spa
@@ -61,7 +61,7 @@ const Footer:React.FC = () => {
           © Sammy's Beauty Solutions. All rights reserved
         </div>
           <div className='credit'>
-            Made by <a href="https://www.ribashsharma.com" target='_blank'>Ribash Sharma</a>
+            Made by <a href="https://www.ribashsharma.com" target='_blank' rel='noreferrer'>Ribash Sharma</a>
           </div>
       </div>
 

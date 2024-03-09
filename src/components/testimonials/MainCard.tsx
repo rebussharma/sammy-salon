@@ -16,7 +16,7 @@ const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
     <div className="main-card">
         <div className="body-card">
             <div className='appos-img'>
-                <img src= {appos}/>
+                <img src= {appos} alt='appostrophe'/>
             </div>
             <div className="testimonial-container">
                 <div className="review">
@@ -26,11 +26,11 @@ const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
             </div>
             <div className='reviewer-rating'>
                 <div className='rating'>
-                    <img src={rating} />
+                    <img src={rating} alt='5-star-rating'/>
                 </div>
                 <div className='reviewer'>
                 <div className="image-wrapper">
-                        <img src={props.testimonails.img}/>
+                        <img src={props.testimonails.img} alt='reviewer-pic'/>
                 </div>
                 <div className="name">
                             <h3>{props.testimonails.reviewer}</h3>

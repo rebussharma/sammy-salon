@@ -12,8 +12,6 @@ const About: React.FC = () => {
   const about_sammmy2 = "Within each stroke of her brush and every gentle conversation, " +
   "Sammy believes that that success isn't just measured in profits, but in the smiles of those she touched. "
   
-  const motto = "Satisfaction over transactions"
-
   return (
     <div className="about" id="about">
       <div className='title'>
@@ -34,7 +32,7 @@ const About: React.FC = () => {
               {story_2}
             </div>
             <div className='web-headshot'>
-              <img src={headshot} />
+              <img src={headshot} alt='sammy-headshot'/>
               <div className='web-name'>
                   <div className='web-name-text'>Sammy Shrestha</div>
                 </div>
@@ -45,7 +43,7 @@ const About: React.FC = () => {
             <div className='sammy'>
               <div className='headshot-name'>
                 < div className='headshot'>
-                  <img src={headshot} />
+                  <img src={headshot} alt='sammy-headshot'/>
                 </div>
                 <div className='name'>
                   <div className='name-text'>Sammy Shrestha</div>

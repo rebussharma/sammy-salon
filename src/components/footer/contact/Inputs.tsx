@@ -127,7 +127,7 @@ const Inputs = () => {
       <Button disabled={!message} className="btn_submit" variant="contained" onClick={handleSubmit}>Send Message</Button>
          {/* <SubMitButton type="submit" value="Send Message" /> */}
         {
-          success == 1 ? (
+          success === 1 ? (
             <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>
               <Fade
                 in={successVal}
@@ -144,7 +144,7 @@ const Inputs = () => {
                 </Stack>
               </Fade>
             </Slide>
-          ): (success == -1) ?
+          ): (success === -1) ?
             <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>
             <Fade
               in={successVal}
