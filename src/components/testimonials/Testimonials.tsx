@@ -11,24 +11,19 @@ import '../../css/testimonials/Testimonials.css';
 import MainCard from './MainCard';
 
 const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 4,
-    slidesToSlide: 3 // optional, default to 1
-  },
+  // superLargeDesktop: {
+  //   // the naming can be any, depends on you.
+  //   breakpoint: { max: 4000, min: 2000 },
+  //   items: 4,
+  //   slidesToSlide: 3 // optional, default to 1
+  // },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 3 // optional, default to 1
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 4500, min: 800 },
     items: 2,
     slidesToSlide: 2 // optional, default to 1
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 799, min: 0 },
     items: 1,
     slidesToSlide: 1 // optional, default to 1
   }
@@ -79,26 +74,28 @@ const Testimonials: React.FC = () => {
   ]
   return (
     <div className='testimonials' id='testimonials'>
-      <div className='testimonial-title'>
-        <div className='main-title'>
-          Our Clients Love Us
-        </div>
-        <div className='sub-title'>
-        Read what they say about us
-        </div>
-      </div>
-      <Carousel
-          responsive={responsive}
-          autoPlay={false}
-          swipeable={true}
-          draggable={true}
-          showDots={true}
-          infinite={true}
-          partialVisible={false}
-          dotListClass="custom-dot-list-style"
-      >
-          {testimonials.map((testimonial) => (<MainCard testimonails={testimonial} key={testimonial.reviewer}></MainCard>))}
-        </Carousel> 
+      <div className='testimonial-wrapper'>
+          <div className='testimonial-title'>
+            <div className='main-title'>
+              Our Clients Love Us
+            </div>
+            <div className='sub-title'>
+            Read what they say about us
+            </div>
+          </div>
+          <Carousel
+              responsive={responsive}
+              autoPlay={false}
+              swipeable={true}
+              draggable={true}
+              showDots={true}
+              infinite={true}
+              partialVisible={false}
+              dotListClass="custom-dot-list-style"
+          >
+              {testimonials.map((testimonial) => (<MainCard testimonails={testimonial} key={testimonial.reviewer}></MainCard>))}
+            </Carousel>
+        </div> 
         </div>
   )
 }

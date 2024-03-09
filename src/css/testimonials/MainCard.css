@@ -1,83 +1,49 @@
 .main-card{
-    --image-wrapper-hw: 180px;
-    --height-main-bg: 80%;
-    --card-border-rad: 5%;
-    position: relative;
-    height: var(--height-main-bg);
-    width: 65%;
-    color: white;
+    --image-wrapper-hw: 75px;
+    color: black;
     background-color: white;
     font-family: 'Playfair Display', serif;
-    border-radius: 0 0 var(--card-border-rad) var(--card-border-rad);
+    border-radius: 50px;
+    height: 280px;
+    width: 450px;
+    padding: 10px;
 }
 
 .body-card{
-    height: 95%;
-    padding-top: 20px;
-    background-color: white;
-    border-radius: 0 0 var(--card-border-rad) var(--card-border-rad);
-}
-
-.main-card .image-wrapper{
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    height: var(--image-wrapper-hw);
-    width: var(--image-wrapper-hw);
-    padding-bottom: 5px;
-    z-index: 1;
+    height: 98%;
+    width: 98%;
 }
 
-.bg-card{
+.appos-img{
     position: absolute;
-    top: calc(var(--image-wrapper-hw)/2);
-    height: var(--height-main-bg);
-    width: 100%;
-    border-radius: 0 0 var(--card-border-rad) var(--card-border-rad);
+    height: 60px;
+    width: 75px;
 }
 
-
-.main-card .image-wrapper img{
+.appos-img img{
+    max-height: 100%;
+    max-width: 100%;
     object-fit: cover;
-    width: 83%;
-    height: 83%;
-    border-radius: 50%;
-    border: 15px solid white;
 }
 
 .testimonial-container {
     position: relative;
-    bottom: 0%;
-    border-radius: 0 0 5% 5%;
-    color: white;
-    margin-top: 5%;
-    height: 50%;
-}
-
-.testimonial-container .review-details{
-    position: relative;
+    color: black;
+    height: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-}
-.reviewer-name{
-    position: relative;
-    display: block;
-    font-size: 1.5rem;
-}
-
-.reviewer-name h3{
-    margin-block-start: 0;
-    text-transform: uppercase;
+    justify-content: center;
 }
 
 .testimonial-container .review{
-    padding: 5px 10px;
+    position: relative;
+    width: 95%;
+    max-height: 80%;
     overflow-y: scroll;
     font-family:Helvetica, sans-serif;
     font-size: 1.4rem;
+    padding: 10px;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
 }
@@ -86,17 +52,63 @@
     display: none;
 }
 
-
-@media screen and (max-width: 1024px) {
-    .main-card{
-        width: 350px;
-    }
-    
+.reviewer-rating{
+    height: 100px;
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
 }
+
+.rating{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rating img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.reviewer .image-wrapper{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: var(--image-wrapper-hw);
+    width: var(--image-wrapper-hw);
+    padding-bottom: 5px;
+}
+
+
+.main-card .image-wrapper img{
+    object-fit: cover;
+    width: 83%;
+    height: 83%;
+    border-radius: 50%;
+}
+
+
+
+.reviewer .name{
+    position: relative;
+    display: block;
+    font-size: 1rem;
+}
+
+.reviewer .name h3{
+    margin-block-start: 0;
+    text-transform: uppercase;
+}
+
+
 
 @media screen and (max-width: 800px) {
     .main-card{
-        width: 320px;
+        width: 500px;
     }
     
 }
