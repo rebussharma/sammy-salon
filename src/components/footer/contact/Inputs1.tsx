@@ -11,25 +11,14 @@ import { InputBoxWrapper, InputWrapper, MessageInput } from '../../../styles/Inp
 import emailjs from '@emailjs/browser';
 import '../../../css/footer/contact/Inputs.css';
 
-type BookingStatus = {
-  bookingStatus: boolean,
-  setBookingStatus: (newState: boolean) => void;
-}
 
-const Inputs:React.FC<BookingStatus> = ({
-  bookingStatus, setBookingStatus
-}: BookingStatus) => {
+const Inputs = () => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [message, setMessage] = React.useState('');
   const [successVal, setSuccessVal] = React.useState(true);
   const [success, setSuccess] = React.useState(0);
-
-  const message_placeholder = bookingStatus ? "If You Want to Add More Info, Write Here" : "Write Your Message Here" 
-  const submit_btn_text = bookingStatus ? "Book Appointment" : "Send Message"
-  const phone_required = bookingStatus ? true : false
-  const message_required = bookingStatus ? false : true
 
   const nameHandler: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setName((e.target as HTMLInputElement).value);    
@@ -50,48 +39,47 @@ const Inputs:React.FC<BookingStatus> = ({
   useEffect(() => emailjs.init("48zrrLrcyVtY6tuNs"), []);
 
   const handleSubmit =  (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    // e.preventDefault();
-    // const serviceId = "service_hr7wfln";
-    // const templateId = "template_y1syqfc";
-
-    if(!phone){
-      console.log("Phone Number is empty");
+    e.preventDefault();
+    const serviceId = "service_hr7wfln";
+    const templateId = "template_y1syqfc";
+    if(!email){
+      console.log("email empty");
+      
     }
-    setBookingStatus(true)
-    // if(email !== null || email !== '' || !email){
-      // emailjs
-      //   .send(serviceId, templateId, {
-      //     to_name: name, recipient: email, message: message
-      //   })
-      //   .then(
-      //     () => {
-      //       console.log('SUCCESS!');
-      //       setSuccessVal(true);
-      //     },
-      //     (error) => {
-      //       console.log('FAILED...', error.text);
-      //       setSuccessVal(true);
-      //     },
-      //   );
 
-    // }else{
-    //   console.log("Email not sent to customer as email was not provided")
-    // }
+    if(email !== null || email !== '' || !email){
+      emailjs
+        .send(serviceId, templateId, {
+          to_name: name, recipient: email, message: message
+        })
+        .then(
+          () => {
+            console.log('SUCCESS!');
+            setSuccessVal(true);
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+            setSuccessVal(true);
+          },
+        );
+    }else{
+      console.log("Email not sent to customer as email was not provided")
+    }
 
-    // emailjs
-    // .send(serviceId, "template_wthysze", {
-    //   to_name: name, recipient: "sammysbrow@gmail.com", message: message, customer_phone: phone, customer_email:email
-    // })
-    // .then(
-    //   () => {
-    //     console.log('Sent Email to Sammys Brow!');
-    //     setSuccess(1);
-    //   },
-    //   (error) => {
-    //     console.log('Failed Sending Email to Sammys Brow!...', error.text);
-    //     setSuccess(-1);
-    //   },
-    // );
+    emailjs
+    .send(serviceId, "template_wthysze", {
+      to_name: name, recipient: "sammysbrow@gmail.com", message: message, customer_phone: phone, customer_email:email
+    })
+    .then(
+      () => {
+        console.log('Sent Email to Sammys Brow!');
+        setSuccess(1);
+      },
+      (error) => {
+        console.log('Failed Sending Email to Sammys Brow!...', error.text);
+        setSuccess(-1);
+      },
+    );
 
     setName('');
     setEmail('');
@@ -123,7 +111,6 @@ const Inputs:React.FC<BookingStatus> = ({
         <Input className='Input'
           type="number"   
           placeholder="Phone Number"
-          required={phone_required}
           value={phone}
           onChange={phoneHandler}
         />
@@ -131,13 +118,14 @@ const Inputs:React.FC<BookingStatus> = ({
       <InputWrapper className='InputWrapper'>
         <MessageInput className='MessageInput'
           maxLength={2000}
-          required={message_required}
-          placeholder={message_placeholder}
+          required
+          placeholder="Write Your Hessage here"
           value={message}
           onChange={messageHandler}
         />
       </InputWrapper> 
-      <Button disabled={bookingStatus ? !phone : !message} className="btn_submit" variant="contained" onClick={handleSubmit}>{submit_btn_text}</Button>
+      <Button disabled={!message} className="btn_submit" variant="contained" onClick={handleSubmit}>Send Message</Button>
+         {/* <SubMitButton type="submit" value="Send Message" /> */}
         {
           success === 1 ? (
             <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>

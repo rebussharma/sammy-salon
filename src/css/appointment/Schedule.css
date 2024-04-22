@@ -1,0 +1,22 @@
+.schedule {
+    margin-top: 20px;
+    height: 200px;
+}
+
+.schedule .date-time-picker {
+    height: 150px;
+}
+
+.schedule .mobile-date-time-picker{
+    display: none;
+}
+
+@media screen and (max-width:600px) {
+    .schedule .desktop-date-time-picker{
+        display: none;
+    }
+
+    .schedule .mobile-date-time-picker{
+        display: block;
+    }
+}
