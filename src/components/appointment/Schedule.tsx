@@ -5,12 +5,51 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import dayjs, { Dayjs } from 'dayjs';
 import React, { useState } from 'react';
-import './Schedule.css';
+import '../../css/appointment/Schedule.css';
+
+const curr_datetime = new Date()
+const appt_datetime = new Date(curr_datetime.setMinutes(curr_datetime.getMinutes() + 20));
+
+const datesToDisable = [
+    "2024-04-26T00:00:00.000",
+    "2024-04-27T00:00:00.000"
+  ];
+  
+  const timesBooked = [
+    "2024-04-30T15:30:00.000",
+    "2024-04-30T16:30:00.000",
+    "2024-04-29T17:00:00.000",
+    "2024-04-29T09:00:00.000"
+  ];
+
+const disabledTimes = timesBooked.map((dateTime) => dayjs(dateTime));
+
+const shouldDisableDay = (day: Dayjs) => {
+    // if (day.day() === 0 || day.day() === 6) { //sunday or saturday
+    //   return true;
+    // }
+    return datesToDisable.includes(day.format("YYYY-MM-DDTHH:mm:ss.sss[Z]"));
+};
 
  const Schedule:React.FC = () =>{
-    const curr_datetime = new Date()
-    const appt_datetime = new Date(curr_datetime.setMinutes(curr_datetime.getMinutes() + 20));
-    const [selectedDateTime, setSelectedDateTime] = useState <Dayjs|null>(dayjs(appt_datetime))
+    const [selectedDateTime, setSelectedDateTime] = useState <Dayjs|null>(dayjs(appt_datetime));
+    const shouldDisableTime = React.useCallback(
+        (time: Dayjs) => {
+
+          const selectedDay = selectedDateTime?.date();
+
+          if (disabledTimes.some((disabled) => disabled.date() === selectedDay)) {            
+            return disabledTimes.some(
+                (disabledTime) =>
+                  disabledTime.date() === selectedDay &&
+                  disabledTime.hour() === selectedDateTime?.hour() &&
+                  disabledTime.minute() === time.minute()
+              );
+          }
+          return false;
+        },
+        [selectedDateTime]
+      );
 
   return (
     <div className='schedule'>
@@ -35,6 +74,9 @@ import './Schedule.css';
                             setSelectedDateTime(newValue)
                             }
                         }
+                        shouldDisableDate={shouldDisableDay}
+                        shouldDisableTime={shouldDisableTime}
+                        
                     />
                     <MobileDateTimePicker 
                         className='mobile-date-time-picker'
@@ -46,6 +88,8 @@ import './Schedule.css';
                             setSelectedDateTime(newValue)
                             }
                         }
+                        shouldDisableDate={shouldDisableDay}
+                        shouldDisableTime={shouldDisableTime}
                     />
                     </DemoItem>
                 </DemoContainer>

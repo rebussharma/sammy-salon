@@ -1,11 +1,9 @@
-.schedule {
-    margin-top: 20px;
-    height: 200px;
-}
 
 .schedule .date-time-picker {
     height: 150px;
 }
+
+
 
 .schedule .mobile-date-time-picker{
     display: none;
