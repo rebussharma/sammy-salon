@@ -31,7 +31,7 @@ const PopUp:React.FC<PopUpBox> = ({
   }
   
   return (
-    <div className='popUp'>
+    <div className='popUp' id="popUp">
       <Modal
         open={open}
         onClose={handleClose}

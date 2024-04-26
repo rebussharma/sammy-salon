@@ -63,6 +63,8 @@
 } 
 
 .nav-items .book-button{
+  height: inherit !important;
+  width: inherit !important;
   border: none;
   background:none;
   margin:0;

@@ -5,7 +5,6 @@ import { Link } from 'react-scroll';
 import '../../../css/home/navbar/NavElements.css';
 import Header from "../Header";
 
-import Button from '@mui/material/Button';
 import PopUp from '../../appointment/PopUp';
 
 const NavElements: React.FC = () => {
@@ -64,7 +63,7 @@ const NavElements: React.FC = () => {
                   <PopUp popUp={bookPopUp} setPopUp={setBookPopUp}/>
 
                 ):(
-                  <Button className='nav-items' onClick={handleBooking}>Book</Button>
+                  <button className='book-button' onClick={handleBooking}>Book</button>
                 )
               }
 
