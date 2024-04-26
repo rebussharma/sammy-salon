@@ -12,13 +12,16 @@ import emailjs from '@emailjs/browser';
 import '../../../css/footer/contact/Inputs.css';
 
 type BookingStatus = {
-  bookingStatus: boolean,
-  setBookingStatus: (newState: boolean) => void;
+  dateTimeStaus:boolean,
+  bookingMode: boolean,
+  setBookingMode: (newState: boolean) => void;
 }
 
 const Inputs:React.FC<BookingStatus> = ({
-  bookingStatus, setBookingStatus
+  dateTimeStaus,bookingMode, setBookingMode
 }: BookingStatus) => {
+
+  
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [phone, setPhone] = React.useState('');
@@ -26,10 +29,10 @@ const Inputs:React.FC<BookingStatus> = ({
   const [successVal, setSuccessVal] = React.useState(true);
   const [success, setSuccess] = React.useState(0);
 
-  const message_placeholder = bookingStatus ? "If You Want to Add More Info, Write Here" : "Write Your Message Here" 
-  const submit_btn_text = bookingStatus ? "Book Appointment" : "Send Message"
-  const phone_required = bookingStatus ? true : false
-  const message_required = bookingStatus ? false : true
+  const message_placeholder = bookingMode ? "If You Want to Add More Info, Write Here" : "Write Your Message Here" 
+  const submit_btn_text = bookingMode ? "Book Appointment" : "Send Message"
+  const phone_required = bookingMode ? true : false
+  const message_required = bookingMode ? false : true
 
   const nameHandler: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setName((e.target as HTMLInputElement).value);    
@@ -57,7 +60,7 @@ const Inputs:React.FC<BookingStatus> = ({
     if(!phone){
       console.log("Phone Number is empty");
     }
-    setBookingStatus(true)
+    setBookingMode(true)
     // if(email !== null || email !== '' || !email){
       // emailjs
       //   .send(serviceId, templateId, {
@@ -99,7 +102,7 @@ const Inputs:React.FC<BookingStatus> = ({
     setPhone('')
 
   };
-
+  
   return (
     <div className='inputs'>
     <InputBoxWrapper className='InputBoxWrapper'>
@@ -137,7 +140,7 @@ const Inputs:React.FC<BookingStatus> = ({
           onChange={messageHandler}
         />
       </InputWrapper> 
-      <Button disabled={bookingStatus ? !phone : !message} className="btn_submit" variant="contained" onClick={handleSubmit}>{submit_btn_text}</Button>
+      <Button disabled={bookingMode ? (dateTimeStaus ? (phone ? false: !email) : true) : !message} className="btn_submit" variant="contained" onClick={handleSubmit}>{submit_btn_text}</Button>
         {
           success === 1 ? (
             <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>

@@ -13,14 +13,14 @@ const appt_datetime = new Date(curr_datetime.setMinutes(curr_datetime.getMinutes
 const datesToDisable = [
     "2024-04-26T00:00:00.000",
     "2024-04-27T00:00:00.000"
-  ];
+  ]
   
-  const timesBooked = [
+const timesBooked = [
     "2024-04-30T15:30:00.000",
     "2024-04-30T16:30:00.000",
     "2024-04-29T17:00:00.000",
     "2024-04-29T09:00:00.000"
-  ];
+  ]
 
 const disabledTimes = timesBooked.map((dateTime) => dayjs(dateTime));
 
@@ -28,11 +28,15 @@ const shouldDisableDay = (day: Dayjs) => {
     // if (day.day() === 0 || day.day() === 6) { //sunday or saturday
     //   return true;
     // }
-    return datesToDisable.includes(day.format("YYYY-MM-DDTHH:mm:ss.sss[Z]"));
+    return datesToDisable.includes(day.format("YYYY-MM-DDTHH:mm:ss.sss"));
 };
 
- const Schedule:React.FC = () =>{
+type ScheduleSuccess = {
+    setScheduleSuccess (): void
+}
+ const Schedule:React.FC<ScheduleSuccess> = ({setScheduleSuccess = () => void{}}:ScheduleSuccess) => {
     const [selectedDateTime, setSelectedDateTime] = useState <Dayjs|null>(dayjs(appt_datetime));
+
     const shouldDisableTime = React.useCallback(
         (time: Dayjs) => {
 
@@ -72,6 +76,7 @@ const shouldDisableDay = (day: Dayjs) => {
                         minutesStep = {15}
                         onChange={ (newValue) => {
                             setSelectedDateTime(newValue)
+                            setScheduleSuccess()
                             }
                         }
                         shouldDisableDate={shouldDisableDay}

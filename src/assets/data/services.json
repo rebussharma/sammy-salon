@@ -1,6 +1,6 @@
 [
     {
-      "main_img":"threading",
+      "main_img":"../images/services/threading.png",
       "title":"Threading",
       "cost":5,
       "time":"15 mins",
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "main_img":"lashes",
+      "main_img":"../images/services/lashes.jpeg",
       "title":"Lashes",
       "cost":20,
       "time":"10 mins",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "main_img":"facial",
+      "main_img":"../images/services/facial.jpeg",
       "title":"Facial",
       "cost":40,
       "time":"30 mins",
@@ -97,7 +97,7 @@
       ]
     },
     {
-      "main_img":"waxing",
+      "main_img":"../images/services/waxing.jpeg",
       "title":"Waxing",
       "cost":15,
       "time":"30 mins",
@@ -166,7 +166,7 @@
       ]
     },
     {
-      "main_img":"tinting",
+      "main_img":"../images/services/tinting.jpeg",
       "title":"Tinting",
       "cost":40,
       "time":"30 mins",

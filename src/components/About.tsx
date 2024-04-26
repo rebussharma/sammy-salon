@@ -1,8 +1,8 @@
 import React from 'react'
-import headshot from '../assets/headshot.png'
 import '../css/About.css'
 
 const About: React.FC = () => {
+  const headshot = process.env.PUBLIC_URL + '/images/headshot.png'
   const story_1 = "After over 10 years of Sammy pouring her heart and soul into the beauty business, " +
   "Sammy sensed that a deeper connection with those she served was missing."
   const story_2 =

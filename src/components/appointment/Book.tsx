@@ -7,6 +7,11 @@ import Schedule from './Schedule';
 
 const Book:React.FC = () => {
     const [bookingSuccess, setBookingSuccess] = useState(false)
+    const [dateTimePicked, setDateTimePicked] = useState(false)
+    const handleState = () => {
+        setDateTimePicked(true);
+    }
+
     if(bookingSuccess){
         return(
             <div className='book success'>
@@ -16,9 +21,9 @@ const Book:React.FC = () => {
     }else{
         return (
             <div className='book'>
-                <Schedule></Schedule>
+                <Schedule setScheduleSuccess = {handleState}></Schedule>
                 <ApptService></ApptService>
-                <Inputs bookingStatus = {true} setBookingStatus={setBookingSuccess}></Inputs>
+                <Inputs dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingMode={setBookingSuccess}></Inputs>
             </div>
         )
     }
