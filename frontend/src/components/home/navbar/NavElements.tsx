@@ -14,6 +14,8 @@ const NavElements: React.FC = () => {
 
   const closeOpenMenus = (e: MouseEvent):any=>{
     if(openHamburger && !openHamburgerRef.current?.contains(e.target as Node)){
+      console.log("ref", openHamburger);
+      
       setOpenHanburger(false)
     }
   }
@@ -28,6 +30,8 @@ const NavElements: React.FC = () => {
   window.addEventListener("scroll", changeNavbarColor);
 
   const handleHamburger = () => {
+    console.log(openHamburger);
+    
     setOpenHanburger(!openHamburger)
   }
 
@@ -42,11 +46,11 @@ const NavElements: React.FC = () => {
   return (
     <nav className={colorChange ? "navElements scroll":"navElements"} id='navElements'>
       <Header></Header>
-      <div className="container">
+      <div className="container"  ref={openHamburgerRef}>
           <div className="hamburger-icon" onClick={handleHamburger}>
             <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} />
           </div>
-        <div className= {`menu-items  ${openHamburger && 'active'}`} ref={openHamburgerRef}>
+        <div className= {`menu-items  ${openHamburger && 'active'}`}>
           <ul>
             <li className='nav-items'>
               <Link to="services" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Services</Link>
