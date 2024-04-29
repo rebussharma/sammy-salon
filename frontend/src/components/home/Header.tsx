@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         </div>
         <div className="logo">
             <Link className="home_btn" to="home" smooth={true} offset={-100} duration={500}>
-              <img className="logo_img" src={logo} alt="fireSpot"/>
+              <img className="logo_img" src={logo} alt="main_logo"/>
             </Link>
         </div>
         <div className='socials'>
