@@ -14,8 +14,6 @@ const NavElements: React.FC = () => {
 
   const closeOpenMenus = (e: MouseEvent):any=>{
     if(openHamburger && !openHamburgerRef.current?.contains(e.target as Node)){
-      console.log("ref", openHamburger);
-      
       setOpenHanburger(false)
     }
   }
@@ -30,8 +28,6 @@ const NavElements: React.FC = () => {
   window.addEventListener("scroll", changeNavbarColor);
 
   const handleHamburger = () => {
-    console.log(openHamburger);
-    
     setOpenHanburger(!openHamburger)
   }
 
