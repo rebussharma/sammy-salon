@@ -6,7 +6,7 @@ import { Link } from 'react-scroll';
 import '../../css/footer/Footer.css';
 import Conact from './contact/Contact';
 
-const logo = process.env.PUBLIC_URL + '/images/home/logo.png'
+const logo = process.env.PUBLIC_URL + '/images/home/main_logo.png'
 
 const Footer:React.FC = () => {
   return (

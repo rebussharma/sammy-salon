@@ -6,7 +6,7 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import '../../css/home/Header.css';
 
-const logo = process.env.PUBLIC_URL + '/images/home/logo.png';
+const logo = process.env.PUBLIC_URL + '/images/home/main_logo.png';
 
 const Header: React.FC = () => {
   return (
