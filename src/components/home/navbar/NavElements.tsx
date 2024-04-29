@@ -1,12 +1,23 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from 'react-scroll';
 import '../../../css/home/navbar/NavElements.css';
+import PopUp from '../../appointment/PopUp';
 import Header from "../Header";
 
 const NavElements: React.FC = () => {
   const [colorChange, setColorchange] = useState(false);
+  const [bookPopUp, setBookPopUp] = useState(false)
+  const openHamburgerRef = useRef<HTMLDivElement>(null)
+  const [openHamburger, setOpenHanburger] = useState(false)
+
+  const closeOpenMenus = (e: MouseEvent):any=>{
+    if(openHamburger && !openHamburgerRef.current?.contains(e.target as Node)){
+      setOpenHanburger(false)
+    }
+  }
+
   const changeNavbarColor = () => {
       if (window.scrollY >= 80) {
           setColorchange(true);
@@ -16,39 +27,48 @@ const NavElements: React.FC = () => {
   };
   window.addEventListener("scroll", changeNavbarColor);
 
-  const [showNavbar, setShowNavbar] = useState(false)
-
-  const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar)
+  const handleHamburger = () => {
+    setOpenHanburger(!openHamburger)
   }
 
   const handleBooking = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    alert("Sorry, we're still working on that.")
+    setBookPopUp(true); 
+    setOpenHanburger(!openHamburger)
   }
+
+  document.addEventListener("mousedown", closeOpenMenus)
+
   return (
     <nav className={colorChange ? "navElements scroll":"navElements"} id='navElements'>
       <Header></Header>
       <div className="container">
-          <div className="hamburger-icon" onClick={handleShowNavbar}>
+          <div className="hamburger-icon" onClick={handleHamburger}>
             <FontAwesomeIcon icon={faBars} style={{color: "#ffffff"}} />
           </div>
-        <div className= {`menu-items  ${showNavbar && 'active'}`}>
+        <div className= {`menu-items  ${openHamburger && 'active'}`} ref={openHamburgerRef}>
           <ul>
             <li className='nav-items'>
-              <Link to="services" spy={true} smooth={true} offset={-100} duration={500} onClick={handleShowNavbar}>Services</Link>
+              <Link to="services" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Services</Link>
             </li>
             <li className='nav-items'>
-              <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onClick={handleShowNavbar}>Our Story</Link>
+              <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Our Story</Link>
             </li>
             <li className='nav-items'>
-              <Link to="testimonials" spy={true} smooth={true} offset={-100} duration={500} onClick={handleShowNavbar}>Testimonials</Link>
+              <Link to="testimonials" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Testimonials</Link>
             </li>
             <li className='nav-items'>
-              <Link to="contact" spy={true} smooth={true} offset={0} duration={500} onClick={handleShowNavbar}>Contact</Link>
+              <Link to="contact" spy={true} smooth={true} offset={0} duration={500} onClick={handleHamburger}>Contact</Link>
             </li>
             <li className='nav-items'>
-              <button className="book-button" onClick={handleBooking}>Book</button> 
+              {
+                bookPopUp ? (
+                  <PopUp popUp={bookPopUp} setPopUp={setBookPopUp}/>
+
+                ):(
+                  <button className='book-button' onClick={handleBooking}>Book</button>
+                )
+              }
 
             </li>
           </ul>

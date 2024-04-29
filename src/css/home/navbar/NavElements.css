@@ -63,6 +63,8 @@
 } 
 
 .nav-items .book-button{
+  height: inherit !important;
+  width: inherit !important;
   border: none;
   background:none;
   margin:0;
@@ -100,7 +102,7 @@
     position: absolute; 
     right: 0;
     width: 0;
-    height: calc(100vh - 55px); 
+    height: auto; 
     transition: all 0.3s ease-in;
     overflow: hidden;
   }

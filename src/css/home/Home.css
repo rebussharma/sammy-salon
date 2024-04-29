@@ -1,10 +1,10 @@
 .home {
     height: 80vh;
-    background-image: url('../../assets/home/background_img.png');
+    background-image: url("/public/images/home/background_img.png");
     background-repeat:no-repeat;
     background-position:center;
     background-size:cover;
-        position: relative;
+    position: relative;
 }
 
 .text {
@@ -24,6 +24,18 @@
     bottom: 30%;
     z-index: 1;
 }
+
+.menu .MuiButtonBase-root{
+    color: white;
+    border: 1px solid white;
+    border-radius: -1%;
+    font-weight: bold;
+}
+/* .home-book-btn{
+    color: white;
+    border: 1px solid white;
+    border-radius: 2%;
+} */
 
 #home-services{
     border: 1px solid white;

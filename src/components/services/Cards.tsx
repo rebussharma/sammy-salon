@@ -12,7 +12,7 @@ type ContentList = {
             {
                 title: string,
                 cost: number,
-                time: string
+                time: number
             }[]
         
     }

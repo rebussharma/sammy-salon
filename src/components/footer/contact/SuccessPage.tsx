@@ -1,6 +1,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button } from '@mui/material';
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
@@ -27,8 +28,9 @@ const SuccessPage = () => {
       <Fade duration={700} direction="right">
         <MessageWrapper>
         <FontAwesomeIcon icon={faCheckCircle as IconProp} /> 
-          <SuccessMessage className="sucess-message">MESSAGE SENT SUCCESSFULLY</SuccessMessage>
+          <SuccessMessage className="sucess-message">Appointment Confirmed</SuccessMessage>
         </MessageWrapper>
+        <Button> Go Back </Button>
       </Fade>
     </React.Fragment>
   );

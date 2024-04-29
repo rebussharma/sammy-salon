@@ -87,7 +87,7 @@ const Conact: React.FC = () => {
         </PageHeadingWrapper>
         <FormContainer className='form-container'>
           <Details />
-          <Inputs />
+          <Inputs dateTimeStaus={false} bookingMode={false} setBookingMode={()=>false}/>
         </FormContainer>
       </PageWrapper>
     </div>

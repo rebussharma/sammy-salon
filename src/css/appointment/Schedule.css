@@ -1,0 +1,22 @@
+
+.schedule .date-time-picker {
+    height: 150px;
+}
+
+.schedule .mobile-date-time-picker{
+    display: none;
+}
+
+@media screen and (max-width:600px) {
+    .schedule .desktop-date-time-picker{
+        display: none;
+    }
+
+    .schedule .mobile-date-time-picker{
+        display: block;
+    }
+
+    .schedule .date-time-picker .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root{
+        width: 99%;
+    }
+}

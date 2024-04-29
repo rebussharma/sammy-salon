@@ -1,7 +1,6 @@
 import { Button } from '@mui/material';
 import '../../css/services/FrontCard.css';
 
-
 const FrontCard = ({param, props}:any) => {
     return(
         <div className="front">

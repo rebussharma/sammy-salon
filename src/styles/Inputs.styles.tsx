@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const InputBoxWrapper = styled.form`
   height: 100%;
-  position: absolute;
+  position: relative;
   padding-bottom: 10px;
   display:flex;
   justify-content: space-around;

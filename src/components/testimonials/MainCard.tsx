@@ -1,6 +1,4 @@
-import appos from '../../assets/testimonials/appos.png'
-import rating from '../../assets/testimonials/five-star.png'
-import '../../css/testimonials/MainCard.css'
+import '../../css/testimonials/MainCard.css';
 type Testimonial_List = {
     testimonails: {
         review:string,
@@ -10,6 +8,9 @@ type Testimonial_List = {
         bgc:string
     }
 }
+
+const rating = process.env.PUBLIC_URL + '/images/testimonials/five-star.png';
+const appos = process.env.PUBLIC_URL + '/images/testimonials/appos.png';
 
 const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
   return (

@@ -1,11 +1,15 @@
 import { Button } from "@mui/material";
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Link } from 'react-scroll';
+import React, { useState } from "react";
 import '../../css/home/Home.css';
+import PopUp from "../appointment/PopUp";
 import NavBar from "./navbar/NavBar";
 
 const Home: React.FC = () => {
+  const [bookPopUpHome, setBookPopUpHome] = useState(false)
+
+  const handleBooking = () =>{
+    setBookPopUpHome(true);
+  }
   return (
     <div className="home" id="home">
       <NavBar></NavBar>
@@ -14,18 +18,23 @@ const Home: React.FC = () => {
       </div>
 
       <div className="menu">
-        <BrowserRouter>
-          <Button 
-            sx={{
-              ':hover': {
-              bgcolor: '#e7b791c4',
-              },
-          }} 
-            variant="outlined" 
-            id="home-services">
-            <Link to="services" smooth={true}>Our Service Menu</Link>
-          </Button>
-        </BrowserRouter>
+        {
+          bookPopUpHome ? (
+            <PopUp popUp={bookPopUpHome} setPopUp={setBookPopUpHome} />
+          ):(
+            <Button 
+              className="home-book-btn" 
+              sx={{
+                ':hover': {
+                    bgcolor: '#e7b791c4',
+                  },
+              }}  
+              onClick={handleBooking}>
+                Book With Us
+            </Button>
+
+            )
+        }
         <Button sx={{
               ':hover': {
               bgcolor: '#e7b791c4',
