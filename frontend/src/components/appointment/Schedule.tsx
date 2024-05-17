@@ -7,35 +7,55 @@ import dayjs, { Dayjs } from 'dayjs';
 import React, { useState } from 'react';
 import '../../css/appointment/Schedule.css';
 
+
 const curr_datetime = new Date()
-const appt_datetime = new Date(curr_datetime.setMinutes(curr_datetime.getMinutes() + 20));
+// Appointment can ONLY be taken after 1 hour from Now
+const appt_datetime = new Date(curr_datetime.setHours(curr_datetime.getHours() + 1));
+
+
 
 const datesToDisable = [
-    "2024-04-26T00:00:00.000",
-    "2024-04-27T00:00:00.000"
+    "2024-05-26T00:00:00",
+    "2024-05-27T00:00:00"
   ]
   
-const timesBooked = [
-    "2024-04-30T15:30:00.000",
-    "2024-04-30T16:30:00.000",
-    "2024-04-29T17:00:00.000",
-    "2024-04-29T09:00:00.000"
-  ]
-
-const disabledTimes = timesBooked.map((dateTime) => dayjs(dateTime));
 
 const shouldDisableDay = (day: Dayjs) => {
     // if (day.day() === 0 || day.day() === 6) { //sunday or saturday
     //   return true;
     // }
-    return datesToDisable.includes(day.format("YYYY-MM-DDTHH:mm:ss.sss"));
+    return datesToDisable.includes(day.format("YYYY-MM-DDTHH:mm:ss"));
 };
 
 type ScheduleSuccess = {
+    editData: Dayjs|null|undefined,
     setScheduleSuccess (): void
+    setAppointmentDateTimeSchedue(dateTime:Dayjs|null):void
 }
- const Schedule:React.FC<ScheduleSuccess> = ({setScheduleSuccess = () => void{}}:ScheduleSuccess) => {
-    const [selectedDateTime, setSelectedDateTime] = useState <Dayjs|null>(dayjs(appt_datetime));
+
+ const Schedule:React.FC<ScheduleSuccess> = ({editData, setScheduleSuccess = () => void{}, setAppointmentDateTimeSchedue =() =>void{}}:ScheduleSuccess) => {
+  
+    const bookedDates = [
+    
+        {
+            "appointmentDateTime": "2024-05-10T09:15:00"
+        }
+    
+    ]
+    // const [bookedDates, setBookedDates] = useState([]);
+
+    // useEffect(() => {  
+    // fetch('http://localhost:8080/api/appointments/relevant')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //     setBookedDates(data);
+    //     })
+    // }, []);
+    
+    const disabledTimes = bookedDates.map((dateTime) => dayjs(dateTime["appointmentDateTime"]));
+
+
+    const [selectedDateTime, setSelectedDateTime] = useState <Dayjs|null>(!editData? dayjs(appt_datetime):editData);
 
     const shouldDisableTime = React.useCallback(
         (time: Dayjs) => {
@@ -76,6 +96,7 @@ type ScheduleSuccess = {
                         minutesStep = {15}
                         onChange={ (newValue) => {
                             setSelectedDateTime(newValue)
+                            setAppointmentDateTimeSchedue(newValue)
                             setScheduleSuccess()
                             }
                         }
@@ -91,6 +112,7 @@ type ScheduleSuccess = {
                         minutesStep = {15}
                         onChange={ (newValue) => {
                             setSelectedDateTime(newValue)
+                            setAppointmentDateTimeSchedue(newValue)
                             }
                         }
                         shouldDisableDate={shouldDisableDay}

@@ -4,30 +4,43 @@ import Button from '@mui/material/Button';
 import Fade from '@mui/material/Fade';
 import Slide from '@mui/material/Slide';
 import Stack from '@mui/material/Stack';
-import React, { ChangeEvent, ChangeEventHandler, useEffect } from 'react';
+import React, { ChangeEvent, ChangeEventHandler } from 'react';
 import '../../../styles/Inputs.styles';
 import { InputBoxWrapper, InputWrapper, MessageInput } from '../../../styles/Inputs.styles';
 
-import emailjs from '@emailjs/browser';
 import '../../../css/footer/contact/Inputs.css';
 
 type BookingStatus = {
+  editData: {[key: string]: any},
   dateTimeStaus:boolean,
   bookingMode: boolean,
-  setBookingMode: (newState: boolean) => void;
+  setBookingSubmit: (newState: boolean) => void,
+  appendInputData: (data:String[]) => void;
 }
 
 const Inputs:React.FC<BookingStatus> = ({
-  dateTimeStaus,bookingMode, setBookingMode
+  editData, dateTimeStaus, bookingMode, setBookingSubmit, appendInputData
 }: BookingStatus) => {
-
+    
   
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [message, setMessage] = React.useState('');
+  const [name, setName] = React.useState(editData.hasOwnProperty("clientName") ? editData["clientName"]: "")
+  const [email, setEmail] = React.useState(editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "")
+  const [phone, setPhone] = React.useState(editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "")
+  const [message, setMessage] = React.useState(editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"]: "")
   const [successVal, setSuccessVal] = React.useState(true);
   const [success, setSuccess] = React.useState(0);
+  const inputData:any = {}
+  const allInputFields:any = [name, email, phone, message]
+  const allInputFieldsStr:any = ["clientName", "clientEmail", "clientPhone", "appointmentNotes"]
+
+  const pushData = ()=> {
+    for (const i in allInputFields){
+      if(allInputFields[i].length !=0){
+        inputData[allInputFieldsStr[i]] = allInputFields[i]
+      }
+    }
+  }
+
 
   const message_placeholder = bookingMode ? "If You Want to Add More Info, Write Here" : "Write Your Message Here" 
   const submit_btn_text = bookingMode ? "Book Appointment" : "Send Message"
@@ -50,17 +63,21 @@ const Inputs:React.FC<BookingStatus> = ({
     setMessage((e.target as HTMLInputElement).value);       
   };
 
-  useEffect(() => emailjs.init("48zrrLrcyVtY6tuNs"), []);
+  // useEffect(() => emailjs.init("48zrrLrcyVtY6tuNs"), []);
+
 
   const handleSubmit =  (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    // e.preventDefault();
+    e.preventDefault()
+    pushData()
+    appendInputData(inputData)
+    setBookingSubmit(true)    
+
     // const serviceId = "service_hr7wfln";
     // const templateId = "template_y1syqfc";
 
     if(!phone){
       console.log("Phone Number is empty");
     }
-    setBookingMode(true)
     // if(email !== null || email !== '' || !email){
       // emailjs
       //   .send(serviceId, templateId, {
@@ -96,27 +113,29 @@ const Inputs:React.FC<BookingStatus> = ({
     //   },
     // );
 
-    setName('');
-    setEmail('');
-    setMessage('');
-    setPhone('')
+    if(!bookingMode){
+      setName('');
+      setEmail('');
+      setMessage('');
+      setPhone('')
+    }
 
   };
-  
+
   return (
     <div className='inputs'>
     <InputBoxWrapper className='InputBoxWrapper'>
       <InputWrapper className='InputWrapper'>
         <Input className='Input'
           type="text" 
-          placeholder="Full Name" 
+          placeholder= {editData.hasOwnProperty("clientName") ? editData["clientName"]: "Full Name"}
           value={name} 
           onChange={nameHandler} />
       </InputWrapper>
       <InputWrapper className='InputWrapper'>
         <Input className='Input'
           type="email"
-          placeholder="Email"
+          placeholder= {editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "Email"}
           value={email}
           onChange={emailHandler}
           
@@ -125,7 +144,7 @@ const Inputs:React.FC<BookingStatus> = ({
       <InputWrapper className='InputWrapper'>
         <Input className='Input'
           type="number"   
-          placeholder="Phone Number"
+          placeholder= {editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "Phone Number"}
           required={phone_required}
           value={phone}
           onChange={phoneHandler}
@@ -135,7 +154,7 @@ const Inputs:React.FC<BookingStatus> = ({
         <MessageInput className='MessageInput'
           maxLength={2000}
           required={message_required}
-          placeholder={message_placeholder}
+          placeholder={editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"] : message_placeholder}
           value={message}
           onChange={messageHandler}
         />

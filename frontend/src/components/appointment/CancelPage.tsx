@@ -5,6 +5,11 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
+import '../../css/appointment/CancelPage.css';
+const handleBack =()=>{
+
+}
+
 const MessageWrapper = styled.div`
   margin-top: 150px;
   display: flex;
@@ -22,18 +27,24 @@ const SuccessMessage = styled.h2`
   }
 `;
 
-const SuccessPage = () => {
-  return (
-    <React.Fragment>
-      <Fade duration={700} direction="right">
-        <MessageWrapper>
-        <FontAwesomeIcon icon={faCheckCircle as IconProp} /> 
-          <SuccessMessage className="sucess-message">Appointment Confirmed</SuccessMessage>
-        </MessageWrapper>
-        <Button> Go Back </Button>
-      </Fade>
-    </React.Fragment>
-  );
-};
 
-export default SuccessPage;
+const CancelPage:React.FC =() =>{
+  return (
+    <div className='cancel-page'>
+      <React.Fragment>
+        <Fade duration={700} direction="right">
+          <MessageWrapper>
+          <FontAwesomeIcon icon={faCheckCircle as IconProp} /> 
+            <SuccessMessage className="cancel-message">Your Appointment has been Cancelled</SuccessMessage>
+          </MessageWrapper>
+          <div className='cancel-btn-wapper'>
+            <Button onClick={handleBack}> Go to Home Page </Button>
+          </div>
+        </Fade>
+      </React.Fragment>
+    </div>
+
+  )
+}
+
+export default CancelPage

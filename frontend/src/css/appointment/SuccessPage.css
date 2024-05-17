@@ -1,0 +1,5 @@
+.success-btn-wapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
