@@ -1,14 +1,11 @@
 import { Input } from '@mui/material';
-import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import Fade from '@mui/material/Fade';
-import Slide from '@mui/material/Slide';
-import Stack from '@mui/material/Stack';
-import React, { ChangeEvent, ChangeEventHandler } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
 import '../../../styles/Inputs.styles';
 import { InputBoxWrapper, InputWrapper, MessageInput } from '../../../styles/Inputs.styles';
 
 import '../../../css/footer/contact/Inputs.css';
+import EmailSender from '../../EmailSender';
 
 type BookingStatus = {
   editData: {[key: string]: any},
@@ -18,20 +15,22 @@ type BookingStatus = {
   appendInputData: (data:String[]) => void;
 }
 
+
 const Inputs:React.FC<BookingStatus> = ({
   editData, dateTimeStaus, bookingMode, setBookingSubmit, appendInputData
 }: BookingStatus) => {
-    
   
-  const [name, setName] = React.useState(editData.hasOwnProperty("clientName") ? editData["clientName"]: "")
-  const [email, setEmail] = React.useState(editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "")
-  const [phone, setPhone] = React.useState(editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "")
-  const [message, setMessage] = React.useState(editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"]: "")
-  const [successVal, setSuccessVal] = React.useState(true);
-  const [success, setSuccess] = React.useState(0);
+  const [name, setName] = useState(editData.hasOwnProperty("clientName") ? editData["clientName"]: "")
+  const [email, setEmail] = useState(editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "")
+  const [phone, setPhone] = useState(editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "")
+  const [message, setMessage] = useState(editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"]: "")
   const inputData:any = {}
   const allInputFields:any = [name, email, phone, message]
   const allInputFieldsStr:any = ["clientName", "clientEmail", "clientPhone", "appointmentNotes"]
+
+  //
+  const [submitPressed, setSubmitPressed] = useState(false)
+  const [emailConfirmed, setEmailConfirmed] = useState(false)
 
   const pushData = ()=> {
     for (const i in allInputFields){
@@ -65,19 +64,20 @@ const Inputs:React.FC<BookingStatus> = ({
 
   // useEffect(() => emailjs.init("48zrrLrcyVtY6tuNs"), []);
 
-
+  
   const handleSubmit =  (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if(emailConfirmed) setEmailConfirmed(false)
     e.preventDefault()
     pushData()
     appendInputData(inputData)
-    setBookingSubmit(true)    
-
+    setBookingSubmit(true) ; 
+    setSubmitPressed(true)      
     // const serviceId = "service_hr7wfln";
     // const templateId = "template_y1syqfc";
 
-    if(!phone){
-      console.log("Phone Number is empty");
-    }
+    // if(!phone){
+    //   console.log("Phone Number is empty");
+    // }
     // if(email !== null || email !== '' || !email){
       // emailjs
       //   .send(serviceId, templateId, {
@@ -113,14 +113,9 @@ const Inputs:React.FC<BookingStatus> = ({
     //   },
     // );
 
-    if(!bookingMode){
-      setName('');
-      setEmail('');
-      setMessage('');
-      setPhone('')
-    }
-
   };
+
+  
 
   return (
     <div className='inputs'>
@@ -159,8 +154,22 @@ const Inputs:React.FC<BookingStatus> = ({
           onChange={messageHandler}
         />
       </InputWrapper> 
-      <Button disabled={bookingMode ? (dateTimeStaus ? (phone ? false: !email) : true) : !message} className="btn_submit" variant="contained" onClick={handleSubmit}>{submit_btn_text}</Button>
+      <Button disabled={bookingMode ? (dateTimeStaus ? (phone ? false: !email) : true) : !message} className="btn_submit" variant="contained" onClick={handleSubmit}>{submit_btn_text}
+      </Button>
         {
+          
+          submitPressed ? (
+              <EmailSender 
+                nameResetter={setName}
+                phoneResetter={setPhone}
+                emailResetter={setEmail}
+                messageResetter={setMessage}
+                bookedResetter = {setSubmitPressed} 
+                clientDetails={allInputFields} 
+                setEmailSent = {setEmailConfirmed}/>            
+          ):""
+        }
+        {/* {
           success === 1 ? (
             <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>
               <Fade
@@ -197,7 +206,7 @@ const Inputs:React.FC<BookingStatus> = ({
           </Slide>
 
           : ("")
-        }
+        } */}
     </InputBoxWrapper>
     </div>
   );
