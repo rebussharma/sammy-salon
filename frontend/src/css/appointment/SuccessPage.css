@@ -3,3 +3,31 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+.success-btn-wapper .error-contact {
+    display: flex;
+    justify-content: center;
+}
+
+#success-message-error{
+    color: red;
+    font-size: 1.4rem;
+}
+
+#error-icon-wrapper{
+    font-size: 2rem;
+    color: red;
+}
+
+.success-icon-wrapper{
+    font-size: 2rem;
+    color: #6c7de6;
+}
+
+.success .success-message {
+    color: rgb(94, 73, 49);
+}
+
+.success .success-message .cancel-notice{
+    font-size: .75rem;
+}

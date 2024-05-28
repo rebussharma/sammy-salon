@@ -31,21 +31,21 @@ type Props = {
 }
 
 
-const ConfirmPage:React.FC<Props> = (prop:Props) => {
-  
-    const handleConfirmation=()=> {
-        prop.setConfirmationStatus(true)
-        prop.postDataConfirm["appointmentStatus"] = "confirmed"    
+const ConfirmPage:React.FC<Props> = (prop:Props) => {  
+  const handleConfirmation=()=> {
+      prop.setConfirmationStatus(true)
+      prop.postDataConfirm["appointmentStatus"] = "confirmed"    
 
-        axios.post('http://localhost:8080/api/appointments', prop.postDataConfirm)
-        .then(function (response) {
-          console.log(response);
-          prop.setAppointmentId(response.data.id)
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+      axios.post('http://localhost:8080/api/appointments', prop.postDataConfirm)
+      .then(function (response) {
+        console.log("Appointment Confirmed",response);
+        prop.setAppointmentId(response.data.id)
+      })
+      .catch(function (error) {
+        console.error("Error Booking Appointment",error);
+        prop.setAppointmentId(-1)
+      });
+  }
 
   const apptDateTime = new Date(prop.postDataConfirm["appointmentDateTime"])
   return (

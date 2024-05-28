@@ -16,7 +16,7 @@ const Book:React.FC = () => {
     const [bookingSubmit, setBookingSubmit] = useState(false) // Needed to display booking success page
     const [dateTimePicked, setDateTimePicked] = useState(false) // Needed to check if DateTime is picked before moving to input
                                                                 // This helps to make sure 'submit' is greyed out if datetime is not picked
-    const [cancelBooking, setCancelBooking] = useState(false)
+    const [cancelBooking, setCancelBooking] = useState(0)
     const [currentBookedApptId, setCurrentBookedApptId] = useState<number>()
        
     // Line below are used to get data from all three child componenets, merge them into Json for POST request                                                            
@@ -46,10 +46,6 @@ const Book:React.FC = () => {
         setEditAppointment(false)
     }
 
-    const handleCanceBooking = () => {
-        setCancelBooking(true);
-    }
-
     const handleSetApptId = (id:number) =>{
         setCurrentBookedApptId(id)
     }
@@ -61,14 +57,14 @@ const Book:React.FC = () => {
         dataToPost["artist"] = artistServiceData[1]
         let postData = Object.assign({}, dataToPost, inputData);
                         
-        if(confirmBooking){
-            return cancelBooking ? (
+        if(confirmBooking){            
+            return cancelBooking != 0? (
                 <div className='book cancel'>
-                    <CancelPage></CancelPage>
+                    <CancelPage status={cancelBooking} appointmentId={currentBookedApptId}></CancelPage>
                 </div>
             ):(
                 <div className='book success'>
-                    <SuccessPage appointmentId = {currentBookedApptId} setCancelledStatus={handleCanceBooking} postDataCancel={postData}></SuccessPage>
+                    <SuccessPage appointmentId = {currentBookedApptId} setCancelledStatus={setCancelBooking} postDataCancel={postData}></SuccessPage>
                 </div>
             )
 

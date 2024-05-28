@@ -7,9 +7,6 @@ import NavBar from "./navbar/NavBar";
 const Home: React.FC = () => {
   const [bookPopUpHome, setBookPopUpHome] = useState(false)
 
-  const handleBooking = () =>{
-    setBookPopUpHome(true);
-  }
   return (
     <div className="home" id="home">
       <NavBar></NavBar>
@@ -29,7 +26,7 @@ const Home: React.FC = () => {
                     bgcolor: '#e7b791c4',
                   },
               }}  
-              onClick={handleBooking}>
+              onClick={()=>setBookPopUpHome(true)}>
                 Book With Us
             </Button>
 
