@@ -12,7 +12,8 @@ type ClientDetails = {
   messageResetter(s:string):void,
   bookedResetter(s:boolean):void,
   clientDetails:String[],
-  setEmailSent(val:boolean): void
+  setEmailSent(val:boolean): void,
+  contactForm:boolean
 }
 
 const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
@@ -23,11 +24,61 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
   const email = details.clientDetails[1]
   const phone = details.clientDetails[2]
   const message = details.clientDetails[3]
+  var subject = "Thank you for contacting us"
+  var bodyText = "This is to confirm you that we have received the following message from"
+  var seeYouText = "We will get back to youn within next 24 hours."
+
+  var selfSubject = "General Inquiry from"
+  var selfBody = "You got a new message from"
+
+  if(!details.contactForm){
+    var apptDateTime = new Date(details.clientDetails[4].toString())
+    var serviceType = details.clientDetails[5]
+    var artist = details.clientDetails[6]
+    var appointmentStatus = details.clientDetails[7]
+
+    subject = `Appointment ${appointmentStatus.toLocaleUpperCase()}`
+    bodyText = `Your appointment is \t${appointmentStatus}.\n\nPlease find ${appointmentStatus.toLocaleUpperCase()} details below\n` +
+                `\tDate and Time: \t\t${
+                  apptDateTime.toDateString()} at ${apptDateTime.toLocaleString([],{
+                    hour:'2-digit',
+                    minute:'2-digit'
+                  })
+                }\n` +
+                `\tService: \t\t\t${serviceType}\n`+
+                `\tArtist: \t\t\t${artist}\n` +
+                "\tYour Special Request:"
+    seeYouText = appointmentStatus == "confirmed" ? 
+                                      "We're excited to see you :)"
+                                      :
+                                      "Hope we will see you some other time :)"
+
+    selfSubject =  `Appointment ${appointmentStatus.toLocaleUpperCase()} Notice`
+    selfBody = `New Appointment Status. See details Below:\n`+
+                  `Appointment Status: \t${appointmentStatus}.\n` +
+                  `\tDate and Time: \t\t${
+                    apptDateTime.toDateString()} at ${apptDateTime.toLocaleString([],{
+                      hour:'2-digit',
+                      minute:'2-digit'
+                    })
+                  }\n` +
+                  `\tService: \t\t\t${serviceType}\n`+
+                  `\tArtist: \t\t\t${artist}\n` +
+                  "\tSpecial Message:"
+
+  }
+
   
   const SERVICE_ID = "service_hr7wfln";
   const TEMPLATE_ID = "template_y1syqfc";
   const PUBLIC_KEY = "48zrrLrcyVtY6tuNs"
   useEffect(() => emailjs.init({publicKey:PUBLIC_KEY}), []);
+  
+  console.log("Im here", details.contactForm);
+  console.log("data I have", details.clientDetails);
+  console.log("bdy text", bodyText);
+  
+  
   
   // if(!phone){
   //   console.log("Client Phone Number is Empty");
@@ -41,7 +92,12 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
     if(email){               
         emailjs
         .send(SERVICE_ID, TEMPLATE_ID, {
-          to_name: !name ? "Name not provided" : name, recipient: email, message: message
+          client_name: !name ? "Name not provided" : name, 
+          recipient: email, 
+          messageNotes: message,
+          subject: subject,
+          bodyText: bodyText,
+          seeYouText: seeYouText
         },PUBLIC_KEY)
         .then(
           () => {
@@ -60,7 +116,13 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
   useEffect(()=>{
     emailjs
     .send(SERVICE_ID, "template_wthysze", {
-      to_name: !name ? "Name not provided" : name, recipient: "", message: message, customer_phone: phone, customer_email:email
+      to_name: !name ? "Name not provided" : name, 
+      recipient: "", 
+      messageNotes: message, 
+      customer_phone: phone, 
+      customer_email:email,
+      subject: selfSubject,
+      bodyText: selfBody
     }, PUBLIC_KEY)
     .then(
       () => {          
@@ -77,7 +139,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
   }, [])
 
   return (
-    emailFinal ? 
+    emailFinal && details.contactForm? 
     (
       <div className='email-sender'>
         {

@@ -7,6 +7,7 @@ import React, { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
 import '../../css/appointment/SuccessPage.css';
+import EmailSender from '../EmailSender';
 import { PopUpContext } from './PopUp';
 
 const MessageWrapper = styled.div`
@@ -33,6 +34,8 @@ type Props = {
 
 const SuccessPage: React.FC<Props> = (prop: Props) => {
   const {popUp, setPopUp} = useContext(PopUpContext)
+  const clientDetailsAppt = [prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],
+                              prop.postDataCancel["appointmentDateTime"],prop.postDataCancel["serviceType"],prop.postDataCancel["artist"],prop.postDataCancel["appointmentStatus"]]
 
   const handleCancelAppointment = () =>{
     prop.postDataCancel["appointmentStatus"] = "cancelled"    
@@ -52,7 +55,7 @@ const SuccessPage: React.FC<Props> = (prop: Props) => {
     <React.Fragment>
       <Fade duration={700} direction="right">
         { 
-          prop.appointmentId === -1 ?
+          prop.appointmentId !== -1 ?
           (
             <div className='error'>
 
@@ -88,9 +91,10 @@ const SuccessPage: React.FC<Props> = (prop: Props) => {
                 </div>
                 <div className='success-message'>
                   <SuccessMessage className="confirmation">Appointment Confirmed!!</SuccessMessage>
-                  <SuccessMessage className="confirmation-code">Your Appointment Confirmation Code is {prop.appointmentId}.</SuccessMessage>
-                  <SuccessMessage className="cancel-notice">Please Save This Code if You Need to Cancel Appointment Later.</SuccessMessage>
+                  <SuccessMessage className="confirmation-code">Confirmation Code: {prop.appointmentId}.</SuccessMessage>
+                  <SuccessMessage className="cancel-notice">We Have Sent You an Email With All the Details</SuccessMessage>
                   <SuccessMessage className="see-you">See You Soon!!</SuccessMessage>
+                  <EmailSender nameResetter={()=>{}} phoneResetter={()=>{}} emailResetter={()=>{}} messageResetter={()=>{}} bookedResetter={()=>{}} clientDetails={clientDetailsAppt} setEmailSent={()=>{}} contactForm={false}></EmailSender>
                 </div>
 
               </MessageWrapper>

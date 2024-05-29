@@ -166,7 +166,8 @@ const Inputs:React.FC<BookingStatus> = ({
                 messageResetter={setMessage}
                 bookedResetter = {setSubmitPressed} 
                 clientDetails={allInputFields} 
-                setEmailSent = {setEmailConfirmed}/>            
+                setEmailSent = {setEmailConfirmed}
+                contactForm={true}/>            
           ):""
         }
         {/* {
