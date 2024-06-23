@@ -34,6 +34,8 @@ type Props = {
 
 const SuccessPage: React.FC<Props> = (prop: Props) => {
   const {popUp, setPopUp} = useContext(PopUpContext)
+  console.log("data cancel",prop.postDataCancel);
+  
   const clientDetailsAppt = [prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],
                               prop.postDataCancel["appointmentDateTime"],prop.postDataCancel["serviceType"],prop.postDataCancel["artist"],prop.postDataCancel["appointmentStatus"]]
 
@@ -50,12 +52,12 @@ const SuccessPage: React.FC<Props> = (prop: Props) => {
       console.error("Error Cancelling Appointment",error);
     });
   }
-
+    
   return (
     <React.Fragment>
       <Fade duration={700} direction="right">
         { 
-          prop.appointmentId !== -1 ?
+          (prop.appointmentId === -1 || !prop.appointmentId)?
           (
             <div className='error'>
 

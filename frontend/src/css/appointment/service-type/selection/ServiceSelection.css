@@ -1,0 +1,16 @@
+.service-selection{
+ position: relative;
+}
+
+.service-selection .select-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2%;
+}
+.service-selection .select-wrapper .service-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

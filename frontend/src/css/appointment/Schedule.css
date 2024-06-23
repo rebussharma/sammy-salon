@@ -1,10 +1,15 @@
 
 .schedule .date-time-picker {
-    height: 150px;
+    height: 130px;
 }
 
 .schedule .mobile-date-time-picker{
     display: none;
+}
+
+.css-e784if-MuiTypography-root{
+    font-weight: bold !important; 
+    font-size: 1.2rem !important;
 }
 
 @media screen and (max-width:600px) {

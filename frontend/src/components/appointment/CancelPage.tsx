@@ -27,7 +27,7 @@ const SuccessMessage = styled.h2`
 `;
 
 type CancelStatus = {
-  status:number
+  cancelStatus:number
   appointmentId:number|undefined
 }
 
@@ -38,7 +38,7 @@ const CancelPage:React.FC<CancelStatus> = (prop:CancelStatus) =>{
     <React.Fragment>
     <Fade duration={700} direction="right">
       {
-        prop.status === 1 ? 
+        prop.cancelStatus === 1 ? 
           (
             <div className='cancel-success'>
               <MessageWrapper>

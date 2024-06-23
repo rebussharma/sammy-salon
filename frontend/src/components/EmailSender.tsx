@@ -26,7 +26,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
   const message = details.clientDetails[3]
   var subject = "Thank you for contacting us"
   var bodyText = "This is to confirm you that we have received the following message from"
-  var seeYouText = "We will get back to youn within next 24 hours."
+  var seeYouText = "We will get back to your within next 24 hours."
 
   var selfSubject = "General Inquiry from"
   var selfBody = "You got a new message from"
@@ -36,7 +36,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
     var serviceType = details.clientDetails[5]
     var artist = details.clientDetails[6]
     var appointmentStatus = details.clientDetails[7]
-
+    
     subject = `Appointment ${appointmentStatus.toLocaleUpperCase()}`
     bodyText = `Your appointment is \t${appointmentStatus}.\n\nPlease find ${appointmentStatus.toLocaleUpperCase()} details below\n` +
                 `\tDate and Time: \t\t${
