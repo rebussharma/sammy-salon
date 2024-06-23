@@ -89,7 +89,7 @@ const Inputs:React.FC<BookingStatus> = ({
         (
           <div className='input-selection-header'>
             <Button className='select-button' onClick={handleInputOpen}>
-                Step 3: Press to Add Your Information
+                Step 3: Click to Add Your Information
             </Button>
           </div>
         ):(

@@ -45,7 +45,7 @@ function Arrow({
         justifyContent: "center",
         right: "1%",
         opacity: disabled ? "0" : "1",
-        userSelect: "none",
+        userSelect: "none"
       }}
     >
       {children}

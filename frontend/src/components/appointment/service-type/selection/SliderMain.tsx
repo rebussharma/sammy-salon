@@ -60,6 +60,10 @@ const SliderMain:React.FC<OpenInput> = (prop:OpenInput) => {
 
   return (
     <div className="SliderMain">
+      <div className="service-title">
+        Step 2: Select a Service
+      </div>
+      
       <MenuSlider onMenuItemClick={handleMenuItemClick} />
       <div className="submenus">
         {

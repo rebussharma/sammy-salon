@@ -1,6 +1,6 @@
 import React from "react";
-
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
+import '../../../../css/appointment/service-type/slider/MainService.css';
 
 export function MainService({
   itemId,
@@ -20,16 +20,6 @@ export function MainService({
     <div
       onClick={() => onClick()}
       role="button"
-      style={{
-        border: "1px solid",
-        display: "inline-block",
-        margin: "0 10px",
-        width: "100px",
-        height: "30px",
-        userSelect: "none",
-        textAlign:"center",
-        cursor:"pointer"
-      }}
       tabIndex={0}
       className={selected ? "main-service selected" : "main-service"}
     >

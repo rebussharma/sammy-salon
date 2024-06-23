@@ -1,6 +1,9 @@
 #arrow-btn{
     font-size: 2rem;
     border: none;
+    &:hover{
+        background-color: rgb(37, 118, 190);
+    }
 }
 
 .react-horizontal-scrolling-menu--arrow-left{
@@ -12,5 +15,4 @@
     position: absolute;
     right: 1%;
     z-index: 1;
-
 }
