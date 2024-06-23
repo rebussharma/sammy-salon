@@ -74,9 +74,7 @@ const Book:React.FC = () => {
         dataToPost["serviceType"] = `(${itemsWithTrueValues.length}) ${itemsWithTrueValues.map((item)=>" "+item)}`
         dataToPost["artist"] = "Sammy" //artistData
         dataToPost["appointmentStatus"] = cancelBooking === 1? "cancelled" : "confirmed"
-        let postData = Object.assign({}, dataToPost, inputData);     
-        console.log("from book", currentBookedApptId);
-           
+        let postData = Object.assign({}, dataToPost, inputData);                
                         
         if(confirmBooking){            
             return cancelBooking != 0? (

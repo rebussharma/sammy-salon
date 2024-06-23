@@ -34,7 +34,6 @@ type Props = {
 
 const SuccessPage: React.FC<Props> = (prop: Props) => {
   const {popUp, setPopUp} = useContext(PopUpContext)
-  console.log("data cancel",prop.postDataCancel);
   
   const clientDetailsAppt = [prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],
                               prop.postDataCancel["appointmentDateTime"],prop.postDataCancel["serviceType"],prop.postDataCancel["artist"],prop.postDataCancel["appointmentStatus"]]
