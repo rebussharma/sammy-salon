@@ -86,7 +86,7 @@ type ScheduleSuccess = {
                     'DesktopDateTimePicker',
                     ]}
                 >
-                    <DemoItem label="Please Select a Date and Time">
+                    <DemoItem label="Step 1: Please Select a Date and Time">
                     <DesktopDateTimePicker 
                         className='desktop-date-time-picker'
                         value={selectedDateTime} 
