@@ -2,6 +2,7 @@ package com.sammysbrow.backend.controller.appointment;
 
 import com.sammysbrow.backend.dto.appointment.AppointmentDetailsDateTimeDto;
 import com.sammysbrow.backend.dto.appointment.AppointmentDetailsDto;
+import com.sammysbrow.backend.entity.appointment.AppointmentDetails;
 import com.sammysbrow.backend.mapper.appointment.AppointmentDetailsMapper;
 import com.sammysbrow.backend.repository.appointment.AppointmentDetailsRepository;
 import com.sammysbrow.backend.service.appointment.AppointmentDetailsService;
@@ -41,10 +42,10 @@ public class AppointmentDetailsController {
         return ResponseEntity.ok(appointmentDetailsDto);
     }
 
-    @GetMapping("/relevant")
-    public ResponseEntity<List<AppointmentDetailsDateTimeDto>> getRelevantAppointmentDetails() {
+    @GetMapping("/confirmed/upcoming")
+    public ResponseEntity<List<AppointmentDetailsDateTimeDto>> getFutureConfirmedAppointmentDetails() {
 
-        List<AppointmentDetailsDateTimeService> appointmentDetailsDateTimeService = appointmentDetailsRepository.findByAppointmentDateTimeAfter(LocalDateTime.now());
+        List<AppointmentDetailsDateTimeService> appointmentDetailsDateTimeService = appointmentDetailsRepository.findByAppointmentDateTimeAfterAndAppointmentStatus(LocalDateTime.now(), "confirmed");
         List<AppointmentDetailsDateTimeDto> details =  appointmentDetailsDateTimeService.stream().map(
                 AppointmentDetailsMapper::mapToAppointmentDetailsDateTimeDto
         ).toList();
@@ -52,18 +53,39 @@ public class AppointmentDetailsController {
         return ResponseEntity.ok(details);
     }
 
-//
-//        List<AppointmentDetailsDateTimeService> appointmentDetailsDateTimeServices = appointmentDetailsRepository.findAllAppointmentDetailsDateTimeService();
-//        List<AppointmentDetailsDateTimeDto> appointmentDetailsDateTimeDtos = new ArrayList<>();
-//        for (AppointmentDetailsDateTimeService appointmentDetailsDateTimeService : appointmentDetailsDateTimeServices) {
-//            appointmentDetailsDateTimeDtos.add(new AppointmentDetailsDateTimeDto(
-//                    appointmentDetailsDateTimeService.getAppointmentDate(),
-//                    appointmentDetailsDateTimeService.getAppointmentTime()
-//            ));
-//        }
-//
-//        return ResponseEntity.ok(appointmentDetailsDateTimeDtos);
-//
-//    }
+    @GetMapping("/cancelled/upcoming")
+    public ResponseEntity<List<AppointmentDetailsDateTimeDto>> getFutureCancelledAppointmentDetails() {
+
+        List<AppointmentDetailsDateTimeService> appointmentDetailsDateTimeService = appointmentDetailsRepository.findByAppointmentDateTimeAfterAndAppointmentStatus(LocalDateTime.now(), "cancelled");
+        List<AppointmentDetailsDateTimeDto> details =  appointmentDetailsDateTimeService.stream().map(
+                AppointmentDetailsMapper::mapToAppointmentDetailsDateTimeDto
+        ).toList();
+
+        return ResponseEntity.ok(details);
+    }
+
+    @GetMapping("/confirmed")
+    public ResponseEntity<List<AppointmentDetailsDto>> getAllConfirmedAppointmentDetails() {
+
+        List<AppointmentDetails> appointmentDetailsList = appointmentDetailsRepository.findByAppointmentStatus("confirmed");
+        List<AppointmentDetailsDto> details =  appointmentDetailsList.stream().map(
+                AppointmentDetailsMapper::mapToAppointmentDetailsDto
+        ).toList();
+
+        return ResponseEntity.ok(details);
+    }
+
+    @GetMapping("/cancelled")
+    public ResponseEntity<List<AppointmentDetailsDto>> getAllCancelledAppointmentDetails() {
+
+        List<AppointmentDetails> appointmentDetailsList = appointmentDetailsRepository.findByAppointmentStatus("cancelled");
+        List<AppointmentDetailsDto> details =  appointmentDetailsList.stream().map(
+                AppointmentDetailsMapper::mapToAppointmentDetailsDto
+        ).toList();
+
+        return ResponseEntity.ok(details);
+    }
+
+
 
 }
