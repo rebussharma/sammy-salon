@@ -79,7 +79,7 @@ const Book:React.FC = () => {
         if(confirmBooking){            
             return cancelBooking != 0? (
                 <div className='book cancel'>
-                    <CancelPage cancelStatus={cancelBooking} appointmentId={currentBookedApptId}></CancelPage>
+                    <CancelPage cancelStatus={cancelBooking} appointmentId={currentBookedApptId} confirmedData={postData}></CancelPage>
                 </div>
             ):(
                 <div className='book success'>

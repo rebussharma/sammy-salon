@@ -6,6 +6,7 @@ import React, { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
 import '../../css/appointment/CancelPage.css';
+import EmailSender from '../EmailSender';
 import { PopUpContext } from './PopUp';
 
 
@@ -29,11 +30,13 @@ const SuccessMessage = styled.h2`
 type CancelStatus = {
   cancelStatus:number
   appointmentId:number|undefined
+  confirmedData: any
 }
 
 const CancelPage:React.FC<CancelStatus> = (prop:CancelStatus) =>{
   const {popUp, setPopUp} = useContext(PopUpContext)
-
+  const clientDetailsAppt = [prop.confirmedData["clientName"], prop.confirmedData["clientEmail"], prop.confirmedData["clientPhone"], prop.confirmedData["clientMessage"],
+                              prop.confirmedData["appointmentDateTime"],prop.confirmedData["serviceType"],prop.confirmedData["artist"],prop.confirmedData["appointmentStatus"]]
   return (
     <React.Fragment>
     <Fade duration={700} direction="right">
@@ -48,7 +51,13 @@ const CancelPage:React.FC<CancelStatus> = (prop:CancelStatus) =>{
                       <FontAwesomeIcon icon={faFaceSmileBeam} />
                       <FontAwesomeIcon icon={faCheckCircle as IconProp} /> 
                 </div>
-                <SuccessMessage className="cancel-message">Your Appointment has been Cancelled</SuccessMessage>
+                <div className='cancel-success'>
+                  <SuccessMessage className="cancel-message">Your Appointment Has Been Cancelled</SuccessMessage>
+                  <SuccessMessage className="cancel-details">A cancellation email has been sent to you.</SuccessMessage>
+
+                  <EmailSender nameResetter={()=>{}} phoneResetter={()=>{}} emailResetter={()=>{}} messageResetter={()=>{}} bookedResetter={()=>{}} clientDetails={clientDetailsAppt} setEmailSent={()=>{}} contactForm={false}></EmailSender>
+
+                </div>
               </MessageWrapper>
               <div className='cancel-btn-wapper'>
                 <Button onClick={()=>setPopUp(false)}> Go to Home Page </Button>

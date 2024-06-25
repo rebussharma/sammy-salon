@@ -38,7 +38,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
     var appointmentStatus = details.clientDetails[7]
     
     subject = `Appointment ${appointmentStatus.toLocaleUpperCase()}`
-    bodyText = `Your appointment is \t${appointmentStatus}.\n\nPlease find ${appointmentStatus.toLocaleUpperCase()} details below\n` +
+    bodyText = `Your appointment has been \t${appointmentStatus.toLocaleUpperCase()}.\nPlease find ${appointmentStatus.toLocaleUpperCase()} details below\n\n` +
                 `\tDate and Time: \t\t${
                   apptDateTime.toDateString()} at ${apptDateTime.toLocaleString([],{
                     hour:'2-digit',
@@ -54,8 +54,9 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
                                       "Hope we will see you some other time :)"
 
     selfSubject =  `Appointment ${appointmentStatus.toLocaleUpperCase()} Notice`
-    selfBody = `New Appointment Status. See details Below:\n`+
-                  `Appointment Status: \t${appointmentStatus}.\n` +
+    selfBody = `New Appointment Status. See details Below:\n\n`+
+                `\tConfirmation Code: \tTODO\n`+
+                  `\tAppointment Status: \t${appointmentStatus}.\n` +
                   `\tDate and Time: \t\t${
                     apptDateTime.toDateString()} at ${apptDateTime.toLocaleString([],{
                       hour:'2-digit',
@@ -68,25 +69,17 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
 
   }
 
-  
   const SERVICE_ID = "service_hr7wfln";
   const TEMPLATE_ID = "template_y1syqfc";
   const PUBLIC_KEY = "48zrrLrcyVtY6tuNs"
-  useEffect(() => emailjs.init({publicKey:PUBLIC_KEY}), []);
+  useEffect(() => emailjs.init({publicKey:PUBLIC_KEY}), []);  
   
-  console.log("Im here", details.contactForm);
-  console.log("data I have", details.clientDetails);
-  console.log("bdy text", bodyText);
-  
-  
-  
-  // if(!phone){
-  //   console.log("Client Phone Number is Empty");
-  // }
-  // if(!email){
-  //   console.log("Client Email is Empty");
-  // }
-
+  if(!phone){
+    console.log("Client Phone Number is Empty");
+  }
+  if(!email){
+    console.log("Client Email is Empty");
+  }
 
   const sendEmailToClient = () => {
     if(email){               
@@ -113,6 +106,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
       }    
   }
 
+ // send email to self and client
   useEffect(()=>{
     emailjs
     .send(SERVICE_ID, "template_wthysze", {
@@ -127,7 +121,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
     .then(
       () => {          
         setEmailSelfSuccess(true)
-        sendEmailToClient()
+        sendEmailToClient() //send email to client
         setEmailFinal(true)
         console.log('Sent Email to Sammys Brow!');
       },
@@ -144,26 +138,25 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
       <div className='email-sender'>
         {
           <Slide direction="up" in={emailFinal} mountOnEnter unmountOnExit>
-          <Fade
-            in={emailFinal}
-            timeout={{ enter: 1000, exit: 1000 }} 
-            addEndListener={() => {
-              setTimeout(() => {
-                details.nameResetter('')
-                details.phoneResetter('')
-                details.emailResetter('')
-                details.messageResetter('')
-                details.bookedResetter(false)      
-              }, 2000);
-              }
-            }   
-          >
-            <Stack sx={{ width: '100%' }} spacing={2}>
-              <Alert severity={emailSelfSuccess ? "success" : "error"}>{emailSelfSuccess ? "Message Sent Successfully" : "Something Went Wrong. Please Try Again Later"}</Alert>
-            </Stack>
-          </Fade>
+            <Fade
+              in={emailFinal}
+              timeout={{ enter: 1000, exit: 1000 }} 
+              addEndListener={() => {
+                setTimeout(() => {
+                  details.nameResetter('')
+                  details.phoneResetter('')
+                  details.emailResetter('')
+                  details.messageResetter('')
+                  details.bookedResetter(false)      
+                }, 2000);
+                }
+              }   
+            >
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert severity={emailSelfSuccess ? "success" : "error"}>{emailSelfSuccess ? "Message Sent Successfully" : "Something Went Wrong. Please Try Again Later"}</Alert>
+              </Stack>
+            </Fade>
         </Slide>
-
         }
       </div>
     ) : (
