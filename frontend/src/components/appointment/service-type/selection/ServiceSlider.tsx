@@ -35,7 +35,7 @@ type OpenInput = {
   setAllChecked:(s:any[])=>void
 }
 
-const SliderMain:React.FC<OpenInput> = (prop:OpenInput) => {
+const ServiceSlider:React.FC<OpenInput> = (prop:OpenInput) => {
   const [selectedMenuItem, setSelectedMenuItem] = useState<string | null>(null);
   const [checkedStates, setCheckedStates] = useState(prop.editData? prop.editData :initialCheckedStates);
   
@@ -83,4 +83,4 @@ const SliderMain:React.FC<OpenInput> = (prop:OpenInput) => {
   );
 };
 
-export default SliderMain;
+export default ServiceSlider;

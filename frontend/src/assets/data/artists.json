@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Sammy",
+        "experience": 7,
+        "services": ["all"],
+        "Expertise": "Threading, spa",
+        "workdays":"all",
+        "active":true
+    },
+    {
+        "name": "Samjhana",
+        "experience": 5,
+        "services": ["Threading", "Lashes"],
+        "Expertise": "Threading, spa",
+        "workdays": "Monday, Tuesday, Wednesday, Thursday, Firday",
+        "active":true
+    },
+    {
+        "name": "Sam",
+        "experience": 3,
+        "services": ["Threading", "Facial"],
+        "Expertise": "Threading, Lashes",
+        "workdays": "Saturday Sunday",
+        "active":true
+    }
+]

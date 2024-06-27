@@ -2,11 +2,12 @@ import { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import '../../css/appointment/Book.css';
 import Inputs from '../footer/contact/Inputs';
+import Artist from './Artist';
 import CancelPage from './CancelPage';
 import ConfirmPage from './ConfirmPage';
 import Schedule from './Schedule';
 import SuccessPage from './SuccessPage';
-import SliderMain from './service-type/selection/SliderMain';
+import { default as ServiceSlider } from './service-type/selection/ServiceSlider';
 
 const Book:React.FC = () => {
     const [confirmBooking, setConfirmBooking] = useState(false)
@@ -21,7 +22,7 @@ const Book:React.FC = () => {
 
     // Line below are used to get data from all three child componenets, merge them into Json for POST request                                                            
     const [appointmentDateTime, setAppointmentDateTime] = useState<Dayjs|null>()
-    const [artistData, setArtistData] = useState<String[]>([])
+    const [artistData, setArtistData] = useState<string>()
     const [serviceData, setServiceData] = useState<any>()
     const [inputData, setInputData] = useState<String[]>([])
     const [inputOpen, setInputOpen] = useState(false)
@@ -39,10 +40,6 @@ const Book:React.FC = () => {
         setServiceData(service)
     }
 
-    const handleArtistData = (artist:string[]) =>{
-        setArtistData(artist)
-    }
-    
     const handleInputData = (data:String[]) =>{
         setInputData(data)
     }    
@@ -57,22 +54,21 @@ const Book:React.FC = () => {
     }
 
     if(bookingSubmit){
-        const itemsWithTrueValues = [];
-
+        const selectedServices = [];
         // Iterate through each category
         for (const category in serviceData) {
             // Iterate through each service in the category
             for (const service in serviceData[category]) {
                 // Check if the value is true
                 if (serviceData[category][service] === true) {
-                    itemsWithTrueValues.push(service);
+                    selectedServices.push(service);
                 }
             }
         }
         const dataToPost:any = {}
         dataToPost["appointmentDateTime"] = appointmentDateTime?.format("YYYY-MM-DDTHH:mm")
-        dataToPost["serviceType"] = `(${itemsWithTrueValues.length}) ${itemsWithTrueValues.map((item)=>" "+item)}`
-        dataToPost["artist"] = "Sammy" //artistData
+        dataToPost["serviceType"] = `(${selectedServices.length}) ${selectedServices.map((item)=>" "+item)}`
+        dataToPost["artist"] = artistData
         dataToPost["appointmentStatus"] = cancelBooking === 1? "cancelled" : "confirmed"
         let postData = Object.assign({}, dataToPost, inputData);                
                         
@@ -96,7 +92,8 @@ const Book:React.FC = () => {
             ( // case: edit booking
                 <div className='book'>
                     <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>
-                    <SliderMain inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></SliderMain>
+                    <ServiceSlider inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceSlider>
+                    <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>                    
                     <Inputs editData={inputData} dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
                 </div>
             )
@@ -106,7 +103,8 @@ const Book:React.FC = () => {
         return (
             <div className='book'>
                 <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>
-                <SliderMain inputOpen={inputOpen} setInputOpen={setInputOpen} editData={serviceData} setAllChecked={handleServiceData}></SliderMain>
+                <ServiceSlider inputOpen={inputOpen} setInputOpen={setInputOpen} editData={serviceData} setAllChecked={handleServiceData}></ServiceSlider>
+                <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>
                 <Inputs editData={inputData} dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingSubmit={setBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
             </div>
             
