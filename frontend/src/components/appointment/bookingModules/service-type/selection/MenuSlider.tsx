@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import 'react-horizontal-scrolling-menu/dist/styles.css';
-import service_data from '../../../../assets/data/services.json';
+import service_data from '../../../../../assets/data/services.json';
 
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import styles from "../../../../css/appointment/service-type/selection/App.module.css";
+import styles from "../../../../../css/appointment/service-type/selection/App.module.css";
 import { LeftArrow, RightArrow } from "../slider/Arrows";
 import { MainService } from "../slider/MainService";
 

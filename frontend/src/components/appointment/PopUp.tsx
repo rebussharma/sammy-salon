@@ -1,7 +1,7 @@
 import Modal from '@mui/material/Modal';
 import React from 'react';
 import '../../css/appointment/PopUp.css';
-import Book from './Book';
+import MainBook from './book/MainBook';
 
 type PopUpBox = {
   popUp: boolean,
@@ -48,7 +48,7 @@ const PopUp:React.FC<PopUpBox> = ({
           style={{ backdropFilter: "blur(5px)" }}      
         >
           <>
-            <Book></Book>
+            <MainBook></MainBook>
           </>
         </Modal>
       </PopUpContext.Provider>

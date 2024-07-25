@@ -1,5 +1,5 @@
 import React from "react";
-import '../../../../css/appointment/service-type/slider/Arrows.css';
+import '../../../../../css/appointment/service-type/slider/Arrows.css';
 
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
 
