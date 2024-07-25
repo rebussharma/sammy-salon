@@ -87,7 +87,7 @@ const Conact: React.FC = () => {
         </PageHeadingWrapper>
         <FormContainer className='form-container'>
           <Details />
-          <Inputs editData = {[]}dateTimeStaus={false} bookingMode={false} setBookingSubmit={()=>false} appendInputData = {()=>{}}/>
+          <Inputs editData = {[]}dateTimeStaus={false} bookingMode={false} setBookingSubmit={()=>false} appendInputData = {()=>{}} inputOpen={true} setInputOpen={()=>{}}/>
         </FormContainer>
       </PageWrapper>
     </div>

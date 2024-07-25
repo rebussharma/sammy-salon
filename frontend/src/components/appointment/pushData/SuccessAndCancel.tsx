@@ -6,9 +6,9 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
-import '../../css/appointment/SuccessPage.css';
-import EmailSender from '../EmailSender';
-import { PopUpContext } from './PopUp';
+import '../../../css/appointment/SuccessPage.css';
+import EmailSender from '../../EmailSender';
+import { PopUpContext } from '../PopUp';
 
 const MessageWrapper = styled.div`
   margin-top: 150px;
@@ -34,6 +34,7 @@ type Props = {
 
 const SuccessPage: React.FC<Props> = (prop: Props) => {
   const {popUp, setPopUp} = useContext(PopUpContext)
+  
   const clientDetailsAppt = [prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],
                               prop.postDataCancel["appointmentDateTime"],prop.postDataCancel["serviceType"],prop.postDataCancel["artist"],prop.postDataCancel["appointmentStatus"]]
 
@@ -50,12 +51,12 @@ const SuccessPage: React.FC<Props> = (prop: Props) => {
       console.error("Error Cancelling Appointment",error);
     });
   }
-
+    
   return (
     <React.Fragment>
       <Fade duration={700} direction="right">
         { 
-          prop.appointmentId !== -1 ?
+          (prop.appointmentId === -1 || !prop.appointmentId)?
           (
             <div className='error'>
 
