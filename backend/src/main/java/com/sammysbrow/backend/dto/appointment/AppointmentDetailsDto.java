@@ -1,4 +1,5 @@
 package com.sammysbrow.backend.dto.appointment;
+import com.sammysbrow.backend.entity.appointment.ConfirmationCodeSequence;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AppointmentDetailsDto {
     private Long Id;
+    private Long confirmationCode;
     private LocalDateTime appointmentDateTime;
     private String serviceType;
     private String artist = "Sammy";
@@ -19,5 +21,6 @@ public class AppointmentDetailsDto {
     private Long clientPhone;
     private String appointmentNotes;
     private String appointmentStatus;
+
 
 }

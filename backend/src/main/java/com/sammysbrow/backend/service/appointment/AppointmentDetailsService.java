@@ -2,6 +2,7 @@ package com.sammysbrow.backend.service.appointment;
 
 import com.sammysbrow.backend.dto.appointment.AppointmentDetailsDateTimeDto;
 import com.sammysbrow.backend.dto.appointment.AppointmentDetailsDto;
+import com.sammysbrow.backend.entity.appointment.ConfirmationCodeSequence;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,9 +17,9 @@ public interface AppointmentDetailsService {
 //    AppointmentDetailsDto deleteAppointment(AppointmentDetailsDto appointmentDetailsDto);
     List<AppointmentDetailsDto> getAllAppointmentDetails();
 
-//    AppointmentDetailsDto getAppointmentById(int id);
-//    List<AppointmentDetailsDto> getFutureAppointments();
+    AppointmentDetailsDto getAppointmentById(Long id);
+    AppointmentDetailsDto getAppointmentByConfirmationCode(ConfirmationCodeSequence code);
 
-//    AppointmentDetailsDto getAppointmentByDate(String date);
+
 //    List<AppointmentDetailsDto> getAppointmentsByUserId(int userId);
 }

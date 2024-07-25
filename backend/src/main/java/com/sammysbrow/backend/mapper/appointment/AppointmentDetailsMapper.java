@@ -3,12 +3,14 @@ package com.sammysbrow.backend.mapper.appointment;
 import com.sammysbrow.backend.dto.appointment.AppointmentDetailsDateTimeDto;
 import com.sammysbrow.backend.dto.appointment.AppointmentDetailsDto;
 import com.sammysbrow.backend.entity.appointment.AppointmentDetails;
+import com.sammysbrow.backend.entity.appointment.ConfirmationCodeSequence;
 import com.sammysbrow.backend.service.appointment.projection.AppointmentDetailsDateTimeService;
 
 public class AppointmentDetailsMapper {
     public static AppointmentDetailsDto mapToAppointmentDetailsDto (AppointmentDetails appointmentDetails){
         return new AppointmentDetailsDto(
                 appointmentDetails.getId(),
+                appointmentDetails.getConfirmationCode().getId(),
                 appointmentDetails.getAppointmentDateTime(),
                 appointmentDetails.getServiceType(),
                 appointmentDetails.getArtist(),
@@ -23,6 +25,7 @@ public class AppointmentDetailsMapper {
     public static AppointmentDetails mapToAppointmentDetails (AppointmentDetailsDto appointmentDetailsDto){
         return new AppointmentDetails(
                 appointmentDetailsDto.getId(),
+                new ConfirmationCodeSequence(appointmentDetailsDto.getConfirmationCode()),
                 appointmentDetailsDto.getAppointmentDateTime(),
                 appointmentDetailsDto.getServiceType(),
                 appointmentDetailsDto.getArtist(),
@@ -34,7 +37,7 @@ public class AppointmentDetailsMapper {
         );
     }
 
-    public static AppointmentDetailsDateTimeDto mapToAppointmentDetailsDateTimeDto (AppointmentDetailsDateTimeService appointmentDetailsDateTimeService){
+    public static AppointmentDetailsDateTimeDto mapToAppointmentDetailsDateTimeDto (AppointmentDetails appointmentDetailsDateTimeService){
         return new AppointmentDetailsDateTimeDto(
                 appointmentDetailsDateTimeService.getAppointmentDateTime()
         );

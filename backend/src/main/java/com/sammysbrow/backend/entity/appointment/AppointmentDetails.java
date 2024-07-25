@@ -1,6 +1,7 @@
 package com.sammysbrow.backend.entity.appointment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sammysbrow.backend.exception.ResourceNotFoundException;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -8,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-
 
 import java.time.LocalDateTime;
 
@@ -23,6 +23,11 @@ public class AppointmentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "confirmation_code", referencedColumnName = "id")
+    private ConfirmationCodeSequence confirmationCode;
+
     @Column (name = "appointment_date_time")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
@@ -41,6 +46,5 @@ public class AppointmentDetails {
     private String appointmentNotes;
     @Column (name = "appointment_status")
     private String appointmentStatus;
-
-
 }
+
