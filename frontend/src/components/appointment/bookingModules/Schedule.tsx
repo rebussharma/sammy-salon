@@ -6,7 +6,7 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import axios from 'axios';
 import dayjs, { Dayjs } from 'dayjs';
 import React, { useEffect, useState } from 'react';
-import '../../css/appointment/Schedule.css';
+import '../../../css/appointment/Schedule.css';
 
 
 const curr_datetime = new Date()
@@ -38,7 +38,7 @@ type ScheduleSuccess = {
  const Schedule:React.FC<ScheduleSuccess> = ({editData, setScheduleSuccess = () => void{}, setAppointmentDateTimeSchedue =() =>void{}}:ScheduleSuccess) => {
   
     const [bookedDates, setBookedDates] = useState([]);
-    const UPCOMING_APPOINTMENT_URL = "http://localhost:8080/api/appointments/confirmed/upcoming"
+    const UPCOMING_APPOINTMENT_URL = "http://localhost:8080/api/appointments/confirmed/upcoming/date"
 
     useEffect(() => {  
     axios.get(UPCOMING_APPOINTMENT_URL)

@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import artistList from "../../assets/data/artists.json";
-import '../../css/appointment/Artist.css';
+import artistList from "../../../assets/data/artists.json";
+import '../../../css/appointment/Artist.css';
 type Props = {
   serviceData:any
   setArtist(artist:string): void;
