@@ -1,6 +1,6 @@
 import React from "react";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
-import '../../../../css/appointment/service-type/slider/MainService.css';
+import '../../../../../css/appointment/service-type/slider/MainService.css';
 
 export function MainService({
   itemId,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import service_data from '../../../../assets/data/services.json';
+import service_data from '../../../../../assets/data/services.json';
 import MenuSlider from "./MenuSlider";
 import SubMenuSlider from "./SubMenuSlider";
 

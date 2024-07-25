@@ -1,0 +1,21 @@
+.main-book{
+    height: 90vh;
+    width: 50vw;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    background-color: white;
+    top: 5vh;
+    padding: 20px;
+    border-radius: 2%;
+}
+
+@media screen and (max-width:600px) {
+    .book{
+        width: 70vw;
+        height: 70vh;
+    }
+}

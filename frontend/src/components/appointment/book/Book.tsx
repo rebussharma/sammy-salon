@@ -1,15 +1,20 @@
+import { Button } from '@mui/material';
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
-import '../../css/appointment/Book.css';
-import Inputs from '../footer/contact/Inputs';
-import Artist from './Artist';
-import CancelPage from './CancelPage';
-import ConfirmPage from './ConfirmPage';
-import Schedule from './Schedule';
-import SuccessPage from './SuccessPage';
-import { default as ServiceSlider } from './service-type/selection/ServiceSlider';
+import '../../../css/appointment/book/Book.css';
+import Inputs from '../../footer/contact/Inputs';
+import Artist from '../bookingModules/Artist';
+import Schedule from '../bookingModules/Schedule';
+import { default as ServiceSlider } from '../bookingModules/service-type/selection/ServiceSlider';
+import ConfirmPage from '../pushData/ConfirmPage';
+import SuccessPage from '../pushData/SuccessAndCancel';
+import CancelPage from './cancel/CancelMailer';
 
-const Book:React.FC = () => {
+type Booking = {
+    setGoback(num:any):void
+}
+
+const Book:React.FC<Booking> = (book:Booking) => {
     const [confirmBooking, setConfirmBooking] = useState(false)
     const [editAppointment, setEditAppointment] = useState(false)
 
@@ -53,6 +58,10 @@ const Book:React.FC = () => {
         setCurrentBookedApptId(id)
     }
 
+    const handleGoBack = () => {
+        book.setGoback(0)
+    }
+
     if(bookingSubmit){
         const selectedServices = [];
         // Iterate through each category
@@ -73,7 +82,7 @@ const Book:React.FC = () => {
         let postData = Object.assign({}, dataToPost, inputData);                
                         
         if(confirmBooking){            
-            return cancelBooking != 0? (
+            return cancelBooking !== 0? (
                 <div className='book cancel'>
                     <CancelPage cancelStatus={cancelBooking} appointmentId={currentBookedApptId} confirmedData={postData}></CancelPage>
                 </div>
@@ -106,6 +115,7 @@ const Book:React.FC = () => {
                 <ServiceSlider inputOpen={inputOpen} setInputOpen={setInputOpen} editData={serviceData} setAllChecked={handleServiceData}></ServiceSlider>
                 <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>
                 <Inputs editData={inputData} dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingSubmit={setBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
+                <Button onClick={handleGoBack}> Back</Button>
             </div>
             
         )

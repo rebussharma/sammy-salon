@@ -6,9 +6,9 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
-import '../../css/appointment/SuccessPage.css';
-import EmailSender from '../EmailSender';
-import { PopUpContext } from './PopUp';
+import '../../../css/appointment/SuccessPage.css';
+import EmailSender from '../../EmailSender';
+import { PopUpContext } from '../PopUp';
 
 const MessageWrapper = styled.div`
   margin-top: 150px;
