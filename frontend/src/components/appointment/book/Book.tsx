@@ -7,8 +7,8 @@ import Artist from '../bookingModules/Artist';
 import Schedule from '../bookingModules/Schedule';
 import { default as ServiceSlider } from '../bookingModules/service-type/selection/ServiceSlider';
 import ConfirmPage from '../pushData/ConfirmPage';
-import SuccessPage from '../pushData/SuccessAndCancel';
-import CancelPage from './cancel/CancelMailer';
+import SuccessAndCancel from '../pushData/SuccessAndCancel';
+import CancelMessageAndMailer from './cancel/CancelMessageAndMailer';
 
 type Booking = {
     setGoback(num:any):void
@@ -30,12 +30,17 @@ const Book:React.FC<Booking> = (book:Booking) => {
     const [artistData, setArtistData] = useState<string>()
     const [serviceData, setServiceData] = useState<any>()
     const [inputData, setInputData] = useState<String[]>([])
+    const [confirmedData, setConfirmedData] = useState<any>({})
     const [inputOpen, setInputOpen] = useState(false)
     
     const handleScheduleSuccess = () => {
         setDateTimePicked(true);
     }
 
+    // fetches data once appt is confirmed
+    const handleConfirmedData = (data:any) => {
+        setConfirmedData(data)
+    }
     // Used to fetch data from each component
     const handleAppointmentDateTime = (dateTime: any) => {
         setAppointmentDateTime(dateTime)
@@ -84,18 +89,18 @@ const Book:React.FC<Booking> = (book:Booking) => {
         if(confirmBooking){            
             return cancelBooking !== 0? (
                 <div className='book cancel'>
-                    <CancelPage cancelStatus={cancelBooking} appointmentId={currentBookedApptId} confirmedData={postData}></CancelPage>
+                    <CancelMessageAndMailer cancelStatus={cancelBooking} appointmentId={currentBookedApptId} confirmedData={confirmedData}></CancelMessageAndMailer>
                 </div>
             ):(
                 <div className='book success'>
-                    <SuccessPage appointmentId = {currentBookedApptId} setCancelledStatus={setCancelBooking} postDataCancel={postData}></SuccessPage>
+                    <SuccessAndCancel appointmentId = {currentBookedApptId} setCancelledStatus={setCancelBooking} postDataCancel={confirmedData}></SuccessAndCancel>
                 </div>
             )
 
         }else{
             return !editAppointment ? (
                 <div className='book confirm'>
-                    <ConfirmPage setAppointmentId = {handleSetApptId} setEditStatus = {setEditAppointment} setConfirmationStatus={setConfirmBooking} postDataConfirm ={postData}></ConfirmPage>
+                    <ConfirmPage setAppointmentId = {handleSetApptId} setEditStatus = {setEditAppointment} setConfirmationStatus={setConfirmBooking} postDataConfirm ={postData} setDataConfirm = {handleConfirmedData}></ConfirmPage>
                 </div>
             ):
             ( // case: edit booking

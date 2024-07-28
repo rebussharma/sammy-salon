@@ -32,12 +32,16 @@ type Props = {
   postDataCancel: any
 }
 
-const SuccessPage: React.FC<Props> = (prop: Props) => {
+const SuccessAndCancel: React.FC<Props> = (prop: Props) => {
   const {popUp, setPopUp} = useContext(PopUpContext)
   
-  const clientDetailsAppt = [prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],
-                              prop.postDataCancel["appointmentDateTime"],prop.postDataCancel["serviceType"],prop.postDataCancel["artist"],prop.postDataCancel["appointmentStatus"]]
-
+  const clientDetailsAppt = [
+                              prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],
+                              prop.postDataCancel["appointmentDateTime"],prop.postDataCancel["serviceType"],prop.postDataCancel["artist"],prop.postDataCancel["appointmentStatus"],
+                              prop.postDataCancel["confirmationCode"]
+                            ]
+  console.log("hello",prop.postDataCancel);
+  
   const handleCancelAppointment = () =>{
     prop.postDataCancel["appointmentStatus"] = "cancelled"    
 
@@ -92,7 +96,7 @@ const SuccessPage: React.FC<Props> = (prop: Props) => {
                 </div>
                 <div className='success-message'>
                   <SuccessMessage className="confirmation">Appointment Confirmed!!</SuccessMessage>
-                  <SuccessMessage className="confirmation-code">Confirmation Code: {prop.appointmentId}.</SuccessMessage>
+                  <SuccessMessage className="confirmation-code">Confirmation Code: {clientDetailsAppt[8]}</SuccessMessage>
                   <SuccessMessage className="cancel-notice">We Have Sent You an Email With All the Details</SuccessMessage>
                   <SuccessMessage className="see-you">See You Soon!!</SuccessMessage>
                   <EmailSender nameResetter={()=>{}} phoneResetter={()=>{}} emailResetter={()=>{}} messageResetter={()=>{}} bookedResetter={()=>{}} clientDetails={clientDetailsAppt} setEmailSent={()=>{}} contactForm={false}></EmailSender>
@@ -112,4 +116,4 @@ const SuccessPage: React.FC<Props> = (prop: Props) => {
   );
 };
 
-export default SuccessPage;
+export default SuccessAndCancel;

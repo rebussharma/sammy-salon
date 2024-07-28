@@ -28,6 +28,7 @@ type Props = {
     setConfirmationStatus(value:boolean): void
     setEditStatus(value:boolean):void
     postDataConfirm: any
+    setDataConfirm(data:any):void
 }
 
 
@@ -40,6 +41,7 @@ const ConfirmPage:React.FC<Props> = (prop:Props) => {
       .then(function (response) {
         console.log("Appointment Confirmed",response);
         prop.setAppointmentId(response.data.id)
+        prop.setDataConfirm(response.data)
       })
       .catch(function (error) {
         console.error("Error Booking Appointment",error);

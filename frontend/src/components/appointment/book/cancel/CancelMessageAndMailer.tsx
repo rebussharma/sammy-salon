@@ -33,10 +33,15 @@ type CancelStatus = {
   confirmedData: any
 }
 
-const CancelPage:React.FC<CancelStatus> = (prop:CancelStatus) =>{
+const CancelMessageAndMailer:React.FC<CancelStatus> = (prop:CancelStatus) =>{
   const {popUp, setPopUp} = useContext(PopUpContext)
-  const clientDetailsAppt = [prop.confirmedData["clientName"], prop.confirmedData["clientEmail"], prop.confirmedData["clientPhone"], prop.confirmedData["clientMessage"],
-                              prop.confirmedData["appointmentDateTime"],prop.confirmedData["serviceType"],prop.confirmedData["artist"],prop.confirmedData["appointmentStatus"]]
+  
+  const clientDetailsAppt = [
+                              prop.confirmedData["clientName"], prop.confirmedData["clientEmail"], prop.confirmedData["clientPhone"], 
+                              prop.confirmedData["clientMessage"],prop.confirmedData["appointmentDateTime"],prop.confirmedData["serviceType"],
+                              prop.confirmedData["artist"],prop.confirmedData["appointmentStatus"], prop.confirmedData["confirmationCode"]
+                            ]  
+
   return (
     <React.Fragment>
       <Fade duration={700} direction="right">
@@ -90,4 +95,4 @@ const CancelPage:React.FC<CancelStatus> = (prop:CancelStatus) =>{
   )
 }
 
-export default CancelPage
+export default CancelMessageAndMailer

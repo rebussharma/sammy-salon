@@ -36,9 +36,11 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
     var serviceType = details.clientDetails[5]
     var artist = details.clientDetails[6]
     var appointmentStatus = details.clientDetails[7]
+    var confirmationCode = details.clientDetails[8]
     
     subject = `Appointment ${appointmentStatus.toLocaleUpperCase()}`
     bodyText = `Your appointment has been \t${appointmentStatus.toLocaleUpperCase()}.\nPlease find ${appointmentStatus.toLocaleUpperCase()} details below\n\n` +
+                `\tConfirmation Code: \t${confirmationCode}\n`+
                 `\tDate and Time: \t\t${
                   apptDateTime.toDateString()} at ${apptDateTime.toLocaleString([],{
                     hour:'2-digit',
@@ -55,7 +57,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
 
     selfSubject =  `Appointment ${appointmentStatus.toLocaleUpperCase()} Notice`
     selfBody = `New Appointment Status. See details Below:\n\n`+
-                `\tConfirmation Code: \tTODO\n`+
+                `\tConfirmation Code: \t${confirmationCode}\n`+
                   `\tAppointment Status: \t${appointmentStatus}.\n` +
                   `\tDate and Time: \t\t${
                     apptDateTime.toDateString()} at ${apptDateTime.toLocaleString([],{

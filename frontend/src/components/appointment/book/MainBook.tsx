@@ -2,7 +2,7 @@ import { Button } from "@mui/material"
 import { useState } from "react"
 import "../../../css/appointment/book/MainBook.css"
 import Book from "./Book"
-import CancelPage from "./cancel/CancelMailer"
+import Cancel from "./cancel/Cancel"
 
 const MainBook = () => {
   const [bookingState, setBookingState] = useState<Number>(0)
@@ -23,7 +23,7 @@ const MainBook = () => {
     (
       bookingState === -1 ?
       (
-        <CancelPage cancelStatus={0} appointmentId={undefined} confirmedData={undefined}></CancelPage>
+        <Cancel ></Cancel>
       )
       :
       (
