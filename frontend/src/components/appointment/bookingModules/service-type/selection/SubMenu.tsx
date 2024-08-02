@@ -1,7 +1,7 @@
 // SubMenu.tsx
 import React from "react";
 import service_data from '../../../../../assets/data/services.json';
-import styles from "../../../../../css/appointment/service-type/selection/App.module.css";
+import styles from "../../../../../css/appointment/bookingModules/service-type/selection/App.module.css";
 
 interface SubMenuProps {
   menuItem: string;

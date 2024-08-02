@@ -1,6 +1,7 @@
 
 .schedule .date-time-picker {
     height: 130px;
+
 }
 
 .schedule .mobile-date-time-picker{
@@ -8,8 +9,9 @@
 }
 
 .css-e784if-MuiTypography-root{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
     font-weight: bold !important; 
-    font-size: 1.2rem !important;
+    font-size: 1.25rem !important;
 }
 
 @media screen and (max-width:600px) {

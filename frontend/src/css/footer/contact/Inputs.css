@@ -6,3 +6,14 @@
     display: block;
     z-index: 1;
 }
+@media screen and (max-width: 640px) {
+    .inputs{
+        height: 100% !important;
+    }
+}
+
+@media (max-width:330px){
+    .inputs{
+        width: 50%;
+    }
+}

@@ -6,7 +6,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
-import '../../../css/appointment/SuccessPage.css';
+import '../../../css/appointment/pushData/SuccessAndCancel.css';
 import EmailSender from '../../EmailSender';
 import { PopUpContext } from '../PopUp';
 

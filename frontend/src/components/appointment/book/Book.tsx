@@ -5,7 +5,7 @@ import '../../../css/appointment/book/Book.css';
 import Inputs from '../../footer/contact/Inputs';
 import Artist from '../bookingModules/Artist';
 import Schedule from '../bookingModules/Schedule';
-import { default as ServiceSlider } from '../bookingModules/service-type/selection/ServiceSlider';
+import { default as ServiceBox } from '../bookingModules/service-type/selection/ServiceBox';
 import ConfirmPage from '../pushData/ConfirmPage';
 import SuccessAndCancel from '../pushData/SuccessAndCancel';
 import CancelMessageAndMailer from './cancel/CancelMessageAndMailer';
@@ -106,9 +106,10 @@ const Book:React.FC<Booking> = (book:Booking) => {
             ( // case: edit booking
                 <div className='book'>
                     <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>
-                    <ServiceSlider inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceSlider>
+                    <ServiceBox inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox>
                     <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>                    
                     <Inputs editData={inputData} dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
+                    <Button className = "go-back-btn" onClick={handleGoBack}>Go Back</Button>
                 </div>
             )
         }
@@ -117,10 +118,10 @@ const Book:React.FC<Booking> = (book:Booking) => {
         return (
             <div className='book'>
                 <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>
-                <ServiceSlider inputOpen={inputOpen} setInputOpen={setInputOpen} editData={serviceData} setAllChecked={handleServiceData}></ServiceSlider>
+                <ServiceBox inputOpen={inputOpen} setInputOpen={setInputOpen} editData={serviceData} setAllChecked={handleServiceData}></ServiceBox>
                 <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>
                 <Inputs editData={inputData} dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingSubmit={setBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
-                <Button onClick={handleGoBack}> Back</Button>
+                <Button className = "go-back-btn" onClick={handleGoBack}>Go Back</Button>
             </div>
             
         )

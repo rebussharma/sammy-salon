@@ -3,9 +3,9 @@ import 'react-horizontal-scrolling-menu/dist/styles.css';
 import service_data from '../../../../../assets/data/services.json';
 
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import styles from "../../../../../css/appointment/service-type/selection/App.module.css";
-import { LeftArrow, RightArrow } from "../slider/Arrows";
-import { MainService } from "../slider/MainService";
+import styles from "../../../../../css/appointment/bookingModules/service-type/selection/App.module.css";
+import { LeftArrow, RightArrow } from "./Arrows";
+import { MainService } from "./MainService";
 
 interface SliderMenuProps {
   onMenuItemClick: (menuItem: string) => void;
@@ -32,7 +32,6 @@ const MenuSlider: React.FC<SliderMenuProps> = ({ onMenuItemClick }) => {
       {menuItems.map((item) => (
          <MainService
           title={item}
-          itemId={item} // NOTE: itemId is required for track items
           key={item}
           onClick={() => handleClick(item)} 
           selected={item === selectedMenu}       

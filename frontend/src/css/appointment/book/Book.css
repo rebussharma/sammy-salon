@@ -13,6 +13,19 @@
     border-radius: 2%;
 }
 
+.book.confirm{
+    align-items: center;
+}
+
+.book .go-back-btn{
+    background-color: rgb(226 113 62) !important;
+    color: white !important;
+    &:hover{
+        font-weight: bold !important;
+        background-color: rgb(196, 110, 70) !important;
+    }
+}
+
 @media screen and (max-width:600px) {
     .book{
         width: 70vw;

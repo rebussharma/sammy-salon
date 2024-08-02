@@ -36,19 +36,19 @@ const Footer:React.FC = () => {
         <div className='items-wrapper'>
           <ul className='items'>
             <li className='item'>
-                            <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Threadings</Link>
+              ▶ <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Threadings</Link>
             </li>
             <li className='item'>
-                            <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Lashes</Link>
+              ▶ <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Lashes</Link>
             </li>
             <li className='item'>
-                            <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Facials</Link>
+              ▶ <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Facials</Link>
             </li>
             <li className='item'>
-                            <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Waxings</Link>
+              ▶ <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Waxings</Link>
             </li>
             <li className='item'>
-                            <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Tintings</Link>
+              ▶ <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Tintings</Link>
             </li>
           </ul>
         </div>

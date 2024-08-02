@@ -1,7 +1,7 @@
 .testimonials {
   height: 580px;
   position: relative;
-  background-color: #f19a0e;
+  background-color: #2d2c2a;
   width: 100%;
   left: 0;
   right: 0;
@@ -18,7 +18,7 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
-
+  color: white;
 }
 
 .react-multi-carousel-list {
@@ -48,9 +48,13 @@
 .react-multi-carousel-dot.react-multi-carousel-dot--active button{
   background: rgb(124, 255, 68) !important;
 }
+
+.react-multiple-carousel__arrow {
+  background-color: rgb(227 217 217 / 50%) !important;
+}
+
  .react-multiple-carousel__arrow--left {
   left: 0 !important;
-
 }
 .react-multiple-carousel__arrow--right {
   right: 0 !important;
@@ -64,6 +68,7 @@
   right: 0;
   text-align: center;
   font-family: 'Playfair Display';
+  top: 10px;
 }
 
 .testimonial-title .main-title{

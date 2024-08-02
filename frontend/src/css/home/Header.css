@@ -9,7 +9,7 @@
  .socials{
     z-index: 1;
     margin-right: 10px;
-    margin-top:5px;
+    margin-top:10px;
     display: flex;
 }
 
@@ -19,7 +19,7 @@
 
 .direct-call{
     margin-left: 10px;
-    margin-top:5px;
+    margin-top:10px;
 
 }
 

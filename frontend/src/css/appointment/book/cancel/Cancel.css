@@ -1,0 +1,43 @@
+.cancel{
+    height: 20vh;
+    width: 50vw;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    background-color: white;
+    top: 20%;
+    padding: 20px;
+    border-radius: 2%;
+    align-items: center;
+    align-content: center;
+}
+
+.cancel-title{
+    font: 1em sans-serif;
+    font-weight: bold;
+}
+
+.confirmation-input{
+    box-shadow: inset;
+}
+
+.cancel-btn{
+    background-color: rgb(238, 120, 120) !important;
+    color: white !important;
+    &:hover{
+        font-weight: bold !important;
+        background-color: #f53838 !important;
+    }
+}
+
+.go-back-btn{
+    background-color: rgb(182 152 28) !important;
+    color: white !important;
+    &:hover{
+        font-weight: bold !important;
+        background-color: #f0df23 !important;
+    }
+}

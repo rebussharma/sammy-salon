@@ -1,0 +1,28 @@
+.artist-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+    font-size: 1.25rem !important;
+    text-transform: capitalize !important;
+    &:hover{
+        font-weight: bold;
+    }
+}
+
+.artist-name .name-btn{
+    background-color: rgb(191 149 149);;
+    color: white;
+    &:hover{
+        background-color: rgb(214, 170, 170);
+        font-weight: bold;
+    }
+}
+
+.name-btn.selected {
+    background-color: rgb(213 58 58);
+    font-weight: bold;
+}

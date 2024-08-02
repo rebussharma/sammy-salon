@@ -1,0 +1,6 @@
+.MuiModal-root.css-79ws1d-MuiModal-root .close-modal-btn{
+    position: absolute !important;
+    top: 7vh !important;
+    right: 25vw !important;
+    z-index: 1;
+}

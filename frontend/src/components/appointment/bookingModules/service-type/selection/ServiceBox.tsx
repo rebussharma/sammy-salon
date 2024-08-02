@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import service_data from '../../../../../assets/data/services.json';
-import MenuSlider from "./MenuSlider";
-import SubMenuSlider from "./SubMenuSlider";
+import "../../../../../css/appointment/bookingModules/service-type/selection/App.module.css";
+import "../../../../../css/appointment/bookingModules/service-type/selection/ServiceBox.css";
+import MenuSlider from "../slider/MenuSlider";
+import SubMenu from "./SubMenu";
 
 const transformArray = (array:any[]) =>{
     // Initialize an empty object to store the transformed data
@@ -59,18 +61,18 @@ const ServiceSlider:React.FC<OpenInput> = (prop:OpenInput) => {
   },[checkedStates])
 
   return (
-    <div className="SliderMain">
+    <div className="service-box">
       <div className="service-title">
         Step 2: Select a Service
       </div>
       
       <MenuSlider onMenuItemClick={handleMenuItemClick} />
-      <div className="submenus">
+      <div className="submenu">
         {
           !prop.inputOpen ?
         (
         selectedMenuItem && (
-          <SubMenuSlider
+          <SubMenu
             key={selectedMenuItem}
             menuItem={selectedMenuItem}
             checkedState={checkedStates[selectedMenuItem]}

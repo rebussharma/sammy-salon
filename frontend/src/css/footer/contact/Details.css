@@ -31,3 +31,8 @@
         margin-top: 35px;
     }
 }
+@media (max-width:430px){ 
+    .design-circles {
+        margin-top: 5px;
+    }
+}

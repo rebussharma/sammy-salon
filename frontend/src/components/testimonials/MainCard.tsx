@@ -9,15 +9,13 @@ type Testimonial_List = {
     }
 }
 
-const rating = process.env.PUBLIC_URL + '/images/testimonials/five-star.png';
-const appos = process.env.PUBLIC_URL + '/images/testimonials/appos.png';
-
+const five_star = "★★★★★"
 const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
   return (
     <div className="main-card">
         <div className="body-card">
-            <div className='appos-img'>
-                <img src= {appos} alt='appostrophe'/>
+            <div className='appos'>
+            ❝
             </div>
             <div className="testimonial-container">
                 <div className="review">
@@ -27,7 +25,7 @@ const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
             </div>
             <div className='reviewer-rating'>
                 <div className='rating'>
-                    <img src={rating} alt='5-star-rating'/>
+                {five_star}
                 </div>
                 <div className='reviewer'>
                 <div className="image-wrapper">

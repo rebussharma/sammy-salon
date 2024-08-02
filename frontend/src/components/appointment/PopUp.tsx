@@ -15,19 +15,6 @@ const defaultState:PopUpBox = {
 export const PopUpContext = React.createContext(defaultState);
 
 
-// const style = {
-//   position: 'absolute' as 'absolute',
-//   top: '50%',
-//   left: '40%',
-//   height: '90vh',
-//   transform: 'translate(-50%, -50%)',
-//   width: '500px',
-//   bgcolor: 'background.paper',
-//   border: '2px solid #fff',
-//   boxShadow: 24,
-//   p: 4,
-// };
-
 const PopUp:React.FC<PopUpBox> = ({
   popUp, setPopUp
 }:PopUpBox) => {
@@ -48,6 +35,7 @@ const PopUp:React.FC<PopUpBox> = ({
           style={{ backdropFilter: "blur(5px)" }}      
         >
           <>
+            <button className="close-modal-btn" onClick={handleClose}> X </button>
             <MainBook></MainBook>
           </>
         </Modal>

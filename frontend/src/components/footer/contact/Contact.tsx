@@ -72,12 +72,6 @@ const TextOne = styled.b`
   }
 `;
 
-// const TextTwo = styled.p`
-//   color: rgb(4, 4, 34);
-//   font-size: 15px;
-//   text-align: center;
-// `;
-
 const Conact: React.FC = () => {
   return (
     <div className='contact'>

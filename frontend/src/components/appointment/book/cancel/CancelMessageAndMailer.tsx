@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import React, { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
-import '../../../../css/appointment/CancelMailer.css';
+import '../../../../css/appointment/book/cancel/CancelMessageAndMailer.css';
 import EmailSender from '../../../EmailSender';
 import { PopUpContext } from '../../PopUp';
 

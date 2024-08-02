@@ -8,6 +8,7 @@
 
 .react-horizontal-scrolling-menu--arrow-left{
     position: absolute;
+    left: 1%;
     z-index: 1;
 }
 

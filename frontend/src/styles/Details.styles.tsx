@@ -18,6 +18,12 @@ export const DetailsBarWrapper = styled.div`
     padding: 1px;
     padding-bottom: 40px;
   }
+  @media (max-width:430px){
+    width:50%;
+  }
+  @media (max-width:330px){
+    width:52%;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -69,6 +75,10 @@ export const ContactsWrapper = styled.a`
   margin-top: 20px;
   cursor: pointer;
   text-decoration: none;
+  @media (max-width: 330px) {
+    font-size:.70rem;
+    margin-left: 2.5%;
+  }
 `;
 
 export const ContactText = styled.div`
@@ -80,26 +90,3 @@ export const ContactText = styled.div`
     margin-left: 2%;
   }
 `;
-
-// export const SocialsWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   display: flex;
-//   height: 10px;
-//   justify-content: center;
-//   bottom: 30px;
-//   position: absolute;
-//   cursor: pointer;
-// `;
-
-// export const SocialIconWrapper = styled.a`
-//   width: 35px;
-//   height: 35px;
-//   border-radius: 50%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   &:hover {
-//     background-color: rgb(252, 113, 137);
-//   }
-// `;

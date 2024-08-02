@@ -1,0 +1,24 @@
+.main-service {
+    border: 1px solid;
+    display: inline-block;
+    margin: 0 10px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    align-content: center;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: rgb(191 149 149);
+    color: white;
+    &:hover{
+        background-color: rgb(214, 170, 170);
+        font-weight: bold;
+    }
+}
+
+.main-service.selected {
+    border: 1px solid;
+    background-color: rgb(213 58 58);
+    font-weight: bold;
+}

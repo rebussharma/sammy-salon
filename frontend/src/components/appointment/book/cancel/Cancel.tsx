@@ -1,11 +1,15 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import '../../../../css/appointment/book/cancel/Cancel.css';
 import { Input, InputWrapper } from '../../../../styles/Inputs.styles';
 import CancelMessageAndMailer from "./CancelMessageAndMailer";
 
+type Booking = {
+  setGoback(num:any):void
+}
 
-const Cancel = () => {
+const Cancel:React.FC<Booking> = (book:Booking) => {
   const [confirmationCode, setConfirmationCode] = useState('')
   const [cancelStatus, setCancelStatus] = useState(0)
   const [appointmentData, setAppointmenData] = useState<any>({})
@@ -33,7 +37,6 @@ const Cancel = () => {
 
     axios.put(`http://localhost:8080/api/appointments/${data["id"]}`, data)
     .then(function (response) {
-      setCancelStatus(1)
       console.log("Appointment Cancelled", response);
     })
     .catch(function (error) {
@@ -48,29 +51,39 @@ const Cancel = () => {
       let data = await getAppointmentByConfirmationCode(confirmationCode)
       setAppointmenData(data)
       setAppointmentId(appointmentData["id"])
+      setCancelStatus(1)
       await pushCancelData(data)
       
     }catch{
         console.log("Error");
-        
+        setCancelStatus(-1)
     }
+  }
+
+  const handleGoBack = () =>{
+    book.setGoback(0)
   }
 
   return (
     cancelStatus === 0 ? (
       <div className="cancel">
-      <div className="confirmation-input">
-        <InputWrapper className='InputWrapper'>
-              <Input className='Input'
-                type="number"   
-                placeholder="123456"
-                required={true}
-                value={confirmationCode}
-                onChange={confirmationCodehandler}
-              />
-        </InputWrapper>
-      </div>
-      <Button onClick={handleCancel}>Cancel Appointment</Button>
+        <div className="cancel-title">
+          Please Enter your confirmation code below
+        </div>
+        <div className="confirmation-input">
+          <InputWrapper className='InputWrapper'>
+                <Input className='Input'
+                  type="number"   
+                  placeholder="10101"
+                  required={true}
+                  value={confirmationCode}
+                  onChange={confirmationCodehandler}
+                />
+          </InputWrapper>
+        </div>
+      <Button disabled={!confirmationCode} className="cancel-btn" onClick={handleCancel}>Cancel Appointment</Button>
+      <Button className="go-back-btn" onClick={handleGoBack}>Go Back</Button>
+
     </div>
     )
     :

@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import artistList from "../../../assets/data/artists.json";
-import '../../../css/appointment/Artist.css';
+import '../../../css/appointment/bookingModules/Artist.css';
 type Props = {
   serviceData:any
   setArtist(artist:string): void;
@@ -29,10 +29,16 @@ const filterNamesByService = (data:any, customerSelectedcategories:any) => {
 const Artist:React.FC<Props> = (prop: Props) => {
   const [artistOpen, setArtistOpen] = useState(false)
   const [relevantArtist, setRelevantArtist] = useState<string[]>([])
+  const [selectedArtist, setSelectedArtist] = useState('')
+
   const handleArtistOpen = () =>{        
     artistOpen? setArtistOpen(false) : setArtistOpen(true)
   }
 
+  const handleClick = (item:string) => {
+    prop.setArtist(item)
+    setSelectedArtist(item)
+  }
 
   useEffect(()=>{
     if(artistOpen){
@@ -53,8 +59,8 @@ const Artist:React.FC<Props> = (prop: Props) => {
             <div className='artist-list'> 
               {
                 relevantArtist.map((item)=>
-                  <div className="names" key={item}>
-                    <Button className="name" onClick={() => prop.setArtist(item)} > {item} </Button>
+                  <div className="artist-name" key={item}>
+                    <Button className= {selectedArtist==item ? "name-btn selected" : "name-btn"} onClick={()=> handleClick(item)} > {item} </Button>
                   </div>
               )
               }

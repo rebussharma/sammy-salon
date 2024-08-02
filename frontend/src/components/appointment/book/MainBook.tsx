@@ -1,11 +1,14 @@
 import { Button } from "@mui/material"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import "../../../css/appointment/book/MainBook.css"
+import { PopUpContext } from '../PopUp'
 import Book from "./Book"
 import Cancel from "./cancel/Cancel"
 
+
 const MainBook = () => {
   const [bookingState, setBookingState] = useState<Number>(0)
+  const {popUp, setPopUp} = useContext(PopUpContext)
 
   const handleBook = () => {
     setBookingState(1)
@@ -23,7 +26,7 @@ const MainBook = () => {
     (
       bookingState === -1 ?
       (
-        <Cancel ></Cancel>
+        <Cancel setGoback={setBookingState}></Cancel>
       )
       :
       (
@@ -35,6 +38,9 @@ const MainBook = () => {
                 <div className="cancel-appt">
                     <Button onClick={handleCancel}> Cancel Appointment </Button>
                 </div>
+            </div>
+            <div className="go-back">
+              <Button className="go-back-btn" onClick={() => setPopUp(false)}> Go Back </Button>
             </div>
         </div>
       )
