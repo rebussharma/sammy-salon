@@ -2,14 +2,41 @@
     height: inherit !important;
 }
 
+.InputBoxWrapper .input-fields {
+    height: 80% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.InputBoxWrapper .submit-and-email{
+    height: 15%;
+    width: 100%;
+}
+
+.InputBoxWrapper .submit-and-email .btn_submit{
+    height: 80%;
+    width: inherit;
+}
 .alert-box{
     display: block;
     z-index: 1;
 }
+
 @media screen and (max-width: 640px) {
     .inputs{
         height: 100% !important;
     }
+
+    .InputBoxWrapper .input-fields {
+        height: 80% !important;
+    }
+    
+    .InputBoxWrapper .submit-and-email{
+        height: 20%;
+        width: 100%;
+    }
+
 }
 
 @media (max-width:330px){

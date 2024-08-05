@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const InputBoxWrapper = styled.form`
-  height: 95%;
+  height: 90%;
   position: relative;
   padding-bottom: 10px;
   display:flex;
@@ -9,6 +9,10 @@ export const InputBoxWrapper = styled.form`
   flex-direction: column;
   align-items: stretch;
   padding-right:3px;
+  @media (max-width: 590px) {
+   height: 83% !important;
+  }
+
 `;
 
 export const InputWrapper = styled.div`

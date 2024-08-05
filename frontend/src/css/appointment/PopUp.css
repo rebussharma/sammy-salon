@@ -3,4 +3,5 @@
     top: 7vh !important;
     right: 25vw !important;
     z-index: 1;
+    cursor: pointer;
 }

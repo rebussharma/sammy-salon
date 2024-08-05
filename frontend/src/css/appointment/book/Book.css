@@ -31,4 +31,8 @@
         width: 70vw;
         height: 70vh;
     }
+
+    .book .go-back-btn {
+        height: 40px;
+    }
 }

@@ -100,57 +100,68 @@ const Inputs:React.FC<BookingStatus> = ({
         inputOpen ?
         (
           <InputBoxWrapper className='InputBoxWrapper'>
-            <InputWrapper className='InputWrapper'>
-              <Input className='Input'
-                type="text" 
-                placeholder= {editData.hasOwnProperty("clientName") ? editData["clientName"]: "Full Name"}
-                value={name} 
-                onChange={nameHandler} />
-            </InputWrapper>
-            <InputWrapper className='InputWrapper'>
-              <Input className='Input'
-                type="email"
-                placeholder= {editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "Email"}
-                value={email}
-                onChange={emailHandler}
-                
-              />
-            </InputWrapper>
-            <InputWrapper className='InputWrapper'>
-              <Input className='Input'
-                type="number"   
-                placeholder= {editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "Phone Number"}
-                required={phone_required}
-                value={phone}
-                onChange={phoneHandler}
-              />
-            </InputWrapper>
-            <InputWrapper className='InputWrapper'>
-              <MessageInput className='MessageInput'
-                maxLength={2000}
-                required={message_required}
-                placeholder={editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"] : message_placeholder}
-                value={message}
-                onChange={messageHandler}
-              />
-            </InputWrapper> 
-            <Button disabled={bookingMode ? (dateTimeStaus ? (phone ? false: !email) : true) : !message} className="btn_submit" variant="contained" onClick={handleSubmit}>{submit_btn_text}
-            </Button>
-              {
-                
-                submitPressed ? (
-                    <EmailSender 
-                      nameResetter={setName}
-                      phoneResetter={setPhone}
-                      emailResetter={setEmail}
-                      messageResetter={setMessage}
-                      bookedResetter = {setSubmitPressed} 
-                      clientDetails={allInputFields} 
-                      setEmailSent = {setEmailConfirmed}
-                      contactForm={true}/>            
-                ):""
-              }
+            <div className='input-fields'>
+              <InputWrapper className='InputWrapper'>
+                <Input className='Input'
+                  type="text" 
+                  placeholder= {editData.hasOwnProperty("clientName") ? editData["clientName"]: "Full Name"}
+                  value={name} 
+                  onChange={nameHandler} />
+              </InputWrapper>
+              <InputWrapper className='InputWrapper'>
+                <Input className='Input'
+                  type="email"
+                  placeholder= {editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "Email"}
+                  value={email}
+                  onChange={emailHandler}
+                  
+                />
+              </InputWrapper>
+              <InputWrapper className='InputWrapper'>
+                <Input className='Input'
+                  type="number"   
+                  placeholder= {editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "Phone Number"}
+                  required={phone_required}
+                  value={phone}
+                  onChange={phoneHandler}
+                />
+              </InputWrapper>
+              <InputWrapper className='InputWrapper'>
+                <MessageInput className='MessageInput'
+                  maxLength={2000}
+                  required={message_required}
+                  placeholder={editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"] : message_placeholder}
+                  value={message}
+                  onChange={messageHandler}
+                />
+              </InputWrapper> 
+            </div>
+            <div className='submit-and-email'>
+              <Button 
+                disabled={bookingMode ? (dateTimeStaus ? (phone ? false: !email) : true) : !message} 
+                className="btn_submit" 
+                variant="contained" 
+                onClick={handleSubmit}
+                >
+                {submit_btn_text}
+              </Button>
+                {
+                  
+                  submitPressed ? (
+                      <EmailSender 
+                        nameResetter={setName}
+                        phoneResetter={setPhone}
+                        emailResetter={setEmail}
+                        messageResetter={setMessage}
+                        bookedResetter = {setSubmitPressed} 
+                        clientDetails={allInputFields} 
+                        setEmailSent = {setEmailConfirmed}
+                        contactForm={true}/>            
+                  ):""
+                }
+              </div>
           </InputBoxWrapper>
+
         ):
         (
           <></>
