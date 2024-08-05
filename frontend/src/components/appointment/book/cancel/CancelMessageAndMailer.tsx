@@ -34,7 +34,7 @@ type CancelStatus = {
 }
 
 const CancelMessageAndMailer:React.FC<CancelStatus> = (prop:CancelStatus) =>{
-  const {popUp, setPopUp} = useContext(PopUpContext)
+  const {setPopUp} = useContext(PopUpContext)
   
   const clientDetailsAppt = [
                               prop.confirmedData["clientName"], prop.confirmedData["clientEmail"], prop.confirmedData["clientPhone"], 

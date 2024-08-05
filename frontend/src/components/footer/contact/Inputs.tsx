@@ -34,7 +34,7 @@ const Inputs:React.FC<BookingStatus> = ({
 
   const pushData = ()=> {
     for (const i in allInputFields){
-      if(allInputFields[i].length !=0){
+      if(allInputFields[i].length !==0){
         inputData[allInputFieldsStr[i]] = allInputFields[i]
       }
     }

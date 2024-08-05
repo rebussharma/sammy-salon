@@ -33,7 +33,7 @@ type Props = {
 }
 
 const SuccessAndCancel: React.FC<Props> = (prop: Props) => {
-  const {popUp, setPopUp} = useContext(PopUpContext)
+  const {setPopUp} = useContext(PopUpContext)
   
   const clientDetailsAppt = [
                               prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],

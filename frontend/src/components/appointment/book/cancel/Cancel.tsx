@@ -88,7 +88,7 @@ const Cancel:React.FC<Booking> = (book:Booking) => {
     )
     :
     (
-      <CancelMessageAndMailer cancelStatus={cancelStatus} appointmentId={appointmentData["id"]} confirmedData={appointmentData}></CancelMessageAndMailer>
+      <CancelMessageAndMailer cancelStatus={cancelStatus} appointmentId={appointmentId} confirmedData={appointmentData}></CancelMessageAndMailer>
     )
 
     
