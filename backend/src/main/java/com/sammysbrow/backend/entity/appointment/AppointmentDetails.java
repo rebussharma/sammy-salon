@@ -1,7 +1,6 @@
 package com.sammysbrow.backend.entity.appointment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sammysbrow.backend.exception.ResourceNotFoundException;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -23,6 +22,9 @@ public class AppointmentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
+    @Column(name = "data_insertion_date")
+    private LocalDateTime data_insertion_date;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "confirmation_code", referencedColumnName = "id")

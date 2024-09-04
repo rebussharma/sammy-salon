@@ -1,10 +1,10 @@
 package com.sammysbrow.backend.dto.appointment;
-import com.sammysbrow.backend.entity.appointment.ConfirmationCodeSequence;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AppointmentDetailsDto {
     private Long Id;
+    private LocalDateTime data_insertion_date = LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
     private Long confirmationCode;
     private LocalDateTime appointmentDateTime;
     private String serviceType;
@@ -21,6 +22,4 @@ public class AppointmentDetailsDto {
     private Long clientPhone;
     private String appointmentNotes;
     private String appointmentStatus;
-
-
 }

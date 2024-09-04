@@ -9,7 +9,6 @@ import com.sammysbrow.backend.repository.appointment.ConfirmationRepository;
 import com.sammysbrow.backend.service.appointment.AppointmentDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -73,7 +72,5 @@ public class AppointmentDetailsDetailsServiceImpl implements AppointmentDetailsS
                 () -> new ResourceNotFoundException("Appointment with confirmation code: " + code + " not found")
         );
     }
-
-
 
 }

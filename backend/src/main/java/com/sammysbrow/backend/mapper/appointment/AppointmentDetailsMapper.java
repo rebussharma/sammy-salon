@@ -10,6 +10,7 @@ public class AppointmentDetailsMapper {
     public static AppointmentDetailsDto mapToAppointmentDetailsDto (AppointmentDetails appointmentDetails){
         return new AppointmentDetailsDto(
                 appointmentDetails.getId(),
+                appointmentDetails.getData_insertion_date(),
                 appointmentDetails.getConfirmationCode().getId(),
                 appointmentDetails.getAppointmentDateTime(),
                 appointmentDetails.getServiceType(),
@@ -25,6 +26,7 @@ public class AppointmentDetailsMapper {
     public static AppointmentDetails mapToAppointmentDetails (AppointmentDetailsDto appointmentDetailsDto){
         return new AppointmentDetails(
                 appointmentDetailsDto.getId(),
+                appointmentDetailsDto.getData_insertion_date(),
                 new ConfirmationCodeSequence(appointmentDetailsDto.getConfirmationCode()),
                 appointmentDetailsDto.getAppointmentDateTime(),
                 appointmentDetailsDto.getServiceType(),

@@ -16,6 +16,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class ConfirmationCodeSequence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "custom-id")
-    @GenericGenerator(name = "custom-id", strategy = "com.sammysbrow.backend.entity.appointment.ConfirmationCodeGenerator")
+    @GenericGenerator(name = "custom-id", type = com.sammysbrow.backend.entity.appointment.ConfirmationCodeGenerator.class)
     private Long id;
 }
