@@ -127,8 +127,8 @@
 				<artifactId>depgraph-maven-plugin</artifactId>
 				<version>4.0.3</version>
 			</plugin>
-
 		</plugins>
+		<finalName>sammy-salon-backend</finalName>
 	</build>
 
 </project>
