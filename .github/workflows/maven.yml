@@ -27,13 +27,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+          
       - name: Build with Maven
-        working-directory: ./backend
-        run: mvn clean install
+        run: mvn -f ./backend/pom.xml clean install
 
-      - name: depgraph-maven-plugin
-        working-directory: ./backend
-        run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph -DgraphFormat=json
+      - name: Run dependency graph plugin
+        run: mvn -f ./backend/pom.xml com.github.ferstl:depgraph-maven-plugin:4.0.1:graph
 
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
