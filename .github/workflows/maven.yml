@@ -57,6 +57,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          directory: /home/runner/work/sammy-salon/sammy-salon/backend
+          context: ./backend
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/sammy-salon-backend:dev
