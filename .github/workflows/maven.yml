@@ -31,10 +31,9 @@ jobs:
         working-directory: ./backend
         run: mvn clean install
 
-      - name: Run dependency graph plugin
-        run: |
-          cd backend
-          mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph -DgraphFormat=json
+      - name: depgraph-maven-plugin
+        working-directory: ./backend
+        run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph -DgraphFormat=json
 
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
