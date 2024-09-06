@@ -1,4 +1,5 @@
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk-focal
 EXPOSE 8080
-ADD taget/sammy-salon-backend.jar sammy-salon-backend.jar
-ENTRYPOINT ["java", "-jar", "/sammy-salon-backend.jar"]
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
