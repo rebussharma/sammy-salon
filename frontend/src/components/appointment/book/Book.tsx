@@ -105,9 +105,9 @@ const Book:React.FC<Booking> = (book:Booking) => {
             ):
             ( // case: edit booking
                 <div className='book'>
-                    <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>
                     <ServiceBox inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox>
-                    <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>                    
+                    <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>      
+                    <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>              
                     <Inputs editData={inputData} dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
                     <Button className = "go-back-btn" onClick={handleGoBack}>Go Back</Button>
                 </div>
@@ -117,9 +117,9 @@ const Book:React.FC<Booking> = (book:Booking) => {
     }else{
         return (
             <div className='book'>
-                <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>
                 <ServiceBox inputOpen={inputOpen} setInputOpen={setInputOpen} editData={serviceData} setAllChecked={handleServiceData}></ServiceBox>
                 <Artist serviceData = {serviceData} setArtist={setArtistData}></Artist>
+                <Schedule editData = {appointmentDateTime} setScheduleSuccess = {handleScheduleSuccess} setAppointmentDateTimeSchedue = {handleAppointmentDateTime}></Schedule>
                 <Inputs editData={inputData} dateTimeStaus = {dateTimePicked} bookingMode = {true} setBookingSubmit={setBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
                 <Button className = "go-back-btn" onClick={handleGoBack}>Go Back</Button>
             </div>

@@ -10,7 +10,7 @@
     {
         "name": "Samjhana",
         "experience": 5,
-        "services": ["Threading", "Lashes"],
+        "services": ["Threading", "Lashes", "Waxing"],
         "Expertise": "Threading, spa",
         "workdays": "Monday, Tuesday, Wednesday, Thursday, Firday",
         "active":true
@@ -19,7 +19,7 @@
         "name": "Sam",
         "experience": 3,
         "services": ["Threading", "Facial"],
-        "Expertise": "Threading, Lashes",
+        "Expertise": "Threading, Facial",
         "workdays": "Saturday Sunday",
         "active":true
     }

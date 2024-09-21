@@ -1,12 +1,12 @@
 import { Button } from "@mui/material"
 import { useContext, useState } from "react"
-import "../../../css/appointment/book/MainBook.css"
+import "../../../css/appointment/book/BookCancel.css"
 import { PopUpContext } from '../PopUp'
 import Book from "./Book"
 import Cancel from "./cancel/Cancel"
 
 
-const MainBook = () => {
+const BookCancel = () => {
   const [bookingState, setBookingState] = useState<Number>(0)
   const {popUp, setPopUp} = useContext(PopUpContext)
 
@@ -49,4 +49,4 @@ const MainBook = () => {
   )
 }
 
-export default MainBook
+export default BookCancel

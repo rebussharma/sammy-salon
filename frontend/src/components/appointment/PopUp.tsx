@@ -1,7 +1,7 @@
 import Modal from '@mui/material/Modal';
 import React from 'react';
 import '../../css/appointment/PopUp.css';
-import MainBook from './book/MainBook';
+import BookCancel from './book/BookCancel';
 
 type PopUpBox = {
   popUp: boolean,
@@ -36,7 +36,7 @@ const PopUp:React.FC<PopUpBox> = ({
         >
           <>
             <button className="close-modal-btn" onClick={handleClose}> X </button>
-            <MainBook></MainBook>
+            <BookCancel></BookCancel>
           </>
         </Modal>
       </PopUpContext.Provider>
