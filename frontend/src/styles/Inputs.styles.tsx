@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const InputBoxWrapper = styled.form`
   height: 90%;
   position: relative;
-  padding-bottom: 10px;
   display:flex;
   justify-content: space-around;
   flex-direction: column;
@@ -19,7 +18,6 @@ export const InputWrapper = styled.div`
   border: 1px solid transparent;
   width: 100%;
   max-height: 15%;
-  padding-left: 10px;
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {

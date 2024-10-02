@@ -1,52 +1,21 @@
-.confirm-page{
-    position: relative;
-    height: 60vh;
-    top: 10%;
+/* ConfirmPage.css */
+
+.confirm-page {
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
-}
-
-.confirm-page .css-eyqe3m:first-child{
-    height: 40%;
-}
-
-.confirm-page .css-eyqe3m:last-child{
-    height: 25%;
-}
-.confirm-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: relative;
-    height: 80%;
-}
-
-.confirm-edit-btn{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    position: relative;
-    height: 80%;
-}
-
-.confirm-edit-btn .confirm-btn{
-    background-color: #bbde86;
-    border: 1px solid;
-    color: #827676;
-    &:hover{
-        background-color: #324d12;
-        font-weight: bold;
-        color: wheat;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+  
+  .confirm-details {
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 600px) {
+    .confirm-page {
+      padding: 1rem 0;
     }
-} 
-
-.confirm-edit-btn .edit-appt{
-    background-color: #dcdcbb;
-    border: 1px solid;
-    color: #827676;
-    &:hover{
-        background-color: #444433;
-        font-weight: bold;
-        color: white;
-    }
-}
+  }
+  
+  /* You can add more custom styles here if needed */

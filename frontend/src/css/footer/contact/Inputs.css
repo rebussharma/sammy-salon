@@ -1,5 +1,6 @@
 .inputs{
     height: inherit !important;
+    width: 100%;
 }
 
 .InputBoxWrapper .input-fields {
@@ -7,16 +8,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    max-width: 90%;
 }
 
-.InputBoxWrapper .submit-and-email{
+.submit-and-email{
     height: 15%;
     width: 100%;
 }
 
 .InputBoxWrapper .submit-and-email .btn_submit{
     height: 80%;
-    width: inherit;
+    width: 100%;
 }
 .alert-box{
     display: block;

@@ -1,5 +1,5 @@
 .book{
-    height: 90vh;
+    height: 95%;
     width: 50vw;
     position: relative;
     margin-left: auto;
@@ -8,13 +8,13 @@
     flex-direction: column;
     justify-content:space-evenly;
     background-color: white;
-    top: 5vh;
-    padding: 20px;
-    border-radius: 2%;
+    top: 5%;
 }
 
 .book.confirm{
     align-items: center;
+    max-width: fit-content;
+    padding: 0 20px;
 }
 
 .book .go-back-btn{

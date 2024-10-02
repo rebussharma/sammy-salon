@@ -1,40 +1,29 @@
-import React, { useState } from "react";
-import 'react-horizontal-scrolling-menu/dist/styles.css';
+import React from "react";
+import { ScrollMenu } from "react-horizontal-scrolling-menu";
 import service_data from '../../../../../assets/data/services.json';
-
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import styles from "../../../../../css/appointment/bookingModules/service-type/selection/App.module.css";
+import "../../../../../css/appointment/bookingModules/service-type/slider/MenuSlider.css";
 import { LeftArrow, RightArrow } from "./Arrows";
 import { MainService } from "./MainService";
 
 interface SliderMenuProps {
   onMenuItemClick: (menuItem: string) => void;
+  selectedMenuItem: string | null;
 }
 
-// const menuItems = ["gggK", "hhhh", "sssss"];
-const menuItems = service_data.map((item)=>(item.title));
+const menuItems = service_data.map((item) => item.title);
 
-type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
-
-const MenuSlider: React.FC<SliderMenuProps> = ({ onMenuItemClick }) => {
-  const [selectedMenu, setSelectedMenu] = useState<string>()
-  const handleClick = (item:string) =>{
-    onMenuItemClick(item)
-    setSelectedMenu(item)
-  }
+const MenuSlider: React.FC<SliderMenuProps> = ({ onMenuItemClick, selectedMenuItem }) => {
   return (
     <div className={styles["slider-menu"]}>
-      <ScrollMenu
-            LeftArrow={LeftArrow}
-            RightArrow={RightArrow}
-            onWheel={onWheel}
-      >
-      {menuItems.map((item) => (
-         <MainService
-          title={item}
-          key={item}
-          onClick={() => handleClick(item)} 
-          selected={item === selectedMenu}       
+      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow} scrollContainerClassName={styles["scroll-container"]}>
+        {menuItems.map((item) => (
+          <MainService
+            itemId={item} // Add this line to provide a unique id for each item
+            title={item}
+            key={item}
+            onClick={() => onMenuItemClick(item)}
+            selected={item === selectedMenuItem}
           />
         ))}
       </ScrollMenu>
@@ -43,18 +32,3 @@ const MenuSlider: React.FC<SliderMenuProps> = ({ onMenuItemClick }) => {
 };
 
 export default MenuSlider;
-function onWheel(apiObj: scrollVisibilityApiType, ev: React.WheelEvent): void {
-  const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
-
-  if (isThouchpad) {
-    ev.stopPropagation();
-    return;
-  }
-
-  if (ev.deltaY < 0) {
-    apiObj.scrollNext();
-  } else if (ev.deltaY > 0) {
-    apiObj.scrollPrev();
-  }
-}
-

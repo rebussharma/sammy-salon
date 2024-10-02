@@ -1,24 +1,29 @@
 .main-service {
-    border: 1px solid;
-    display: inline-block;
-    margin: 0 10px;
-    width: 100px;
-    height: 30px;
+    display: inline-flex; /* Change to inline-flex for better alignment */
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    margin: 0 5px; /* Add some horizontal margin between items */
     text-align: center;
-    align-content: center;
     user-select: none;
     cursor: pointer;
     border-radius: 20px;
-    background-color: rgb(191 149 149);
-    color: white;
-    &:hover{
-        background-color: rgb(214, 170, 170);
-        font-weight: bold;
-    }
-}
-
-.main-service.selected {
-    border: 1px solid;
-    background-color: rgb(213 58 58);
-    font-weight: bold;
-}
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .main-service:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+  }
+  
+  .main-service.selected {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  }
+  

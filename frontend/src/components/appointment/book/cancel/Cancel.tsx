@@ -1,15 +1,14 @@
 import { Button } from "@mui/material";
 import axios from "axios";
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useContext, useState } from "react";
 import '../../../../css/appointment/book/cancel/Cancel.css';
 import { Input, InputWrapper } from '../../../../styles/Inputs.styles';
+import { PopUpContext } from "../../PopUp";
 import CancelMessageAndMailer from "./CancelMessageAndMailer";
 
-type Booking = {
-  setGoback(num:any):void
-}
+const Cancel:React.FC= () => {
+  const { pushView } = useContext(PopUpContext);
 
-const Cancel:React.FC<Booking> = (book:Booking) => {
   const [confirmationCode, setConfirmationCode] = useState('')
   const [cancelStatus, setCancelStatus] = useState(0)
   const [appointmentData, setAppointmenData] = useState<any>({})
@@ -60,10 +59,6 @@ const Cancel:React.FC<Booking> = (book:Booking) => {
     }
   }
 
-  const handleGoBack = () =>{
-    book.setGoback(0)
-  }
-
   return (
     cancelStatus === 0 ? (
       <div className="cancel">
@@ -82,8 +77,6 @@ const Cancel:React.FC<Booking> = (book:Booking) => {
           </InputWrapper>
         </div>
       <Button disabled={!confirmationCode} className="cancel-btn" onClick={handleCancel}>Cancel Appointment</Button>
-      <Button className="go-back-btn" onClick={handleGoBack}>Go Back</Button>
-
     </div>
     )
     :

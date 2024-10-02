@@ -10,7 +10,6 @@ export const DetailsBarWrapper = styled.div`
   align-items: center;
   height: 55%;
   max-width: 60%;
-  padding: 5px;
   padding-bottom: 40px;
   @media (max-width:640px){
     width:54%;

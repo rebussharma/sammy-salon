@@ -1,5 +1,6 @@
-// SubMenu.tsx
 import React from "react";
+import "../../../../../css/appointment/bookingModules/service-type/selection/SubMenu.css";
+
 import service_data from '../../../../../assets/data/services.json';
 import styles from "../../../../../css/appointment/bookingModules/service-type/selection/App.module.css";
 
@@ -21,26 +22,24 @@ function transformArray(array:any) {
 }
 
 const subMenus = transformArray(service_data);
-
-const SubMenu: React.FC<SubMenuProps> = ({
-  menuItem,
-  checkedState,
-  onCheckboxChange,
-}) => {
-  const handleCheckboxChange = (checkboxTitle: string) => {
-    onCheckboxChange(menuItem, checkboxTitle);
-  };
-  
+const SubMenu: React.FC<SubMenuProps> = ({ menuItem, checkedState, onCheckboxChange }) => {
   return (
     <div className={`${styles.submenu} ${styles.active}`}>
       {subMenus[menuItem].map((checkbox:any) => (
-        <div key={checkbox.title} className={styles["checkbox-item"]}>
-          <label htmlFor={checkbox.title}>{checkbox.title} {checkbox.cost} {checkbox.time}</label>
+        <div key={checkbox.title} className="label-checkbox">
+          <label htmlFor={checkbox.title} className="submenu-label">
+            <div className="first-two-label">
+              <div className="sub-label">{checkbox.title}</div>
+              <div className="sub-label">{checkbox.cost}</div>
+            </div>
+            <div className="sub-label">{checkbox.time}</div>
+          </label>
           <input
             type="checkbox"
             id={checkbox.title}
             checked={checkedState[checkbox.title]}
-            onChange={() => handleCheckboxChange(checkbox.title)}
+            style={{cursor:'pointer'}}
+            onChange={() => onCheckboxChange(menuItem, checkbox.title)}
           />
         </div>
       ))}

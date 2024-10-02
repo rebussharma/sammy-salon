@@ -1,119 +1,101 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle, faFaceFrown, faFaceSadCry, faFaceSmileBeam, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
 import axios from 'axios';
 import React, { useContext } from 'react';
-import { Fade } from 'react-awesome-reveal';
-import styled from 'styled-components';
 import '../../../css/appointment/pushData/SuccessAndCancel.css';
 import EmailSender from '../../EmailSender';
 import { PopUpContext } from '../PopUp';
 
-const MessageWrapper = styled.div`
-  margin-top: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SuccessMessage = styled.h2`
-  font-size: 25px;
-  color: rgb(8, 8, 63);
-  text-align: center;
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
-`;
-type Props = {
-  appointmentId: number|undefined
-  setCancelledStatus(val:number): void;
-  postDataCancel: any
+interface Props {
+  appointmentId: number | undefined;
+  setCancelledStatus(val: number): void;
+  postDataCancel: any;
 }
 
-const SuccessAndCancel: React.FC<Props> = (prop: Props) => {
-  const {setPopUp} = useContext(PopUpContext)
-  
-  const clientDetailsAppt = [
-                              prop.postDataCancel["clientName"], prop.postDataCancel["clientEmail"], prop.postDataCancel["clientPhone"], prop.postDataCancel["clientMessage"],
-                              prop.postDataCancel["appointmentDateTime"],prop.postDataCancel["serviceType"],prop.postDataCancel["artist"],prop.postDataCancel["appointmentStatus"],
-                              prop.postDataCancel["confirmationCode"]
-                            ]
-  console.log("hello",prop.postDataCancel);
-  
-  const handleCancelAppointment = () =>{
-    prop.postDataCancel["appointmentStatus"] = "cancelled"    
-
-    axios.put(`http://localhost:8080/api/appointments/${prop.appointmentId}`, prop.postDataCancel)
+const SuccessAndCancel: React.FC<Props> = ({ appointmentId, setCancelledStatus, postDataCancel }) => {
+const { setPopUp } = useContext(PopUpContext);
+const clientDetailsAppt = [
+postDataCancel.clientName,
+postDataCancel.clientEmail,
+postDataCancel.clientPhone,
+postDataCancel.clientMessage,
+postDataCancel.appointmentDateTime,
+postDataCancel.serviceType,
+postDataCancel.artist,
+postDataCancel.appointmentStatus,
+postDataCancel.confirmationCode,
+];
+const handleCancelAppointment = () => {
+  postDataCancel.appointmentStatus = "cancelled";
+  axios.put(`http://localhost:8080/api/appointments/${appointmentId}`, postDataCancel)
     .then(function (response) {
-      prop.setCancelledStatus(1)
+      setCancelledStatus(1);
       console.log("Appointment Cancelled", response);
     })
     .catch(function (error) {
-      prop.setCancelledStatus(-1)
-      console.error("Error Cancelling Appointment",error);
+      setCancelledStatus(-1);
+      console.error("Error Cancelling Appointment", error);
     });
-  }
-    
-  return (
-    <React.Fragment>
-      <Fade duration={700} direction="right">
-        { 
-          (prop.appointmentId === -1 || !prop.appointmentId)?
-          (
-            <div className='error'>
-
-              <MessageWrapper>
-                <div className='icon-wrapper' id='error-icon-wrapper'>
-                  <FontAwesomeIcon icon={faXmark as IconProp} /> 
-                  <FontAwesomeIcon icon={faFaceFrown as IconProp} />
-                  <FontAwesomeIcon icon={faFaceSadCry} />
-                  <FontAwesomeIcon icon={faXmark as IconProp} /> 
-                </div>
-
-              <SuccessMessage id="success-message-error">We Ran an Into an Issue; Please Call or Email Us to Book</SuccessMessage>
-              </MessageWrapper>
-              <div className='success-btn-wapper'>
-                <div className='error-contact'>
-                  <Button href='tel://8322791992'> Call Us: (832) 279-1992</Button>
-                  <Button href={`mailto:sammysbrow@gmail.com?subject=Book Appointment`}>Email Us</Button>
-                </div>
-                <Button onClick={() => setPopUp(false)}> Back to Home</Button>
-              </div>
-            </div>
-
-          )
-          :
-          (
-            <div className='success'>
-              <MessageWrapper>
-                <div className='success-icon-wrapper'>
-                  <FontAwesomeIcon icon={faCheckCircle as IconProp} /> 
-                  <FontAwesomeIcon icon={faFaceSmileBeam} />
-                  <FontAwesomeIcon icon={faFaceSmileBeam} />
-                  <FontAwesomeIcon icon={faCheckCircle as IconProp} /> 
-                </div>
-                <div className='success-message'>
-                  <SuccessMessage className="confirmation">Appointment Confirmed!!</SuccessMessage>
-                  <SuccessMessage className="confirmation-code">Confirmation Code: {clientDetailsAppt[8]}</SuccessMessage>
-                  <SuccessMessage className="cancel-notice">We Have Sent You an Email With All the Details</SuccessMessage>
-                  <SuccessMessage className="see-you">See You Soon!!</SuccessMessage>
-                  <EmailSender nameResetter={()=>{}} phoneResetter={()=>{}} emailResetter={()=>{}} messageResetter={()=>{}} bookedResetter={()=>{}} clientDetails={clientDetailsAppt} setEmailSent={()=>{}} contactForm={false}></EmailSender>
-                </div>
-
-              </MessageWrapper>
-              <div className='success-btn-wapper'>
-                <Button onClick={handleCancelAppointment}> Cancel Appointment</Button>
-                <Button onClick={() => setPopUp(false)}> Back to Home</Button>
-              </div>
-            </div>
-          )
-        }
-
-      </Fade>
-    </React.Fragment>
-  );
 };
+const isError = appointmentId === -1 || !appointmentId;
+return (
+  <div className="success-cancel-container">
+    <div className="message-paper">
+      <div className="icon-wrapper">
+        {isError ? (
+          <ErrorIcon className="error-icon" />
+        ) : (
+          <CheckCircleIcon className="success-icon" />
+        )}
+      </div>
 
-export default SuccessAndCancel;
+      {isError ? (
+        <>
+          <h2 className="message-title">We Ran Into an Issue</h2>
+          <p className="message-body">
+            Please call or email us to book your appointment.
+          </p>
+          <div className="button-wrapper">
+            <a href="tel://8322791992" className="cancel-button">
+              Call Us: (832) 279-1992
+            </a>
+            <a href="mailto:sammysbrow@gmail.com?subject=Book Appointment" className="home-button">
+              Email Us
+            </a>
+          </div>
+        </>
+      ) : (
+        <>
+          <h2 className="message-title">Appointment Confirmed!</h2>
+          <p className="confirmation-code">Confirmation Code: {clientDetailsAppt[8]}</p>
+          <p className="message-body">
+            We have sent you an email with all the details.
+          </p>
+          <h3 className="message-title">See You Soon!</h3>
+          <EmailSender
+            nameResetter={() => {}}
+            phoneResetter={() => {}}
+            emailResetter={() => {}}
+            messageResetter={() => {}}
+            bookedResetter={() => {}}
+            clientDetails={clientDetailsAppt}
+            setEmailSent={() => {}}
+            contactForm={false}
+          />
+          <div className="button-wrapper">
+            <button className="cancel-button" onClick={handleCancelAppointment}>
+              Cancel Appointment
+            </button>
+          </div>
+        </>
+      )}
+
+      <button className="home-button" onClick={() => setPopUp(false)}>
+        Back to Home
+      </button>
+    </div>
+  </div>
+);
+}
+        
+export default SuccessAndCancel

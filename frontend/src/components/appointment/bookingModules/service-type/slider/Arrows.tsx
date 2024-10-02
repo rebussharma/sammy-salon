@@ -1,52 +1,38 @@
 import React from "react";
-import '../../../../../css/appointment/bookingModules/service-type/slider/Arrows.css';
-
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
+import "../../../../../css/appointment/bookingModules/service-type/slider/Arrows.css";
 
 export function LeftArrow() {
-  const visibility = React.useContext(VisibilityContext);
-  const isFirstItemVisible = visibility.useIsVisible("first", true);
+  const { isFirstItemVisible, scrollPrev } = React.useContext(VisibilityContext);
 
   return (
-    <Arrow disabled={isFirstItemVisible} onClick={() => visibility.scrollPrev()}>
-      {"<"}
+    <Arrow disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
+      &lt;
     </Arrow>
   );
 }
 
 export function RightArrow() {
-  const visibility = React.useContext(VisibilityContext);
-  const isLastItemVisible = visibility.useIsVisible("last", false);
+  const { isLastItemVisible, scrollNext } = React.useContext(VisibilityContext);
 
   return (
-    <Arrow disabled={isLastItemVisible} onClick={() => visibility.scrollNext()}>
-      {">"}
+    <Arrow disabled={isLastItemVisible} onClick={() => scrollNext()}>
+      &gt;
     </Arrow>
   );
 }
 
-function Arrow({
-  children,
-  disabled,
-  onClick,
-}: {
+function Arrow({ children, disabled, onClick }: {
   children: React.ReactNode;
   disabled: boolean;
   onClick: VoidFunction;
 }) {
   return (
-    <button className="arrow-btn" id="arrow-btn"
+    <button
+      className="arrow-btn"
       disabled={disabled}
       onClick={onClick}
-      style={{
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        right: "1%",
-        opacity: disabled ? "0" : "1",
-        userSelect: "none"
-      }}
+      style={{ opacity: disabled ? 0.5 : 1 }}
     >
       {children}
     </button>

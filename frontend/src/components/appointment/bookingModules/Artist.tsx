@@ -1,139 +1,120 @@
-import { Button } from '@mui/material';
+import dayjs, { Dayjs } from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import artistList from "../../../assets/data/artists.json";
 import '../../../css/appointment/bookingModules/Artist.css';
+import DateTimePicker from './DateTimePicker';
+
 type Props = {
-  serviceData:any
-  setArtist(artist:string): void;
+  artistBoxOpen: boolean,
+  setArtistBoxOpen: (val: boolean) => void,
+  serviceData: any;
+  setArtist(artist: string): void;
+  setNames(names: string[]): void;
+  setDateTime: (dateTime: Dayjs) => void,
 }
 
-const findSelectedCategories = (data:any) =>{
+type ArtistData = {
+  name: string;
+  nextAvailableDate: string | null;
+  bookedTimes: string[];
+};
+
+const findSelectedCategories = (data: any) => {
   const selectedCategories = [];
   for (let category in data) {
-      if (Object.values(data[category]).includes(true)) {
-        selectedCategories.push(category);
-      }
+    if (Object.values(data[category]).includes(true)) {
+      selectedCategories.push(category);
+    }
   }
   return selectedCategories;
 }
 
-const filterNamesByService = (data:any, customerSelectedcategories:any) => {
-  var relevantArtistForService:string[] = ["Sammy"]
-  return relevantArtistForService.concat(data.filter((person:any) =>
-                      person.services.some(
-                        (service:any) => customerSelectedcategories.includes(service.trim())
-                      )
-                    ).map((person:any) => person.name));
+const filterNamesByService = (data: any, customerSelectedCategories: string[]) => {
+  const relevantArtistForService = ["Sammy"];
+  return relevantArtistForService.concat(data.filter((person: any) =>
+    person.services.some(
+      (service: string) => customerSelectedCategories.includes(service.trim())
+    )
+  ).map((person: any) => person.name));
 }
 
+const Artist: React.FC<Props> = (prop: Props) => {
+  const [relevantArtists, setRelevantArtists] = useState<string[]>([]);
+  const [selectedArtist, setSelectedArtist] = useState('');
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [artistsData, setArtistsData] = useState<ArtistData[]>([]);
+  const [selectedDateTime, setSelectedDateTime] = useState<{ artist: string, date: string, time: string } | null>(null);
 
-function formatServices(services:string[]) {
-  if (services.length === 1) {
-    return services[0];
-  }
-  const allButLast = services.slice(0, -1).join(', ');
-  const last = services[services.length - 1];
-  return `${allButLast} & ${last}`;
-}
-
-function getMatchingServices(artistServices:any, selectedServices:string[]) {
-  // If artist provides all services, return "All services"
-  if (artistServices.includes("all")) {
-    return "All services";
-  }
-  
-  // Filter artist services to only include those in selected services
-  const matchingServices = artistServices.filter((service:string) => selectedServices.includes(service));
-  
-  // If no matching services, return a message
-  if (matchingServices.length === 0) {
-    return "No matching services";
-  }
-  
-  return formatServices(matchingServices);
-}
-
-const filterServicesByArtist = (artistName:any, selectedServices:string[]) => {
-  const artist = artistList.find(person => person.name === artistName);
-
-  // If artist is found, return matching services; otherwise, return a message
-  if (artist) {
-    return getMatchingServices(artist.services, selectedServices);
-  } else {
-    return ``;
+  const handleArtistOpen = () => {
+    prop.setArtistBoxOpen(!prop.artistBoxOpen);
   }
 
-}
-// Not being used for now
-const allServicesByArtist = (artistName:any) =>{
-  const artist = artistList.find(person => person.name === artistName);
-
-  // If artist is found, return their services formatted with commas; otherwise, return a message
-  if (artist) {
-    return artist.services.includes("all") 
-      ? "All services" 
-      : formatServices(artist.services);
-  } else {
-    return `Artist with name "${artistName}" not found.`;
-  }
-}
-
-
-const Artist:React.FC<Props> = (prop: Props) => {
-  const [artistOpen, setArtistOpen] = useState(false)
-  const [relevantArtist, setRelevantArtist] = useState<string[]>([])
-  const [selectedArtist, setSelectedArtist] = useState('')
-  const [selectedServices, setSelectedServices] = useState<string[]>([])
-  const [filteredServices, setFilteredServices] = useState<string[]>([])
-
-  const handleArtistOpen = () =>{      
-    console.log("artist open is ", artistOpen);
-    setArtistOpen(prevState => !prevState);
+  const handleTimeSelect = (name: string, date: string, time: string) => {
+    setSelectedArtist(name);
+    prop.setArtist(name);
+    
+    // Combine date and time to create a Dayjs object
+    const dateTimeString = `${date} ${time}`;
+    const dateTime = dayjs(dateTimeString, 'YYYY-MM-DD HH:mm');
+    
+    setSelectedDateTime({ artist: name, date, time });
+    prop.setDateTime(dateTime);
+    console.log(`Selected time for ${name}: ${dateTime.format()}`);
   }
 
-  const handleClick = (item:string) => {
-    prop.setArtist(item)
-    setSelectedArtist(item)
-  }
+  useEffect(() => {
+    const selectedServices = findSelectedCategories(prop.serviceData);
+    setSelectedServices(selectedServices);
+    const relevantArtistList = selectedServices.length === 0 ? ["Please select a service first"] : filterNamesByService(artistList, selectedServices);
+    setRelevantArtists(relevantArtistList);
 
-  useEffect(()=>{
-    if(artistOpen){
-      // var selectedServices = findSelectedCategories(prop.serviceData)    
-      // setSelectedServices(selectedServices)
-      const relevantArtistList = selectedServices.length===0 ? ["Please select a service first"] : filterNamesByService(artistList,selectedServices) 
-      setRelevantArtist(relevantArtistList)
-    }  
-  },[artistOpen])
-  
-  useEffect(()=>{
-    var selectedServices = findSelectedCategories(prop.serviceData)    
-    setSelectedServices(selectedServices)
-  },[prop.serviceData])
+    const loadedArtistsData: ArtistData[] = [
+      { name: "Sammy", nextAvailableDate: "2024-09-22", bookedTimes: ["12:00", "15:00"] },
+      { name: "Sam", nextAvailableDate: "2024-10-22", bookedTimes: [] },
+      { name: "Samjhana", nextAvailableDate: null, bookedTimes: [] }
+    ];
+    setArtistsData(loadedArtistsData);
+  }, [prop.serviceData]);
+
+  useEffect(() => {
+    const availableArtists = relevantArtists.filter(name => 
+      artistsData.find(artist => artist.name === name && artist.nextAvailableDate !== null)
+    );
+    prop.setNames(availableArtists);
+  }, [relevantArtists, artistsData]);
 
   return (
-    <div className="artist">
+    <div className="artist-container">
       <div className='artist-title'>
-       <Button className='artist-title btn' onClick={handleArtistOpen}>Step 3: Select an Artist</Button>
+        <button className='artist-title-btn' onClick={handleArtistOpen}>
+          {prop.artistBoxOpen ? 'Close Artist Selection' : 'Select an Artist'}
+        </button>
       </div>
-        {
-          artistOpen ?
-          (
-            <div className='artist-list'> 
-              {
-                relevantArtist.map((item)=>
-                  <div className="artist-name" key={item}>
-                    <Button className= {selectedArtist==item ? "name-btn selected" : "name-btn"} onClick={()=> handleClick(item)} > {item} </Button>
-                    <div className='artist-service-subtitle'> 
-                      {filterServicesByArtist(item, selectedServices)}
-                    </div>
-                  </div>
-              )
-              }
-            </div>
-          ):<></>
-        }
+      {prop.artistBoxOpen && (
+        <div className='artist-date-time-picker'>
+          <div className="artist-dt-main-grid">
+            {relevantArtists.map((name) => {
+              const artistData = artistsData.find(artist => artist.name === name);
+              if (!artistData || artistData.nextAvailableDate === null) return null;
+              
+              return (
+                <div key={name} className="artist-dt-details-wrapper">
+                  <div className="artist-dt-artist-name">{name}</div>
+                  <DateTimePicker
+                    name={name}
+                    nextAvailableDate={artistData.nextAvailableDate}
+                    bookedTimes={artistData.bookedTimes}
+                    onTimeSelect={handleTimeSelect}
+                    selectedDateTime={selectedDateTime}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default Artist
+export default Artist;

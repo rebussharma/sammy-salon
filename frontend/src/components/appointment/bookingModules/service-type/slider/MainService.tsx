@@ -1,24 +1,22 @@
-import '../../../../../css/appointment/bookingModules/service-type/slider/MainService.css';
+import "../../../../../css/appointment/bookingModules/service-type/slider/MainService.css";
 
-export function MainService({
-  selected,
-  onClick,
-  title,
-}: {
+interface MainServiceProps {
+  itemId: string; // Add this line to include itemId in the props
   selected: boolean;
-  onClick: Function;
+  onClick: () => void;
   title: string;
-}) {
+}
+
+export function MainService({ itemId, selected, onClick, title }: MainServiceProps) {
   return (
     <div
-      onClick={() => onClick()}
+      itemID={itemId} // Add this line to set the itemId
+      onClick={onClick}
       role="button"
       tabIndex={0}
-      className={selected ? "main-service selected" : "main-service"}
+      className={`main-service ${selected ? 'selected' : ''}`}
     >
-      <div>
-        <div>{title}</div>
-      </div>
+      {title}
     </div>
   );
 }

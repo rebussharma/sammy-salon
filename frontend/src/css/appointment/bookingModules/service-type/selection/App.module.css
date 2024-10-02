@@ -1,20 +1,30 @@
-/* App.module.css */
 .slider-menu {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px;
-  }
-  
-.menu-item {
-  cursor: pointer;
-  padding: 10px;
-  margin-right: 10px;
-  border-radius: 5px;
-  background-color: #f0f0f0;
-  width: 80px;
+  overflow-x: auto;
+  padding: 0;
+  padding-bottom: 15px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  white-space: nowrap; /* Ensure items stay in a single line */
 }
 
+.scroll-container {
+  display:flex;
+  max-width: 100%;
+}
+.slider-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-menu .react-horizontal-scrolling-menu--scroll-container {
+  display: flex; /* Ensure flex display for horizontal alignment */
+}
+
+.react-horizontal-scrolling-menu--item {
+  margin: 0 10px;
+  flex: 0 0 auto; /* Prevent items from growing or shrinking */
+}
 .submenu {
+  width: 90%;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
@@ -22,8 +32,8 @@
 
 .submenu.active {
   display: flex;
-}
-
-.react-horizontal-scrolling-menu--item{
-  border-radius: 1% !important;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 300px;
+  width: 96%;
 }

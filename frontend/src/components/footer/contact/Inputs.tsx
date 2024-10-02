@@ -4,21 +4,23 @@ import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
 import '../../../styles/Inputs.styles';
 import { InputBoxWrapper, InputWrapper, MessageInput } from '../../../styles/Inputs.styles';
 
+import { Dayjs } from 'dayjs';
 import '../../../css/footer/contact/Inputs.css';
 import EmailSender from '../../EmailSender';
 
 type BookingStatus = {
   editData: {[key: string]: any},
-  dateTimeStaus:boolean,
+  dateTimeData:Dayjs|null|undefined,
   bookingMode: boolean,
   setBookingSubmit: (newState: boolean) => void,
   appendInputData: (data:String[]) => void,
   inputOpen:boolean,
-  setInputOpen:(val:boolean)=>void}
+  setInputOpen:(val:boolean)=>void
+}
 
 
 const Inputs:React.FC<BookingStatus> = ({
-  editData, dateTimeStaus, bookingMode, setBookingSubmit, appendInputData, inputOpen, setInputOpen
+  editData, dateTimeData, bookingMode, setBookingSubmit, appendInputData, inputOpen, setInputOpen
 }: BookingStatus) => {
   
   const [name, setName] = useState(editData.hasOwnProperty("clientName") ? editData["clientName"]: "")
@@ -138,7 +140,7 @@ const Inputs:React.FC<BookingStatus> = ({
             </div>
             <div className='submit-and-email'>
               <Button 
-                disabled={bookingMode ? (dateTimeStaus ? (phone ? false: !email) : true) : !message} 
+                disabled={bookingMode ? (dateTimeData ? (phone ? false: !email) : true) : !message} 
                 className="btn_submit" 
                 variant="contained" 
                 onClick={handleSubmit}

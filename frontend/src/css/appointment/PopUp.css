@@ -1,7 +1,8 @@
-.MuiModal-root.css-79ws1d-MuiModal-root .close-modal-btn{
-    position: absolute !important;
-    top: 7vh !important;
-    right: 25vw !important;
-    z-index: 1;
-    cursor: pointer;
+/* You can add any global styles here if needed */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
+  
+  /* The rest of the styling is now handled by Material-UI and styled components */

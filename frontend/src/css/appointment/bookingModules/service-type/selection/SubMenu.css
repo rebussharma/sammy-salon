@@ -1,0 +1,39 @@
+
+.label-checkbox {
+    width: calc(50% - 10px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: #ffffff00;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgb(12 2 2 / 14%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+.label-checkbox:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .first-two-label {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+  
+  .submenu-label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+  }
+  
+  .submenu-label .sub-label:first-child {
+    font-weight: 600;
+    color: #333;
+  }
