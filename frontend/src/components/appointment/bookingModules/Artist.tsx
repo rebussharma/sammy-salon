@@ -9,7 +9,6 @@ type Props = {
   setArtistBoxOpen: (val: boolean) => void,
   serviceData: any;
   setArtist(artist: string): void;
-  setNames(names: string[]): void;
   setDateTime: (dateTime: Dayjs) => void,
 }
 
@@ -39,7 +38,9 @@ const filterNamesByService = (data: any, customerSelectedCategories: string[]) =
 }
 
 const Artist: React.FC<Props> = (prop: Props) => {
-  const [relevantArtists, setRelevantArtists] = useState<string[]>([]);
+  const [relevantArtists, setRelevantArtists] = useState<string[] | null>([]);
+  const [availableArtists, setAvailableArtists] = useState<string[]>([]);
+
   const [selectedArtist, setSelectedArtist] = useState('');
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [artistsData, setArtistsData] = useState<ArtistData[]>([]);
@@ -59,15 +60,15 @@ const Artist: React.FC<Props> = (prop: Props) => {
     
     setSelectedDateTime({ artist: name, date, time });
     prop.setDateTime(dateTime);
-    console.log(`Selected time for ${name}: ${dateTime.format()}`);
   }
 
   useEffect(() => {
     const selectedServices = findSelectedCategories(prop.serviceData);
     setSelectedServices(selectedServices);
-    const relevantArtistList = selectedServices.length === 0 ? ["Please select a service first"] : filterNamesByService(artistList, selectedServices);
-    setRelevantArtists(relevantArtistList);
 
+    const relevantArtistList = selectedServices.length !== 0 ? filterNamesByService(artistList, selectedServices) : null;
+    setRelevantArtists(relevantArtistList);
+    
     const loadedArtistsData: ArtistData[] = [
       { name: "Sammy", nextAvailableDate: "2024-09-22", bookedTimes: ["12:00", "15:00"] },
       { name: "Sam", nextAvailableDate: "2024-10-22", bookedTimes: [] },
@@ -77,10 +78,17 @@ const Artist: React.FC<Props> = (prop: Props) => {
   }, [prop.serviceData]);
 
   useEffect(() => {
-    const availableArtists = relevantArtists.filter(name => 
-      artistsData.find(artist => artist.name === name && artist.nextAvailableDate !== null)
-    );
-    prop.setNames(availableArtists);
+      const artistToDisplay = artistList.filter(
+        artist => relevantArtists?.includes(artist.name) 
+                  &&
+                  (
+                    artist.services.includes("all") 
+                    ||
+                    selectedServices.every(service => artist.services.includes(service))
+                  )
+      )
+      .map(artist => artist.name);
+      setAvailableArtists(artistToDisplay);
   }, [relevantArtists, artistsData]);
 
   return (
@@ -90,31 +98,42 @@ const Artist: React.FC<Props> = (prop: Props) => {
           {prop.artistBoxOpen ? 'Close Artist Selection' : 'Select an Artist'}
         </button>
       </div>
-      {prop.artistBoxOpen && (
-        <div className='artist-date-time-picker'>
-          <div className="artist-dt-main-grid">
-            {relevantArtists.map((name) => {
-              const artistData = artistsData.find(artist => artist.name === name);
-              if (!artistData || artistData.nextAvailableDate === null) return null;
-              
-              return (
-                <div key={name} className="artist-dt-details-wrapper">
-                  <div className="artist-dt-artist-name">{name}</div>
-                  <DateTimePicker
-                    name={name}
-                    nextAvailableDate={artistData.nextAvailableDate}
-                    bookedTimes={artistData.bookedTimes}
-                    onTimeSelect={handleTimeSelect}
-                    selectedDateTime={selectedDateTime}
-                  />
+      { 
+        prop.artistBoxOpen && (
+          <div className='artist-date-time-picker'>
+            {
+              availableArtists.length === 0 ? (
+                <div className="no-artists-message">Please Select a Service</div>
+              ) : (
+                <div className="artist-dt-main-grid">
+                  {
+                    availableArtists.map((name) => {
+                      const artistData = artistsData.find(artist => artist.name === name);
+                      if (!artistData || artistData.nextAvailableDate === null) return null;
+                    
+                      return (
+                        <div key={name} className="artist-dt-details-wrapper">
+                          <div className="artist-dt-artist-name">{name}</div>
+                          <DateTimePicker
+                            name={name}
+                            nextAvailableDate={artistData.nextAvailableDate}
+                            bookedTimes={artistData.bookedTimes}
+                            onTimeSelect={handleTimeSelect}
+                            selectedDateTime={selectedDateTime}
+                          />
+                        </div>
+                      );
+                    })
+                  }
                 </div>
-              );
-            })}
+              )
+            }
           </div>
-        </div>
-      )}
+        )
+      }
     </div>
   );
+  
 }
 
 export default Artist;

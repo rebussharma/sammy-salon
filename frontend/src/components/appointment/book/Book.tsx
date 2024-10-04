@@ -24,7 +24,6 @@ const Book:React.FC = () => {
     // Line below are used to get data from all three child componenets, merge them into Json for POST request                                                            
     const [appointmentDateTime, setAppointmentDateTime] = useState<Dayjs|null>()
     const [artist, setArtist] = useState<string>()
-    const [artistNames, setArtistNames] = useState<string[]>([])
     const [serviceData, setServiceData] = useState<any>()
     const [inputData, setInputData] = useState<String[]>([])
     const [confirmedData, setConfirmedData] = useState<any>({})
@@ -93,7 +92,7 @@ const Book:React.FC = () => {
             ( // case: edit booking
                 <div className='book'>
                     <ServiceBox artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox>
-                    <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setNames = {setArtistNames} setDateTime = {setAppointmentDateTime}></Artist>      
+                    <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setDateTime = {setAppointmentDateTime}></Artist>      
                     <Inputs editData={inputData} dateTimeData = {appointmentDateTime} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
                 </div>
             )
@@ -103,7 +102,7 @@ const Book:React.FC = () => {
         return (
             <div className='book'>
                 <ServiceBox artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox>
-                <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setNames = {setArtistNames} setDateTime = {setAppointmentDateTime}></Artist>      
+                <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setDateTime = {setAppointmentDateTime}></Artist>      
                 <Inputs editData={inputData} dateTimeData = {appointmentDateTime} bookingMode = {true} setBookingSubmit={setBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
             </div>
             
