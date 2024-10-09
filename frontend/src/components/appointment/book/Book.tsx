@@ -34,8 +34,6 @@ const Book:React.FC = () => {
     const [serviceSelected, setServiceSelected] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
-
-
     // fetches data once appt is confirmed
     const handleConfirmedData = (data:any) => {
         setConfirmedData(data)
@@ -93,7 +91,12 @@ const Book:React.FC = () => {
         dataToPost["serviceType"] = `(${selectedServices.length}) ${selectedServices.map((item)=>" "+item)}`
         dataToPost["artist"] = artist
         dataToPost["appointmentStatus"] = cancelBooking === 1? "cancelled" : "confirmed"
-        let postData = Object.assign({}, dataToPost, inputData);                
+        let postData = Object.assign({}, dataToPost, inputData);   
+        let artistEditData = {
+          artist: artist,
+          date: appointmentDateTime?.format("YYYY-MM-DD"),
+          time: appointmentDateTime?.format("HH:mm")
+        }             
                         
         if(confirmBooking){            
             return cancelBooking !== 0? (
@@ -114,8 +117,22 @@ const Book:React.FC = () => {
             ):
             ( // case: edit booking
                 <div className='book'>
-                    {/* <ServiceBox artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox> */}
-                    {/* <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setDateTime = {setAppointmentDateTime}></Artist>       */}
+              <ServiceBox
+                setAllChecked={handleServiceData}
+                editData={serviceData}
+              />
+              <div className={'artist-container-wrapper expanded'}>
+                  <div className={`artist-container visible`}>
+                    <Artist
+                      serviceData={serviceData}
+                      setArtist={setArtist}
+                      setDateTime={setAppointmentDateTime}
+                      inputOpen={inputOpen}
+                      setInputOpen={setInputOpen}
+                      artistEditData = {artistEditData}
+                    />
+                  </div>
+              </div>
                     <Inputs editData={inputData} dateTimeData = {appointmentDateTime} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
                 </div>
             )
@@ -137,6 +154,7 @@ const Book:React.FC = () => {
                       setDateTime={setAppointmentDateTime}
                       inputOpen={inputOpen}
                       setInputOpen={setInputOpen}
+                      artistEditData = {null}
                     />
                   </div>
                 ) : (

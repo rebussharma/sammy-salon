@@ -15,6 +15,7 @@
     align-items: center;
     max-width: fit-content;
     padding: 0 20px;
+    display: block;
 }
 
 .book .go-back-btn{

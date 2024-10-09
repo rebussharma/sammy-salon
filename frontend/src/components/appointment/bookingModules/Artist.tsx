@@ -1,10 +1,19 @@
 import { Button } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat'; // Import advancedFormat plugin for day suffixes
 import React, { useEffect, useState } from 'react';
 import artistList from "../../../assets/data/artists.json";
 import '../../../css/appointment/animations.css';
 import '../../../css/appointment/bookingModules/Artist.css';
 import DateTimePicker from './DateTimePicker';
+dayjs.extend(advancedFormat);
+
+type ArtistData = {
+  name: string;
+  nextAvailableDate: string | null;
+  bookedTimes: string[];
+};
+
 
 type Props = {
   serviceData: any;
@@ -12,13 +21,8 @@ type Props = {
   setDateTime: (dateTime: Dayjs) => void,
   inputOpen:boolean,
   setInputOpen: (inputStatus: boolean) => void
+  artistEditData:any
 }
-
-type ArtistData = {
-  name: string;
-  nextAvailableDate: string | null;
-  bookedTimes: string[];
-};
 
 const findSelectedCategories = (data: any) => {
   const selectedCategories = [];
@@ -39,6 +43,17 @@ const filterNamesByService = (data: any, customerSelectedCategories: string[]) =
   ).map((person: any) => person.name));
 }
 
+const formatSelectedDateTime = (selectedDateTimeObj: any) => {
+  const { date, time } = selectedDateTimeObj;
+
+  // Combine date and time strings
+  const dateTimeString = `${date}T${time}`;
+
+  // Use dayjs to format the datetime string
+  return dayjs(dateTimeString).format('dddd, Do MMM [at] hA');
+};
+
+
 const Artist: React.FC<Props> = (prop: Props) => {
   const [relevantArtists, setRelevantArtists] = useState<string[] | null>([]);
   const [availableArtists, setAvailableArtists] = useState<string[]>([]);
@@ -46,7 +61,7 @@ const Artist: React.FC<Props> = (prop: Props) => {
   const [selectedArtist, setSelectedArtist] = useState('');
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [artistsData, setArtistsData] = useState<ArtistData[]>([]);
-  const [selectedDateTime, setSelectedDateTime] = useState<{ artist: string, date: string, time: string } | null>(null);
+  const [selectedDateTime, setSelectedDateTime] = useState<{ artist: string, date: string, time: string } | null>(prop.artistEditData);
 
   const handleTimeSelect = (name: string, date: string, time: string) => {
     setSelectedArtist(name);
@@ -125,7 +140,7 @@ const Artist: React.FC<Props> = (prop: Props) => {
     (
       <div className='time-info-select'>
         <div className='time-info'>
-          You've selected {selectedDateTime?.date} at {selectedDateTime?.time} with {selectedDateTime?.artist}
+          You've selected  with {formatSelectedDateTime(selectedDateTime)} with {selectedDateTime?.artist}
         </div>
         <div className='change-time-again'>
           <Button id='change-time' onClick={() => prop.setInputOpen(false)}>

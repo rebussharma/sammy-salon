@@ -1,9 +1,14 @@
-import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box, Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
+
 import { styled } from "@mui/material/styles";
 import axios from "axios";
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat'; // Import advancedFormat plugin for day suffixes
 import React from "react";
 import { Fade } from 'react-awesome-reveal';
 import '../../../css/appointment/pushData/ConfirmPage.css';
+dayjs.extend(advancedFormat);
+
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -60,6 +65,7 @@ const ConfirmPage: React.FC<Props> = ({
   postDataConfirm,
   setDataConfirm,
 }) => {
+
   const handleConfirmation = () => {
     setConfirmationStatus(true);
     postDataConfirm.appointmentStatus = "confirmed";
@@ -76,83 +82,57 @@ const ConfirmPage: React.FC<Props> = ({
       });
   };
 
-  const apptDateTime = new Date(postDataConfirm.appointmentDateTime);
+  const formatDateTime = (isoString:string) => {
+    // Use dayjs to format the ISO string with the desired format
+    return dayjs(isoString).format('dddd, Do MMM [at] h:mm A');
+  };
 
+  const details = [
+    { title: 'Date & Time:', value: formatDateTime(postDataConfirm?.appointmentDateTime) },
+    { title: 'Service Requested:', value: postDataConfirm.serviceType },
+    { title: 'Artist:', value: postDataConfirm.artist },
+    { title: 'Your Phone:', value: postDataConfirm.clientPhone },
+    { title: 'Your Email:', value: postDataConfirm.clientEmail },
+    { title: 'Message to Artist:', value: postDataConfirm.appointmentNotes || "No message provided" }
+  ];
+  
+  
+  
   return (
     <Container maxWidth="md" className="confirm-page">
       <Fade duration={700} direction="right">
         <StyledPaper elevation={3}>
-          <Typography variant="h4" gutterBottom color="primary">
-            Hi, {postDataConfirm.clientName}
+          <Typography variant="h5" gutterBottom color="primary">
+            {postDataConfirm.clientName}
           </Typography>
-          <Typography variant="h5" gutterBottom color="secondary">
-            Please Confirm Your Appointment
-          </Typography>
-          <Grid container spacing={2} className="confirm-details">
-            <Grid item xs={12}>
-              <Box display="flex" alignItems="center">
-                <DetailTitle variant="subtitle1">
-                  Your Appointment is set for:
-                </DetailTitle>
-                <DetailContent variant="body1">
-                  {apptDateTime.toDateString()} at {apptDateTime.toLocaleString([], {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                  })}
-                </DetailContent>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" alignItems="center">
-                <DetailTitle variant="subtitle1">
-                  Service Requested:
-                </DetailTitle>
-                <DetailContent variant="body1">
-                  {postDataConfirm.serviceType}
-                </DetailContent>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" alignItems="center">
-                <DetailTitle variant="subtitle1">
-                  Artist Requested:
-                </DetailTitle>
-                <DetailContent variant="body1">
-                  {postDataConfirm.artist}
-                </DetailContent>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" alignItems="center">
-                <DetailTitle variant="subtitle1">
-                  Your Phone:
-                </DetailTitle>
-                <DetailContent variant="body1">
-                  {postDataConfirm.clientPhone}
-                </DetailContent>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" alignItems="center">
-                <DetailTitle variant="subtitle1">
-                  Your Email:
-                </DetailTitle>
-                <DetailContent variant="body1">
-                  {postDataConfirm.clientEmail}
-                </DetailContent>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" flexDirection="column">
-                <DetailTitle variant="subtitle1">
-                  Message to Artist:
-                </DetailTitle>
-                <DetailContent variant="body1">
-                  {postDataConfirm.appointmentNotes}
-                </DetailContent>
-              </Box>
-            </Grid>
-          </Grid>
+     <TableContainer component={Paper} className="confirm-details-container">
+      <Box className="confirm-header">
+        <Typography variant="h6" className="header-text">
+          Please Confirm Your Appointment Details
+        </Typography>
+      </Box>
+      <Table className="confirm-table">
+        <TableBody>
+          {details.map((detail, index) => (
+            <TableRow
+              key={index}
+              className={`confirm-row ${index % 2 === 0 ? 'confirm-row-light' : 'confirm-row-dark'}`}
+            >
+              <TableCell className="confirm-cell-title">
+                <Typography variant="subtitle1" className="title-text">
+                  {detail.title}
+                </Typography>
+              </TableCell>
+              <TableCell id="confirm-cell-content">
+                <Typography variant="body1" className="content-text">
+                  {detail.value}
+                </Typography>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
           <Box mt={3} className="confirm-edit-btn">
             <ConfirmButton onClick={handleConfirmation} variant="contained" fullWidth>
               Confirm Appointment
