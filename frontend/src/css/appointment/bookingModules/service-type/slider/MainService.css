@@ -12,11 +12,11 @@
     background-color: #f0f0f0;
     color: #333;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
   }
   
   .main-service:hover {
-    background-color: #e0e0e0;
+    background-color: #7ab5f5;
     transform: translateY(-2px);
   }
   

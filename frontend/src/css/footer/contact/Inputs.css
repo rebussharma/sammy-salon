@@ -1,7 +1,29 @@
-.inputs{
-    height: inherit !important;
-    width: 100%;
+.inputs {
+    /* flex: 1 0 auto; Grow to fill remaining space, don't shrink, auto basis */
+    padding: 1% 2%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: inset -4px 2px 20px 0px rgb(0 0 0 / 13%);
+    margin-top: 1%;
+  }
+  
+  
+#select-button{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    &:disabled{
+        cursor: not-allowed;
+    }
+
 }
+
 
 .InputBoxWrapper .input-fields {
     height: 80% !important;
@@ -46,3 +68,40 @@
         width: 50%;
     }
 }
+
+/* Responsive adjustments */
+@media screen and (max-height: 600px) {
+    .book {
+      padding: 1vh 1vw;
+    }
+  
+    .service-box,
+    .artist-container,
+    .dt-box,
+    .inputs {
+      margin-bottom: 1vh;
+    }
+  }
+  
+  /* Ensure content is visible on very small screens */
+  @media screen and (max-height: 400px) {
+    .book {
+      height: auto;
+      min-height: 100vh;
+    }
+  
+    .service-box,
+    .artist-container,
+    .dt-box,
+    .inputs {
+      max-height: none;
+    }
+  }
+  
+  /* Adjustments for larger screens */
+  @media screen and (min-height: 1000px) {
+    .book {
+      max-height: 1000px;
+    }
+  }
+  

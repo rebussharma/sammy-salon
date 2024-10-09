@@ -6,9 +6,9 @@
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     background-color: white;
-    top: 5%;
+    top: 4%;
 }
 
 .book.confirm{

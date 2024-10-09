@@ -1,0 +1,47 @@
+/* animations.css */
+@keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .artist-container-wrapper {
+    overflow: hidden;
+    transition: max-height .5s ease-out;
+    max-height: 0;
+  }
+  
+  .artist-container-wrapper.expanded {
+    max-height: 2000px;
+  }
+  
+  .artist-container {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  
+  .artist-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .slide-down {
+    animation: slideDown 2s ease forwards;
+  }
+  
+  .no-service-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

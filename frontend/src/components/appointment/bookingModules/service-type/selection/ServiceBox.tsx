@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import service_data from '../../../../../assets/data/services.json';
+import '../../../../../css/appointment/animations.css';
 import "../../../../../css/appointment/bookingModules/service-type/selection/ServiceBox.css";
 import MenuSlider from "../slider/MenuSlider";
 import SubMenu from "./SubMenu";
@@ -31,26 +32,20 @@ const transformArray = (array:any[]) =>{
 const initialCheckedStates = transformArray(service_data);
 
 type OpenInput = {
-artistBoxOpen:boolean,
-setArtistBoxOpen:(val:boolean)=>void,
-inputOpen: boolean
-setInputOpen:(val:boolean)=>void,
-editData:any,
-setAllChecked:(s:any[])=>void
+  editData: Record<string, Record<string, boolean>> | null,
+  setAllChecked: (services: Record<string, Record<string, boolean>>) => void
 }
 
-const ServiceBox: React.FC<OpenInput> = ({ artistBoxOpen, setArtistBoxOpen, inputOpen, setInputOpen, editData, setAllChecked }) => {
+const ServiceBox: React.FC<OpenInput> = ({ editData, setAllChecked }) => {
   const [selectedMenuItem, setSelectedMenuItem] = useState<string | null>(null);
-  const [checkedStates, setCheckedStates] = useState(editData || initialCheckedStates);
+  const [checkedStates, setCheckedStates] = useState<Record<string, Record<string, boolean>>>(editData || initialCheckedStates);
   
   const handleMenuItemClick = (menuItem: string) => {
     setSelectedMenuItem(menuItem);
-    setInputOpen(false);
-    setArtistBoxOpen(false);
   };
 
   const handleCheckboxChange = (menuItem: string, checkbox: string) => {
-    setCheckedStates((prevState:any) => ({
+    setCheckedStates((prevState) => ({
       ...prevState,
       [menuItem]: {
         ...prevState[menuItem],
@@ -67,7 +62,7 @@ const ServiceBox: React.FC<OpenInput> = ({ artistBoxOpen, setArtistBoxOpen, inpu
     <div className="service-box">
       <h2 className="service-title">Select Service</h2>
       <MenuSlider onMenuItemClick={handleMenuItemClick} selectedMenuItem={selectedMenuItem} />
-      {!inputOpen && !artistBoxOpen && selectedMenuItem && (
+      {selectedMenuItem && (
         <SubMenu
           key={selectedMenuItem}
           menuItem={selectedMenuItem}

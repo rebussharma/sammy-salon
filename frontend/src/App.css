@@ -2,7 +2,10 @@
 .App {
   text-align: center;
 }
-
+.css-1mjt9t2.MuiBox-root{
+  height: 95vh;
+  max-height: 97vh !important;
+}
 
 @media (prefers-reduced-motion: no-preference) {
 

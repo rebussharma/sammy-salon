@@ -1,15 +1,17 @@
+import { Button } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import artistList from "../../../assets/data/artists.json";
+import '../../../css/appointment/animations.css';
 import '../../../css/appointment/bookingModules/Artist.css';
 import DateTimePicker from './DateTimePicker';
 
 type Props = {
-  artistBoxOpen: boolean,
-  setArtistBoxOpen: (val: boolean) => void,
   serviceData: any;
   setArtist(artist: string): void;
   setDateTime: (dateTime: Dayjs) => void,
+  inputOpen:boolean,
+  setInputOpen: (inputStatus: boolean) => void
 }
 
 type ArtistData = {
@@ -45,10 +47,6 @@ const Artist: React.FC<Props> = (prop: Props) => {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [artistsData, setArtistsData] = useState<ArtistData[]>([]);
   const [selectedDateTime, setSelectedDateTime] = useState<{ artist: string, date: string, time: string } | null>(null);
-
-  const handleArtistOpen = () => {
-    prop.setArtistBoxOpen(!prop.artistBoxOpen);
-  }
 
   const handleTimeSelect = (name: string, date: string, time: string) => {
     setSelectedArtist(name);
@@ -92,47 +90,51 @@ const Artist: React.FC<Props> = (prop: Props) => {
   }, [relevantArtists, artistsData]);
 
   return (
-    <div className="artist-container">
-      <div className='artist-title'>
-        <button className='artist-title-btn' onClick={handleArtistOpen}>
-          {prop.artistBoxOpen ? 'Close Artist Selection' : 'Select an Artist'}
-        </button>
+    !prop.inputOpen ? 
+    (
+      <div className="artist-main">
+        <h2 className="artist-title">Select an Artist</h2>
+        <div className='artist-date-time-picker'>
+          {availableArtists.length === 0 ? (
+            <div className="no-artists-message">No artists available for the selected services</div>
+          ) : (
+            <div className="artist-dt-main-grid">
+              {availableArtists.map((name) => {
+                const artistData = artistsData.find(artist => artist.name === name);
+                if (!artistData || artistData.nextAvailableDate === null) return null;
+                
+                return (
+                  <div key={name} className="artist-dt-details-wrapper">
+                    <div className="artist-dt-artist-name">{name}</div>
+                    <DateTimePicker
+                      name={name}
+                      nextAvailableDate={artistData.nextAvailableDate}
+                      bookedTimes={artistData.bookedTimes}
+                      onTimeSelect={handleTimeSelect}
+                      selectedDateTime={selectedDateTime}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
-      { 
-        prop.artistBoxOpen && (
-          <div className='artist-date-time-picker'>
-            {
-              availableArtists.length === 0 ? (
-                <div className="no-artists-message">Please Select a Service</div>
-              ) : (
-                <div className="artist-dt-main-grid">
-                  {
-                    availableArtists.map((name) => {
-                      const artistData = artistsData.find(artist => artist.name === name);
-                      if (!artistData || artistData.nextAvailableDate === null) return null;
-                    
-                      return (
-                        <div key={name} className="artist-dt-details-wrapper">
-                          <div className="artist-dt-artist-name">{name}</div>
-                          <DateTimePicker
-                            name={name}
-                            nextAvailableDate={artistData.nextAvailableDate}
-                            bookedTimes={artistData.bookedTimes}
-                            onTimeSelect={handleTimeSelect}
-                            selectedDateTime={selectedDateTime}
-                          />
-                        </div>
-                      );
-                    })
-                  }
-                </div>
-              )
-            }
-          </div>
-        )
-      }
-    </div>
-  );
+    )
+    :
+    (
+      <div className='time-info-select'>
+        <div className='time-info'>
+          You've selected {selectedDateTime?.date} at {selectedDateTime?.time} with {selectedDateTime?.artist}
+        </div>
+        <div className='change-time-again'>
+          <Button id='change-time' onClick={() => prop.setInputOpen(false)}>
+            Change time
+          </Button>
+        </div>
+      </div>
+    )
+  )
   
 }
 

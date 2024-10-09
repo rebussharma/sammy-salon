@@ -1,5 +1,6 @@
 import { Dayjs } from 'dayjs';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import '../../../css/appointment/animations.css'; // Add this line
 import '../../../css/appointment/book/Book.css';
 import Inputs from '../../footer/contact/Inputs';
 import Artist from '../bookingModules/Artist';
@@ -8,6 +9,7 @@ import { PopUpContext } from '../PopUp';
 import ConfirmPage from '../pushData/ConfirmPage';
 import SuccessAndCancel from '../pushData/SuccessAndCancel';
 import CancelMessageAndMailer from './cancel/CancelMessageAndMailer';
+
 
 
 const Book:React.FC = () => {
@@ -29,16 +31,29 @@ const Book:React.FC = () => {
     const [confirmedData, setConfirmedData] = useState<any>({})
     const [inputOpen, setInputOpen] = useState(false)
     const [artistOpen, setArtistOpen] = useState(false)
+    const [serviceSelected, setServiceSelected] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+
+
 
     // fetches data once appt is confirmed
     const handleConfirmedData = (data:any) => {
         setConfirmedData(data)
     }
     // Used to fetch data from each component
-    const handleServiceData = (service:string[]) =>{
-        setServiceData(service)
-    }
-
+    const handleServiceData = (services: Record<string, Record<string, boolean>>) => {
+        setServiceData(services);
+        const isSelected = Object.values(services).some(category => Object.values(category).some(value => value));
+        setServiceSelected(isSelected);
+        
+        // Add a slight delay before expanding to allow for the CSS transition
+        if (isSelected) {
+          setTimeout(() => setIsExpanded(true), 50);
+        } else {
+          setIsExpanded(false);
+        }
+      }
+    
     const handleInputData = (data:String[]) =>{
         setInputData(data)
     }    
@@ -51,6 +66,14 @@ const Book:React.FC = () => {
     const handleSetApptId = (id:number) =>{
         setCurrentBookedApptId(id)
     }
+
+    useEffect(() => {
+        // Reset expansion when no service is selected
+        if (!serviceSelected) {
+          setIsExpanded(false);
+        }
+      }, [serviceSelected]);
+    
 
 
     if(bookingSubmit){
@@ -91,8 +114,8 @@ const Book:React.FC = () => {
             ):
             ( // case: edit booking
                 <div className='book'>
-                    <ServiceBox artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox>
-                    <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setDateTime = {setAppointmentDateTime}></Artist>      
+                    {/* <ServiceBox artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox> */}
+                    {/* <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setDateTime = {setAppointmentDateTime}></Artist>       */}
                     <Inputs editData={inputData} dateTimeData = {appointmentDateTime} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
                 </div>
             )
@@ -101,12 +124,36 @@ const Book:React.FC = () => {
     }else{
         return (
             <div className='book'>
-                <ServiceBox artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} inputOpen={inputOpen} setInputOpen={setInputOpen} editData = {serviceData} setAllChecked={handleServiceData}></ServiceBox>
-                <Artist artistBoxOpen={artistOpen} setArtistBoxOpen={setArtistOpen} serviceData = {serviceData} setArtist={setArtist} setDateTime = {setAppointmentDateTime}></Artist>      
-                <Inputs editData={inputData} dateTimeData = {appointmentDateTime} bookingMode = {true} setBookingSubmit={setBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
+              <ServiceBox
+                setAllChecked={handleServiceData}
+                editData={serviceData}
+              />
+              <div className={`artist-container-wrapper ${isExpanded ? 'expanded' : ''}`}>
+                {serviceSelected ? (
+                  <div className={`artist-container ${isExpanded ? 'visible' : ''}`}>
+                    <Artist
+                      serviceData={serviceData}
+                      setArtist={setArtist}
+                      setDateTime={setAppointmentDateTime}
+                      inputOpen={inputOpen}
+                      setInputOpen={setInputOpen}
+                    />
+                  </div>
+                ) : (
+                  <div className="no-service-message">Please Select a Service</div>
+                )}
+              </div>
+              <Inputs
+                      editData={inputData}
+                      dateTimeData={appointmentDateTime}
+                      bookingMode={true}
+                      setBookingSubmit={setBookingSubmit}
+                      appendInputData={handleInputData}
+                      inputOpen={inputOpen}
+                      setInputOpen={setInputOpen}
+                />
             </div>
-            
-        )
+          );
     }
 }
 

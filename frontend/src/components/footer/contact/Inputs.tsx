@@ -90,8 +90,8 @@ const Inputs:React.FC<BookingStatus> = ({
         bookingMode ? 
         (
           <div className='input-selection-header'>
-            <Button className='select-button' onClick={handleInputOpen}>
-                Step 4: Add Your Information
+            <Button id='select-button' onClick={handleInputOpen} disabled={!dateTimeData}>
+                Add Your Information
             </Button>
           </div>
         ):(

@@ -1,7 +1,7 @@
 .slider-menu {
   overflow-x: auto;
   padding: 0;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   white-space: nowrap; /* Ensure items stay in a single line */
@@ -10,6 +10,7 @@
 .scroll-container {
   display:flex;
   max-width: 100%;
+  overflow: overlay;
 }
 .slider-menu::-webkit-scrollbar {
   display: none;
@@ -34,6 +35,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 300px;
+  position: relative;
+  max-height: 80%;
   width: 96%;
 }
