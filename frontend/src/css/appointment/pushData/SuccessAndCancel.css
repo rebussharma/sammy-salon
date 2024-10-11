@@ -14,12 +14,9 @@
     margin-top: 64px;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 37%);
   }
   
-  .icon-wrapper {
-    margin-bottom: 16px;
-  }
   
   .icon-wrapper svg {
     font-size: 64px;
@@ -51,29 +48,34 @@
     margin-bottom: 8px;
   }
   
-  .button-wrapper {
-    margin-top: 24px;
+  .fail-button-wrapper {
+    margin: 20px 0;
     display: flex;
-    gap: 16px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 95%;
   }
-  
-  .cancel-button {
-    background-color: #f44336;
+
+  .back-home-button{
+    background-color: #8d8dc4;
     color: white;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: medium;
+    &:hover{
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+    }
   }
-  
-  .cancel-button:hover {
-    background-color: #d32f2f;
+
+  .back-home-button{
+    border: none;
   }
-  
-  .home-button {
-    background-color: #2196f3;
-    color: white;
-  }
-  
-  .home-button:hover {
-    background-color: #1976d2;
-  }
+
   
   @media (max-width: 600px) {
     .success-cancel-container {

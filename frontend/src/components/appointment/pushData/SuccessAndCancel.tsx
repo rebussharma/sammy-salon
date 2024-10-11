@@ -1,10 +1,10 @@
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ErrorIcon from '@mui/icons-material/Error';
 import axios from 'axios';
 import React, { useContext } from 'react';
 import '../../../css/appointment/pushData/SuccessAndCancel.css';
 import EmailSender from '../../EmailSender';
 import { PopUpContext } from '../PopUp';
+import ErrorDisplay from '../book/finalMessage/ErrorDisplay';
 
 interface Props {
   appointmentId: number | undefined;
@@ -41,31 +41,14 @@ const isError = appointmentId === -1 || !appointmentId;
 return (
   <div className="success-cancel-container">
     <div className="message-paper">
-      <div className="icon-wrapper">
-        {isError ? (
-          <ErrorIcon className="error-icon" />
-        ) : (
-          <CheckCircleIcon className="success-icon" />
-        )}
-      </div>
-
       {isError ? (
-        <>
-          <h2 className="message-title">We Ran Into an Issue</h2>
-          <p className="message-body">
-            Please call or email us to book your appointment.
-          </p>
-          <div className="button-wrapper">
-            <a href="tel://8322791992" className="cancel-button">
-              Call Us: (832) 279-1992
-            </a>
-            <a href="mailto:sammysbrow@gmail.com?subject=Book Appointment" className="home-button">
-              Email Us
-            </a>
-          </div>
-        </>
+        <div className='success-error'>
+          <ErrorDisplay></ErrorDisplay>
+        </div>
       ) : (
         <>
+          <CheckCircleIcon className="success-icon" />
+
           <h2 className="message-title">Appointment Confirmed!</h2>
           <p className="confirmation-code">Confirmation Code: {clientDetailsAppt[8]}</p>
           <p className="message-body">
@@ -90,7 +73,7 @@ return (
         </>
       )}
 
-      <button className="home-button" onClick={() => setPopUp(false)}>
+      <button className="back-home-button" onClick={() => setPopUp(false)}>
         Back to Home
       </button>
     </div>

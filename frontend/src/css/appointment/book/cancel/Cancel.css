@@ -1,42 +1,106 @@
-.cancel{
-    height: 20vh;
+.cancel {
+    height: 30vh;
+    width: 50%;
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
-    background-color: white;
+    justify-content: space-evenly;
+    background-color: #f9f9f9;
     top: 20%;
-    padding: 20px;
-    border-radius: 2%;
-    align-items: center;
-    align-content: center;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.cancel-title{
-    font: 1em sans-serif;
+.cancel-title {
+    font-size: 1.5em;
     font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: capitalize;
 }
 
-.confirmation-input{
-    box-shadow: inset;
+.confirmation-input {
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
 }
 
-.cancel-btn{
-    background-color: rgb(238, 120, 120) !important;
+.cancel-btn, .go-back-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#cancel-btn {
+    background-color: rgb(151 128 128) !important;
+    cursor: pointer;
     color: white !important;
     &:hover{
         font-weight: bold !important;
         background-color: #f53838 !important;
+        transform: scale(1.05);
     }
 }
 
-.go-back-btn{
+.go-back-btn {
     background-color: rgb(182 152 28) !important;
     color: white !important;
-    &:hover{
-        font-weight: bold !important;
-        background-color: #f0df23 !important;
+}
+
+.go-back-btn:hover {
+    font-weight: bold !important;
+    background-color: #f0df23 !important;
+    transform: scale(1.05);
+}
+
+.eGuPJY{
+    border-bottom: none;
+}
+/* Tablet view adjustments */
+@media (max-width: 768px) {
+    .cancel {
+        width: 70%; /* Adjust width for tablet screens */
+        height: 35vh;
+        padding: 20px;
+    }
+
+    .cancel-title {
+        font-size: 1.3em; /* Slightly smaller font for better readability */
+    }
+
+    .cancel-btn, .go-back-btn {
+        padding: 8px 15px; /* Slightly reduced padding for buttons */
+        font-size: 0.95em;
+    }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 480px) {
+    .cancel {
+        width: 90%; /* Full width for mobile screens */
+        height: auto; /* Adjust height for better spacing */
+        padding: 15px;
+        top: 15%; /* Slightly reduced top position */
+    }
+
+    .cancel-title {
+        font-size: 1.2em; /* Smaller font size for mobile */
+    }
+
+    .confirmation-input {
+        width: 100%; /* Full width input field */
+        padding: 6px; /* Smaller padding for mobile */
+    }
+
+    .cancel-btn, .go-back-btn {
+        padding: 8px 12px; /* Reduced padding */
+        font-size: 0.9em; /* Smaller font size */
+        width: 100%; /* Full-width buttons on mobile */
+        margin-bottom: 10px; /* Added margin for better spacing */
     }
 }

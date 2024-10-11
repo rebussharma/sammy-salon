@@ -85,9 +85,9 @@ const Inputs:React.FC<BookingStatus> = ({
   }
 
   return (
-    <div className='inputs'>
+    <div className={dateTimeData ? 'inputs visible' : 'inputs'}>
       {
-        bookingMode ? 
+        bookingMode && dateTimeData ? 
         (
           <div className='input-selection-header'>
             <Button id='select-button' onClick={handleInputOpen} disabled={!dateTimeData}>

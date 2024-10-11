@@ -63,7 +63,7 @@ const Cancel:React.FC= () => {
     cancelStatus === 0 ? (
       <div className="cancel">
         <div className="cancel-title">
-          Please Enter your confirmation code below
+          Enter your confirmation code below
         </div>
         <div className="confirmation-input">
           <InputWrapper className='InputWrapper'>
@@ -76,7 +76,7 @@ const Cancel:React.FC= () => {
                 />
           </InputWrapper>
         </div>
-      <Button disabled={!confirmationCode} className="cancel-btn" onClick={handleCancel}>Cancel Appointment</Button>
+      <Button disabled={!confirmationCode} id="cancel-btn" onClick={handleCancel}>Cancel Appointment</Button>
     </div>
     )
     :

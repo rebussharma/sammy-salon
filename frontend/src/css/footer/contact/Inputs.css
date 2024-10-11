@@ -3,10 +3,13 @@
     padding: 1% 2%;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: inset -4px 2px 20px 0px rgb(0 0 0 / 13%);
     margin-top: 1%;
   }
-  
+
+  .inputs.visible {
+    /* flex: 1 0 auto; Grow to fill remaining space, don't shrink, auto basis */
+    box-shadow: inset -4px 2px 20px 0px rgb(0 0 0 / 13%);
+  }
   
 #select-button{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -41,6 +44,8 @@
 .InputBoxWrapper .submit-and-email .btn_submit{
     height: 80%;
     width: 100%;
+    padding: 0;
+    line-height: 0%;
 }
 .alert-box{
     display: block;
@@ -49,7 +54,9 @@
 
 @media screen and (max-width: 640px) {
     .inputs{
-        height: 100% !important;
+      padding: 0%;
+      height: 100% !important;
+      margin-top: 0;
     }
 
     .InputBoxWrapper .input-fields {
@@ -58,14 +65,19 @@
     
     .InputBoxWrapper .submit-and-email{
         height: 20%;
-        width: 100%;
+        max-width: 90%;
     }
+
+    .InputBoxWrapper .submit-and-email .btn_submit{
+      padding: 0 1px;
+    }
+
 
 }
 
 @media (max-width:330px){
     .inputs{
-        width: 50%;
+        padding: 0;
     }
 }
 

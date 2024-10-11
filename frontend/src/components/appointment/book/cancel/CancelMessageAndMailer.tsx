@@ -1,5 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle, faFaceFrown, faFaceSadCry, faFaceSmileBeam, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faFaceSmileBeam } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@mui/material';
 import React, { useContext } from 'react';
@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import '../../../../css/appointment/book/cancel/CancelMessageAndMailer.css';
 import EmailSender from '../../../EmailSender';
 import { PopUpContext } from '../../PopUp';
+import ErrorDisplay from '../finalMessage/ErrorDisplay';
 
 
 const MessageWrapper = styled.div`
@@ -71,24 +72,16 @@ const CancelMessageAndMailer:React.FC<CancelStatus> = (prop:CancelStatus) =>{
             )
             : 
             (
-              <div className='cancel-error'>
-                <MessageWrapper>
-                  <div className='icon-wrapper' id='error-icon-wrapper'>
-                    <FontAwesomeIcon icon={faXmark as IconProp} /> 
-                    <FontAwesomeIcon icon={faFaceFrown as IconProp} />
-                    <FontAwesomeIcon icon={faFaceSadCry} />
-                    <FontAwesomeIcon icon={faXmark as IconProp} /> 
-                  </div>
-
-                <SuccessMessage id="success-message-error">We Ran an Into an Issue; Please Call or Email Us to Cancel</SuccessMessage>
-                </MessageWrapper>
-                <div className='success-btn-wapper'>
-                  <Button href='tel:8322791992'> Call Us: (832) 279-1992</Button>
-                  <Button href={`mailto:sammysbrow@gmail.com?subject=Cancel Appointment Confirmation ${prop.appointmentId}`}>Email Us</Button>
-                  <Button onClick={()=>setPopUp(false)}> Back to Home</Button>
+              <div className='message-paper'>
+                <div className='cancel-error'>
+                  <ErrorDisplay></ErrorDisplay>
                 </div>
+                <button className="back-home-button" onClick={() => setPopUp(false)}>
+                  Back to Home
+                </button>
               </div>
             )
+            
         }
       </Fade>
     </React.Fragment>
