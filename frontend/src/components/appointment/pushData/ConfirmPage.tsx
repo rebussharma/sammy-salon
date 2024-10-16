@@ -96,8 +96,6 @@ const ConfirmPage: React.FC<Props> = ({
     { title: 'Message to Artist:', value: postDataConfirm.appointmentNotes || "No message provided" }
   ];
   
-  
-  
   return (
     <Container maxWidth="md" className="confirm-page">
       <Fade duration={700} direction="right">

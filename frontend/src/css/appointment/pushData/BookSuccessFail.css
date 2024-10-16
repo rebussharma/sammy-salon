@@ -1,6 +1,4 @@
-/* SuccessAndCancel.css */
-
-.success-cancel-container {
+.success-fail-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -78,7 +76,7 @@
 
   
   @media (max-width: 600px) {
-    .success-cancel-container {
+    .success-fail-container {
       padding: 16px;
     }
   

@@ -6,9 +6,8 @@ import Inputs from '../../footer/contact/Inputs';
 import Artist from '../bookingModules/Artist';
 import { default as ServiceBox } from '../bookingModules/service-type/selection/ServiceBox';
 import { PopUpContext } from '../PopUp';
+import BookSuccessFail from '../pushData/BookSuccessFail';
 import ConfirmPage from '../pushData/ConfirmPage';
-import SuccessAndCancel from '../pushData/SuccessAndCancel';
-import CancelMessageAndMailer from './cancel/CancelMessageAndMailer';
 
 
 
@@ -96,27 +95,12 @@ const Book:React.FC = () => {
           artist: artist,
           date: appointmentDateTime?.format("YYYY-MM-DD"),
           time: appointmentDateTime?.format("HH:mm")
-        }             
-                        
-        if(confirmBooking){            
-            return cancelBooking !== 0? (
-                <div className='book cancel'>
-                    <CancelMessageAndMailer cancelStatus={cancelBooking} appointmentId={currentBookedApptId} confirmedData={confirmedData}></CancelMessageAndMailer>
-                </div>
-            ):(
-                <div className='book success'>
-                    <SuccessAndCancel appointmentId = {currentBookedApptId} setCancelledStatus={setCancelBooking} postDataCancel={confirmedData}></SuccessAndCancel>
-                </div>
-            )
-
-        }else{
-            return !editAppointment ? (
-                <div className='book confirm'>
-                    <ConfirmPage setAppointmentId = {handleSetApptId} setEditStatus = {setEditAppointment} setConfirmationStatus={setConfirmBooking} postDataConfirm ={postData} setDataConfirm = {handleConfirmedData}></ConfirmPage>
-                </div>
-            ):
-            ( // case: edit booking
-                <div className='book'>
+        }    
+        
+        return(
+          editAppointment ? 
+          (
+            <div className='book'>
               <ServiceBox
                 setAllChecked={handleServiceData}
                 editData={serviceData}
@@ -133,11 +117,24 @@ const Book:React.FC = () => {
                     />
                   </div>
               </div>
-                    <Inputs editData={inputData} dateTimeData = {appointmentDateTime} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
+                  <Inputs editData={inputData} dateTimeData = {appointmentDateTime} bookingMode = {true} setBookingSubmit={handleBookingSubmit} appendInputData = {handleInputData} inputOpen={inputOpen} setInputOpen={setInputOpen}></Inputs>
+              </div>
+          )
+          :
+          (
+            confirmBooking ? (          
+                <div className='book success'>
+                  <BookSuccessFail confirmedData={confirmedData}></BookSuccessFail>
                 </div>
-            )
-        }
-
+              )
+              :
+              (
+                <div className='book confirm'>
+                  <ConfirmPage setAppointmentId = {handleSetApptId} setEditStatus = {setEditAppointment} setConfirmationStatus={setConfirmBooking} postDataConfirm ={postData} setDataConfirm = {handleConfirmedData}></ConfirmPage>
+                </div>     
+              )     
+          )
+        )
     }else{
         return (
             <div className='book'>
