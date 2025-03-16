@@ -5,9 +5,6 @@ import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
 import Services from './components/services/Services';
 import Testimonials from './components/testimonials/Testimonials';
-import './css/appointment/animations.css'; // Add this line
-
-
 
 const App: React.FC = () => {
   return (
