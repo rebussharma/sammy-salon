@@ -1,6 +1,7 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from "react";
+import { Link as RouterLink } from 'react-router-dom';
 import { Link } from 'react-scroll';
 import '../../../css/home/navbar/NavElements.css';
 import Header from "../Header";
@@ -59,11 +60,23 @@ const NavElements: React.FC = () => {
               rel="noopener noreferrer"
               >Book</a>
             </li>
+            <li className="nav-items">
+              <RouterLink 
+                  to="/blog"
+                  className="book-button"
+                  onClick={handleHamburger}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Blog
+                </RouterLink>
+            </li>
           </ul>
         </div>
       </div>
       
     </nav>
+    
     
   )
 }

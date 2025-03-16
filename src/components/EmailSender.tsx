@@ -83,7 +83,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
     console.log("Client Email is Empty");
   }
 
-  const sendEmailToClient = () => {
+  const sendEmailToClient = React.useCallback(() => {
     if(email){               
         emailjs
         .send(SERVICE_ID, TEMPLATE_ID, {
@@ -106,7 +106,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
       }else{
         emailSelfSuccess ? console.log("Customer Email Empty") : console.log("Self Failed, no email sent");
       }    
-  }
+  }, [email, name, message, subject, bodyText, seeYouText, emailSelfSuccess, details])
 
  // send email to self and client
   useEffect(()=>{
@@ -132,7 +132,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
         setEmailFinal(true)
       },
     );
-  }, [email, name, phone, message, selfBody, selfSubject, sendEmailToClient])
+  }, [email, name, phone, message, selfBody, selfSubject])
 
   return (
     emailFinal && details.contactForm? 
