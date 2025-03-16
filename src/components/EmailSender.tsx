@@ -50,7 +50,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
                 `\tService: \t\t\t${serviceType}\n`+
                 `\tArtist: \t\t\t${artist}\n` +
                 "\tYour Special Request:"
-    seeYouText = appointmentStatus == "confirmed" ? 
+    seeYouText = appointmentStatus === "confirmed" ? 
                                       "We're excited to see you :)"
                                       :
                                       "Hope we will see you some other time :)"
@@ -132,7 +132,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
         setEmailFinal(true)
       },
     );
-  }, [])
+  }, [email, name, phone, selfBody, selfSubject, sendEmailToClient])
 
   return (
     emailFinal && details.contactForm? 
