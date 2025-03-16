@@ -10,3 +10,10 @@
 @media (prefers-reduced-motion: no-preference) {
 
 }
+
+@media screen and (max-width: 450px) {
+  .css-1mjt9t2.MuiBox-root {
+    width: 90%;
+    max-width: 98%;
+  }
+}

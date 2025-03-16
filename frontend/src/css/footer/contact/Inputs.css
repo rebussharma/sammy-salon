@@ -4,11 +4,14 @@
     background-color: #ffffff;
     border-radius: 12px;
     margin-top: 1%;
+    max-width: 99%;
+    width: 98%;
+    border-radius: 8px;
   }
 
   .inputs.visible {
     /* flex: 1 0 auto; Grow to fill remaining space, don't shrink, auto basis */
-    box-shadow: inset -4px 2px 20px 0px rgb(0 0 0 / 13%);
+    box-shadow: var(--box-shadow-book);
   }
   
 #select-button{
@@ -55,7 +58,6 @@
 @media screen and (max-width: 640px) {
     .inputs{
       padding: 0%;
-      height: 100% !important;
       margin-top: 0;
     }
 
@@ -83,10 +85,6 @@
 
 /* Responsive adjustments */
 @media screen and (max-height: 600px) {
-    .book {
-      padding: 1vh 1vw;
-    }
-  
     .service-box,
     .artist-container,
     .dt-box,
@@ -116,4 +114,40 @@
       max-height: 1000px;
     }
   }
-  
+  /* Mobile view adjustments */
+@media screen and (max-width: 425px) {
+  #select-button{
+    text-align: center;
+    width: 95%;
+  }
+  .inputs {
+    margin-top: 2%;
+    padding: 5px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    padding: 5px !important;
+  }
+
+  .submit-and-email {
+    margin-top: 2%;
+    height: 35px !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn_submit {
+      width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 325px) {
+  .InputBoxWrapper .submit-and-email .btn_submit{
+    font-size: smaller;
+  }
+
+}
+

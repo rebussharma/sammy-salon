@@ -90,10 +90,48 @@
 }
 
   
-  @media (max-width: 600px) {
+  @media screen and (max-width: 430px) {
     .confirm-page {
-      padding: 1rem 0;
+      padding: 0
+    }
+
+    .css-xdmu94-MuiContainer-root{
+      padding: 1px 0 !important;
+    }
+
+    .css-3zvrgu-MuiPaper-root{
+      padding: 5px 0 !important;
+    }
+
+    .css-178yklu{
+      margin-top: 10px !important;
+    }
+
+    #confirm-cell-content, .css-1ex1afd-MuiTableCell-root{
+      padding: 5px 10px !important;
+    }
+
+    .css-ahj2mt-MuiTypography-root{
+      line-height: 1;
+      font-size: .9rem;
+    }
+    #confirm-cell-content {
+      white-space: normal;    /* Allow text to wrap inside the table cell */
+      word-wrap: break-word;  /* Break long words to prevent horizontal growth */
+    }
+    
+    #confirm-cell-content p {
+      white-space: normal;    /* Ensure the paragraph text wraps */
+      word-break: break-word; /* Break long words in the paragraph */
+    }
+
+  }
+
+  @media screen and (max-width: 325px) {
+    #confirm-cell-content, .css-1ex1afd-MuiTableCell-root{
+      padding: 5px !important;
     }
   }
   
+
   /* You can add more custom styles here if needed */

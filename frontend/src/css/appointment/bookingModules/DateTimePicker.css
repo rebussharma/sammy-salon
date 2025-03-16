@@ -80,3 +80,31 @@
 .fade-in {
   opacity: 1;
 }
+
+/* DateTimePicker.css */
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Adjusts based on screen size */
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Mobile screen adjustments */
+@media screen and (max-width: 425px) {
+  .time-slots {
+    grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .time-slots {
+    grid-template-columns: repeat(2, 1fr); /* Still 2 items per row */
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .time-slots {
+    grid-template-columns: repeat(1, 1fr); /* Stack all items vertically */
+  }
+}

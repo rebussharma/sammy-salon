@@ -1,12 +1,12 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import '../../css/home/Home.css';
-import PopUp from "../appointment/PopUp";
 import NavBar from "./navbar/NavBar";
 
 const Home: React.FC = () => {
-  const [bookPopUpHome, setBookPopUpHome] = useState(false)
-
+  const handleBook = () => {
+    
+  }
   return (
     <div className="home" id="home">
       <NavBar></NavBar>
@@ -15,23 +15,21 @@ const Home: React.FC = () => {
       </div>
 
       <div className="menu">
-        {
-          bookPopUpHome ? (
-            <PopUp popUp={bookPopUpHome} setPopUp={setBookPopUpHome} />
-          ):(
-            <Button 
-              className="home-book-btn" 
-              sx={{
-                ':hover': {
-                    bgcolor: '#e7b791c4',
-                  },
-              }}  
-              onClick={()=>setBookPopUpHome(true)}>
-                Book With Us
-            </Button>
+        <Button 
+          className="home-book-btn" 
+          sx={{
+            ':hover': {
+                bgcolor: '#e7b791c4',
+              },
+          }}  
+            href="https://book.sammysbrow.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book With Us
+        </Button>
 
-            )
-        }
+            
         <Button sx={{
               ':hover': {
               bgcolor: '#e7b791c4',

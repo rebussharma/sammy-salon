@@ -1,3 +1,6 @@
+:root {
+    --box-shadow-book: inset -4px 2px 20px 0px rgb(0 0 0 / 38%);
+}
 .book{
     height: 95%;
     width: 50vw;
@@ -36,4 +39,28 @@
     .book .go-back-btn {
         height: 40px;
     }
+
+    .book.confirm{
+        padding: 1px;
+    }
 }
+
+@media screen and (max-width: 425px) {
+    .book {
+        width: 98%;
+        max-width: 99%;
+        height: auto;
+        margin-top: 5%;
+        max-height: none;
+    }
+}
+
+/* @media screen and (max-width: 375px) {
+    .book {
+        width: 90vw;
+        height: auto;
+        top: 0;
+        margin-top: 15%;
+    }
+} */
+

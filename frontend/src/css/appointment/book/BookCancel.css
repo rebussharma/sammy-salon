@@ -17,5 +17,11 @@ body {
       padding: 1rem;
     }
   }
+
+  @media screen and (max-width: 450px) {
+    .css-1cpcxnm-MuiTypography-root{
+      text-align: center;
+    }
+  }
   
   /* You can add any other global styles or overrides here */

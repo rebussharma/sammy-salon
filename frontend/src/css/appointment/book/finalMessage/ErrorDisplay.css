@@ -52,4 +52,23 @@
     }
   }
 
+@media screen and (max-width:430px) {
+  .error-display{
+    padding: 20px 0;
+  }
+
+  .error-icon{
+    height: 40px;
+    width: 40px;
+  }
+  
+  .css-i4bv87-MuiSvgIcon-root{
+    height: 40px !important;
+    width: 40px !important;
+  }
+  .fail-contact{
+    padding: 5px 2px;
+    font-size: 15px;
+  }
+}
  

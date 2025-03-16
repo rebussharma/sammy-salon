@@ -46,14 +46,6 @@
     margin-bottom: 8px;
   }
   
-  .fail-button-wrapper {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 95%;
-  }
-
   .back-home-button{
     background-color: #8d8dc4;
     color: white;
@@ -74,29 +66,30 @@
     border: none;
   }
 
-  
-  @media (max-width: 600px) {
-    .success-fail-container {
-      padding: 16px;
+
+  @media screen and (max-width:430px) {
+    .success-fail-container{
+      padding: 20px 5px;
+      margin: 0;
+
     }
-  
-    .message-paper {
-      margin-top: 32px;
+
+    .message-paper{
+      margin: auto;
+      padding: 20px 0;
+      width: 98%;
     }
-  
-    .icon-wrapper svg {
-      font-size: 48px;
+
+    .css-eyqe3m .message-paper{ /* This is used whe messsage paper is called without success-fail-container*/
+      margin-top: 64px;
     }
-  
-    .message-title {
-      font-size: 1.2rem;
+    
+  }
+
+  @media screen and (max-width:375px) {
+    .message-paper{
+      position: relative;
+      padding: 20px 2px;
     }
-  
-    .message-body {
-      font-size: 0.9rem;
-    }
-  
-    .button-wrapper {
-      flex-direction: column;
-    }
+    
   }
