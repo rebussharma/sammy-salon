@@ -29,11 +29,6 @@ const NavElements: React.FC = () => {
     setOpenHanburger(!openHamburger)
   }
 
-  const handleBooking = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    setOpenHanburger(!openHamburger)
-  }
-
   document.addEventListener("mousedown", closeOpenMenus)
 
   return (

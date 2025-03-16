@@ -4,9 +4,6 @@ import '../../css/home/Home.css';
 import NavBar from "./navbar/NavBar";
 
 const Home: React.FC = () => {
-  const handleBook = () => {
-    
-  }
   return (
     <div className="home" id="home">
       <NavBar></NavBar>
