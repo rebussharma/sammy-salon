@@ -132,7 +132,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
         setEmailFinal(true)
       },
     );
-  }, [email, name, phone, selfBody, selfSubject, sendEmailToClient])
+  }, [email, name, phone, message, selfBody, selfSubject, sendEmailToClient])
 
   return (
     emailFinal && details.contactForm? 
