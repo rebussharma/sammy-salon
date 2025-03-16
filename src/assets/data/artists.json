@@ -22,5 +22,13 @@
         "Expertise": "Threading, Facial",
         "workdays": "Saturday Sunday",
         "active":true
+    },
+    {
+        "name": "Samr",
+        "experience": 3,
+        "services": ["Threading", "Facial"],
+        "Expertise": "Threading, Facial",
+        "workdays": "Saturday Sunday",
+        "active":true
     }
 ]
