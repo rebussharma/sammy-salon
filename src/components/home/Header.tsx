@@ -4,9 +4,9 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-scroll';
-import logo from '../../assets/home/main_logo.png';
 import '../../css/home/Header.css';
 
+const logo = process.env.PUBLIC_URL + '/images/home/main_logo.png';
 
 const Header: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         </div>
         <div className="logo">
             <Link className="home_btn" to="home" smooth={true} offset={-100} duration={500}>
-              <img className="logo_img" src={logo} alt="fireSpot"/>
+              <img className="logo_img" src={logo} alt="main_logo"/>
             </Link>
         </div>
         <div className='socials'>

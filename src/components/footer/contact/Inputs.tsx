@@ -1,24 +1,52 @@
 import { Input } from '@mui/material';
-import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import Fade from '@mui/material/Fade';
-import Slide from '@mui/material/Slide';
-import Stack from '@mui/material/Stack';
-import React, { ChangeEvent, ChangeEventHandler, useEffect } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
 import '../../../styles/Inputs.styles';
 import { InputBoxWrapper, InputWrapper, MessageInput } from '../../../styles/Inputs.styles';
 
-import emailjs from '@emailjs/browser';
+import { Dayjs } from 'dayjs';
 import '../../../css/footer/contact/Inputs.css';
+import EmailSender from '../../EmailSender';
+
+type BookingStatus = {
+  editData: {[key: string]: any},
+  dateTimeData:Dayjs|null|undefined,
+  bookingMode: boolean,
+  setBookingSubmit: (newState: boolean) => void,
+  appendInputData: (data:String[]) => void,
+  inputOpen:boolean,
+  setInputOpen:(val:boolean)=>void
+}
 
 
-const Inputs = () => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [message, setMessage] = React.useState('');
-  const [successVal, setSuccessVal] = React.useState(true);
-  const [success, setSuccess] = React.useState(0);
+const Inputs:React.FC<BookingStatus> = ({
+  editData, dateTimeData, bookingMode, setBookingSubmit, appendInputData, inputOpen, setInputOpen
+}: BookingStatus) => {
+  
+  const [name, setName] = useState(editData.hasOwnProperty("clientName") ? editData["clientName"]: "")
+  const [email, setEmail] = useState(editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "")
+  const [phone, setPhone] = useState(editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "")
+  const [message, setMessage] = useState(editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"]: "")
+  const inputData:any = {}
+  const allInputFields:any = [name, email, phone, message]
+  const allInputFieldsStr:any = ["clientName", "clientEmail", "clientPhone", "appointmentNotes"]
+  //
+  const [submitPressed, setSubmitPressed] = useState(false)
+  const [emailConfirmed, setEmailConfirmed] = useState(false)
+
+  const pushData = ()=> {
+    for (const i in allInputFields){
+      if(allInputFields[i].length !==0){
+        inputData[allInputFieldsStr[i]] = allInputFields[i]
+      }
+    }
+  }
+
+
+  const message_placeholder = bookingMode ? "If You Want to Add More Info, Write Here" : "Write Your Message Here" 
+  const submit_btn_text = bookingMode ? "Book Appointment" : "Send Message"
+  const phone_required = bookingMode ? true : false
+  const message_required = bookingMode ? false : true
 
   const nameHandler: ChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setName((e.target as HTMLInputElement).value);    
@@ -36,135 +64,111 @@ const Inputs = () => {
     setMessage((e.target as HTMLInputElement).value);       
   };
 
-  useEffect(() => emailjs.init("48zrrLrcyVtY6tuNs"), []);
+  // useEffect(() => emailjs.init("48zrrLrcyVtY6tuNs"), []);
 
+  
   const handleSubmit =  (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    const serviceId = "service_hr7wfln";
-    const templateId = "template_y1syqfc";
-    if(!email){
-      console.log("email empty");
-      
-    }
-
-    if(email !== null || email !== '' || !email){
-      emailjs
-        .send(serviceId, templateId, {
-          to_name: name, recipient: email, message: message
-        })
-        .then(
-          () => {
-            console.log('SUCCESS!');
-            setSuccessVal(true);
-          },
-          (error) => {
-            console.log('FAILED...', error.text);
-            setSuccessVal(true);
-          },
-        );
-    }else{
-      console.log("Email not sent to customer as email was not provided")
-    }
-
-    emailjs
-    .send(serviceId, "template_wthysze", {
-      to_name: name, recipient: "sammysbrow@gmail.com", message: message, customer_phone: phone, customer_email:email
-    })
-    .then(
-      () => {
-        console.log('Sent Email to Sammys Brow!');
-        setSuccess(1);
-      },
-      (error) => {
-        console.log('Failed Sending Email to Sammys Brow!...', error.text);
-        setSuccess(-1);
-      },
-    );
-
-    setName('');
-    setEmail('');
-    setMessage('');
-    setPhone('')
-
+    if(emailConfirmed) setEmailConfirmed(false)
+    e.preventDefault()
+    pushData()
+    appendInputData(inputData)
+    setBookingSubmit(true) ; 
+    setSubmitPressed(true)      
   };
+  
+
+  
+  const handleInputOpen = () =>{
+    inputOpen? 
+      setInputOpen(false)
+      : setInputOpen(true)
+  }
 
   return (
-    <div className='inputs'>
-    <InputBoxWrapper className='InputBoxWrapper'>
-      <InputWrapper className='InputWrapper'>
-        <Input className='Input'
-          type="text" 
-          placeholder="Full Name" 
-          value={name} 
-          onChange={nameHandler} />
-      </InputWrapper>
-      <InputWrapper className='InputWrapper'>
-        <Input className='Input'
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={emailHandler}
-          
-        />
-      </InputWrapper>
-      <InputWrapper className='InputWrapper'>
-        <Input className='Input'
-          type="number"   
-          placeholder="Phone Number"
-          value={phone}
-          onChange={phoneHandler}
-        />
-      </InputWrapper>
-      <InputWrapper className='InputWrapper'>
-        <MessageInput className='MessageInput'
-          maxLength={2000}
-          required
-          placeholder="Write Your Hessage here"
-          value={message}
-          onChange={messageHandler}
-        />
-      </InputWrapper> 
-      <Button disabled={!message} className="btn_submit" variant="contained" onClick={handleSubmit}>Send Message</Button>
-         {/* <SubMitButton type="submit" value="Send Message" /> */}
-        {
-          success === 1 ? (
-            <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>
-              <Fade
-                in={successVal}
-                timeout={{ enter: 1000, exit: 1000 }} 
-                addEndListener={() => {
-                  setTimeout(() => {
-                    setSuccessVal(false)
-                  }, 2000);
-                  }
-                }   
-              >
-                <Stack sx={{ width: '100%' }} spacing={2}>
-                  <Alert severity="success">Message Sent Successfully</Alert>
-                </Stack>
-              </Fade>
-            </Slide>
-          ): (success === -1) ?
-            <Slide direction="up" in={successVal} mountOnEnter unmountOnExit>
-            <Fade
-              in={successVal}
-              timeout={{ enter: 1000, exit: 1000 }} 
-              addEndListener={() => {
-                setTimeout(() => {
-                  setSuccessVal(false)
-                }, 2000);
+    <div className={dateTimeData ? 'inputs visible' : 'inputs'}>
+      {
+        bookingMode && dateTimeData ? 
+        (
+          <div className='input-selection-header'>
+            <Button id='select-button' onClick={handleInputOpen} disabled={!dateTimeData}>
+                Add Your Information
+            </Button>
+          </div>
+        ):(
+          <></>
+        )
+      }
+      {
+        inputOpen ?
+        (
+          <InputBoxWrapper className='InputBoxWrapper'>
+            <div className='input-fields'>
+              <InputWrapper className='InputWrapper'>
+                <Input className='Input'
+                  type="text" 
+                  placeholder= {editData.hasOwnProperty("clientName") ? editData["clientName"]: "Full Name"}
+                  value={name} 
+                  onChange={nameHandler} />
+              </InputWrapper>
+              <InputWrapper className='InputWrapper'>
+                <Input className='Input'
+                  type="email"
+                  placeholder= {editData.hasOwnProperty("clientEmail") ? editData["clientEmail"]: "Email"}
+                  value={email}
+                  onChange={emailHandler}
+                  
+                />
+              </InputWrapper>
+              <InputWrapper className='InputWrapper'>
+                <Input className='Input'
+                  type="number"   
+                  placeholder= {editData.hasOwnProperty("clientPhone") ? editData["clientPhone"]: "Phone Number"}
+                  required={phone_required}
+                  value={phone}
+                  onChange={phoneHandler}
+                />
+              </InputWrapper>
+              <InputWrapper className='InputWrapper'>
+                <MessageInput className='MessageInput'
+                  maxLength={2000}
+                  required={message_required}
+                  placeholder={editData.hasOwnProperty("appointmentNotes") ? editData["appointmentNotes"] : message_placeholder}
+                  value={message}
+                  onChange={messageHandler}
+                />
+              </InputWrapper> 
+            </div>
+            <div className='submit-and-email'>
+              <Button 
+                disabled={bookingMode ? (dateTimeData ? (phone ? false: !email) : true) : !message} 
+                className="btn_submit" 
+                variant="contained" 
+                onClick={handleSubmit}
+                >
+                {submit_btn_text}
+              </Button>
+                {
+                  
+                  submitPressed ? (
+                      <EmailSender 
+                        nameResetter={setName}
+                        phoneResetter={setPhone}
+                        emailResetter={setEmail}
+                        messageResetter={setMessage}
+                        bookedResetter = {setSubmitPressed} 
+                        clientDetails={allInputFields} 
+                        setEmailSent = {setEmailConfirmed}
+                        contactForm={true}/>            
+                  ):""
                 }
-              }   
-            >
-              <Stack sx={{ width: '100%' }} spacing={2}>
-                <Alert severity="error">Something Went Wrong. Please Try Again Later</Alert>
-              </Stack>
-            </Fade>
-          </Slide>
+              </div>
+          </InputBoxWrapper>
 
-          : ("")
-        }
-    </InputBoxWrapper>
+        ):
+        (
+          <></>
+        )
+      }
     </div>
   );
 };

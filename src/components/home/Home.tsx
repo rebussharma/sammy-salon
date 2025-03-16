@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Link } from 'react-scroll';
 import '../../css/home/Home.css';
 import NavBar from "./navbar/NavBar";
 
 const Home: React.FC = () => {
+  const handleBook = () => {
+    
+  }
   return (
     <div className="home" id="home">
       <NavBar></NavBar>
@@ -14,18 +15,21 @@ const Home: React.FC = () => {
       </div>
 
       <div className="menu">
-        <BrowserRouter>
-          <Button 
-            sx={{
-              ':hover': {
-              bgcolor: '#e7b791c4',
+        <Button 
+          className="home-book-btn" 
+          sx={{
+            ':hover': {
+                bgcolor: '#e7b791c4',
               },
-          }} 
-            variant="outlined" 
-            id="home-services">
-            <Link to="services" smooth={true}>Our Service Menu</Link>
-          </Button>
-        </BrowserRouter>
+          }}  
+            href="https://book.sammysbrow.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book With Us
+        </Button>
+
+            
         <Button sx={{
               ':hover': {
               bgcolor: '#e7b791c4',

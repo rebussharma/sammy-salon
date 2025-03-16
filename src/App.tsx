@@ -6,7 +6,6 @@ import Home from './components/home/Home';
 import Services from './components/services/Services';
 import Testimonials from './components/testimonials/Testimonials';
 
-
 const App: React.FC = () => {
   return (
     <div className="App">

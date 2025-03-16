@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import '../../../css/footer/contact/Contact.css';
 import Details from './Details';
 import Inputs from './Inputs';
-// import Form from './Form';
 
 const PageWrapper = styled.div`
   @media (max-width: 640px) {
@@ -72,12 +71,6 @@ const TextOne = styled.b`
   }
 `;
 
-// const TextTwo = styled.p`
-//   color: rgb(4, 4, 34);
-//   font-size: 15px;
-//   text-align: center;
-// `;
-
 const Conact: React.FC = () => {
   return (
     <div className='contact'>
@@ -87,7 +80,7 @@ const Conact: React.FC = () => {
         </PageHeadingWrapper>
         <FormContainer className='form-container'>
           <Details />
-          <Inputs />
+          <Inputs editData = {[]} dateTimeData={null} bookingMode={false} setBookingSubmit={()=>false} appendInputData = {()=>{}} inputOpen={true} setInputOpen={()=>{}}/>
         </FormContainer>
       </PageWrapper>
     </div>

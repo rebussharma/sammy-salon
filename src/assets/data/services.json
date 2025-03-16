@@ -1,0 +1,264 @@
+[
+    {
+      "service_id": 100,
+      "main_img":"../images/services/threading.png",
+      "title":"Threading",
+      "cost":5,
+      "time":15,
+      "back_essay":"Threading is done using a thread. It is better than waxing",
+      "mini_content":[
+        {
+          "mini_service_id":101,
+          "title":"Eyebrow Threading",
+          "cost":10,
+          "time":5
+        },
+        {
+          "mini_service_id":102,
+          "title":"Eyebrow Shaping",
+          "cost":10,
+          "time":5
+        },
+        {
+          "mini_service_id":103,
+          "title":"Eyebrow Lamination",
+          "cost":55,
+          "time":5
+        },
+        {
+          "mini_service_id":104,
+          "title":"Upper-Lip",
+          "cost":5,
+          "time":5
+        },
+        {
+          "mini_service_id":105,
+          "title":"Chin",
+          "cost":5,
+          "time":5
+        },
+        {
+          "mini_service_id":106,
+          "title":"Forehead",
+          "cost":5,
+          "time":5
+        },
+        {
+          "mini_service_id":107,
+          "title":"Cheek-Sideburns",
+          "cost":15,
+          "time":5
+        },
+        {
+          "mini_service_id":108,
+          "title":"Full-Face",
+          "cost":35,
+          "time":5
+        }
+      ]
+    },
+    {
+      "service_id": 200,
+      "main_img":"../images/services/lashes.jpeg",
+      "title":"Lashes",
+      "cost":20,
+      "time":10,
+      "back_essay":"Done using equiptments. Lasts for 1 month",
+      "mini_content":[
+        {
+          "mini_service_id":201,
+          "title":"Individual Extentions",
+          "cost":100,
+          "time":35
+        },
+        {
+          "mini_service_id":202,
+          "title":"Cluster Extentions",
+          "cost":50,
+          "time":25
+        },
+        {
+          "mini_service_id":203,
+          "title":"Lashes Lifts",
+          "cost":65,
+          "time":25
+        },
+        {
+          "mini_service_id":204,
+          "title":"Lashes Tintings",
+          "cost":30,
+          "time":25
+        }
+      ]
+    },
+    {
+      "service_id": 300,
+      "main_img":"../images/services/facial.jpeg",
+      "title":"Facial",
+      "cost":40,
+      "time":30,
+      "back_essay":"Ease up your face. Exfoliate it and let it breathe",
+      "mini_content":[
+        {
+          "mini_service_id":201,
+          "title":"Hydra Facial",
+          "cost":50,
+          "time":55
+        },
+        {
+          "mini_service_id":302,
+          "title":"Diamond",
+          "cost":55,
+          "time":65
+        }
+      ]
+    },
+    {
+      "service_id": 400,
+      "main_img":"../images/services/waxing.jpeg",
+      "title":"Waxing",
+      "cost":15,
+      "time":30,
+      "back_essay":"Easy waxing procedure that doesn not hurt. You will be good for 1 month",
+      "mini_content":[
+        {
+          "mini_service_id":401,
+          "title":"Uder Arms",
+          "cost":10,
+          "time":25
+        },
+        {
+          "mini_service_id":402,
+          "title":"Belly Wax",
+          "cost":15,
+          "time":25
+        },
+        {
+          "mini_service_id":403,
+          "title":"Bikini Line",
+          "cost":30,
+          "time":25
+        },
+        {
+          "mini_service_id":404,
+          "title":"Brazilian",
+          "cost":50,
+          "time":25
+        },
+        {
+          "mini_service_id":405,
+          "title":"Butt Wax",
+          "cost":20,
+          "time":25
+        },
+        {
+          "mini_service_id":406,
+          "title":"Chest Wax",
+          "cost":10,
+          "time":25
+        },
+        {
+          "mini_service_id":407,
+          "title":"Full Arms",
+          "cost":40,
+          "time":25
+        },
+        {
+          "mini_service_id":408,
+          "title":"Half Arms",
+          "cost":25,
+          "time":25
+        },
+        {
+          "mini_service_id":409,
+          "title":"Full Back",
+          "cost":50,
+          "time":25
+        },
+        {
+          "mini_service_id":410,
+          "title":"Full Body",
+          "cost":200,
+          "time":15
+        },
+        {
+          "mini_service_id":411,
+          "title":"Full legs",
+          "cost":60,
+          "time":25
+        },
+        {
+          "mini_service_id":412,
+          "title":"Half leg",
+          "cost":30,
+          "time":25
+        }
+      ]
+    },
+    {
+      "service_id":500,
+      "main_img":"../images/services/tinting.jpeg",
+      "title":"Tinting",
+      "cost":40,
+      "time":30,
+      "back_essay":"Tinting brows to make them look darker in shade. It lasts up to 1 month",
+      "mini_content":[
+        {
+          "mini_service_id":501,
+          "title":"Brow Tinting",
+          "cost":20,
+          "time":25
+        },
+        {
+          "mini_service_id":502,
+          "title":"Lash Tinting",
+          "cost":30,
+          "time":15
+        }
+      ]
+    },
+    {
+      "service_id": 600,
+      "main_img":"../images/services/tinting.jpeg",
+      "title":"Other",
+      "cost":40,
+      "time":30,
+      "back_essay":"Tinting brows to make them look darker in shade. It lasts up to 1 month",
+      "mini_content":[
+        {
+          "mini_service_id":601,
+          "title":"Other1",
+          "cost":20,
+          "time":25
+        },
+        {
+          "mini_service_id":602,
+          "title":"Other 2",
+          "cost":30,
+          "time":15
+        }
+      ]
+    },
+    {
+      "service_id": 700,
+      "main_img":"../images/services/tinting.jpeg",
+      "title":"Other2",
+      "cost":40,
+      "time":30,
+      "back_essay":"Tinting brows to make them look darker in shade. It lasts up to 1 month",
+      "mini_content":[
+        {
+          "mini_service_id":701,
+          "title":"other3",
+          "cost":20,
+          "time":25
+        },
+        {
+          "mini_service_id":702,
+          "title":"Other4",
+          "cost":30,
+          "time":15
+        }
+      ]
+    }
+  ]

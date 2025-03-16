@@ -1,8 +1,153 @@
-.inputs{
-    height: inherit !important;
+.inputs {
+    /* flex: 1 0 auto; Grow to fill remaining space, don't shrink, auto basis */
+    padding: 1% 2%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-top: 1%;
+    max-width: 99%;
+    width: 98%;
+    border-radius: 8px;
+  }
+
+  .inputs.visible {
+    /* flex: 1 0 auto; Grow to fill remaining space, don't shrink, auto basis */
+    box-shadow: var(--box-shadow-book);
+  }
+  
+#select-button{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    &:disabled{
+        cursor: not-allowed;
+    }
+
 }
 
+
+.InputBoxWrapper .input-fields {
+    height: 80% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 90%;
+}
+
+.submit-and-email{
+    height: 15%;
+    width: 100%;
+}
+
+.InputBoxWrapper .submit-and-email .btn_submit{
+    height: 80%;
+    width: 100%;
+    padding: 0;
+    line-height: 0%;
+}
 .alert-box{
     display: block;
     z-index: 1;
 }
+
+@media screen and (max-width: 640px) {
+    .inputs{
+      padding: 0%;
+      margin-top: 0;
+    }
+
+    .InputBoxWrapper .input-fields {
+        height: 80% !important;
+    }
+    
+    .InputBoxWrapper .submit-and-email{
+        height: 20%;
+        max-width: 90%;
+    }
+
+    .InputBoxWrapper .submit-and-email .btn_submit{
+      padding: 0 1px;
+    }
+
+
+}
+
+@media (max-width:330px){
+    .inputs{
+        padding: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-height: 600px) {
+    .service-box,
+    .artist-container,
+    .dt-box,
+    .inputs {
+      margin-bottom: 1vh;
+    }
+  }
+  
+  /* Ensure content is visible on very small screens */
+  @media screen and (max-height: 400px) {
+    .book {
+      height: auto;
+      min-height: 100vh;
+    }
+  
+    .service-box,
+    .artist-container,
+    .dt-box,
+    .inputs {
+      max-height: none;
+    }
+  }
+  
+  /* Adjustments for larger screens */
+  @media screen and (min-height: 1000px) {
+    .book {
+      max-height: 1000px;
+    }
+  }
+  /* Mobile view adjustments */
+@media screen and (max-width: 425px) {
+  #select-button{
+    text-align: center;
+    width: 95%;
+  }
+  .inputs {
+    margin-top: 2%;
+    padding: 5px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    padding: 5px !important;
+  }
+
+  .submit-and-email {
+    margin-top: 2%;
+    height: 35px !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn_submit {
+      width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 325px) {
+  .InputBoxWrapper .submit-and-email .btn_submit{
+    font-size: smaller;
+  }
+
+}
+

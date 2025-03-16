@@ -36,7 +36,7 @@ const BackCard = ({param, props}:any) => {
                                                 ${mini.cost}
                                             </div>
                                             <div className='mini-time'>
-                                                {mini.time}
+                                                {mini.time} mins
                                             </div>
                                         </div>
                                     </div>

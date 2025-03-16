@@ -1,14 +1,16 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import angie from '../../assets/testimonials/angie.png';
-import cheryl from '../../assets/testimonials/cheryl.png';
-import jassie from '../../assets/testimonials/jassie.png';
-import jewell from '../../assets/testimonials/jewell.png';
-import jolette from '../../assets/testimonials/jolette.png';
-import tina from '../../assets/testimonials/tina.png';
+
 import '../../css/testimonials/Testimonials.css';
 import MainCard from './MainCard';
+
+const tina = process.env.PUBLIC_URL +  '/images/testimonials/tina.png';
+const angie = process.env.PUBLIC_URL +  '/images/testimonials/angie.png';
+const cheryl = process.env.PUBLIC_URL +  '/images/testimonials/cheryl.png';
+const jassie = process.env.PUBLIC_URL +  '/images/testimonials/jassie.png';
+const jewell = process.env.PUBLIC_URL +  '/images/testimonials/jewell.png';
+const jolette = process.env.PUBLIC_URL +  '/images/testimonials/jolette.png';
 
 const responsive = {
   // superLargeDesktop: {
@@ -85,7 +87,7 @@ const Testimonials: React.FC = () => {
           </div>
           <Carousel
               responsive={responsive}
-              autoPlay={false}
+              autoPlay={true}
               swipeable={true}
               draggable={true}
               showDots={true}

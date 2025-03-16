@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const InputBoxWrapper = styled.form`
-  height: 100%;
-  position: absolute;
-  padding-bottom: 10px;
+  height: 90%;
+  position: relative;
   display:flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: stretch;
   padding-right:3px;
+  @media (max-width: 590px) {
+   height: 83% !important;
+  }
 
 `;
 
@@ -16,7 +18,6 @@ export const InputWrapper = styled.div`
   border: 1px solid transparent;
   width: 100%;
   max-height: 15%;
-  padding-left: 10px;
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
@@ -67,15 +68,3 @@ export const SubMitButton = styled.input`
   cursor: pointer;
 `;
 
-// export const LoadingButton = styled.button`
-//   position: absolute;
-//   bottom: 20px;
-//   right: 20px;
-//   padding: 10px;
-//   background-color: rgb(8, 8, 63);
-//   color: #fff;
-//   border: none;
-//   border-radius: 5px;
-//   padding: 12px 25px 12px 24px;
-//   cursor: pointer;
-// `;

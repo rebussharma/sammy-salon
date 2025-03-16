@@ -1,6 +1,4 @@
-import appos from '../../assets/testimonials/appos.png'
-import rating from '../../assets/testimonials/five-star.png'
-import '../../css/testimonials/MainCard.css'
+import '../../css/testimonials/MainCard.css';
 type Testimonial_List = {
     testimonails: {
         review:string,
@@ -11,12 +9,13 @@ type Testimonial_List = {
     }
 }
 
+const five_star = "★★★★★"
 const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
   return (
     <div className="main-card">
         <div className="body-card">
-            <div className='appos-img'>
-                <img src= {appos} alt='appostrophe'/>
+            <div className='appos'>
+            ❝
             </div>
             <div className="testimonial-container">
                 <div className="review">
@@ -26,7 +25,7 @@ const MainCard:React.FC <Testimonial_List>= (props: Testimonial_List) => {
             </div>
             <div className='reviewer-rating'>
                 <div className='rating'>
-                    <img src={rating} alt='5-star-rating'/>
+                {five_star}
                 </div>
                 <div className='reviewer'>
                 <div className="image-wrapper">

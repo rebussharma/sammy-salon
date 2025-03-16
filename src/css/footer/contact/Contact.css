@@ -18,5 +18,29 @@
     .form-container{
         width: 100% !important;
     }
-    
+}
+
+@media screen and (max-width: 640px) {
+    .contact{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        width: 450px !important;
+        height: 98%;
+    }
+}
+@media (max-width:430px){
+    .page-wrapper {
+        max-width: 98% !important;
+    }
+    .contact {
+        height: 96%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width:330px){
+    .contact {
+        max-width: 100% !important;
+    }
 }
