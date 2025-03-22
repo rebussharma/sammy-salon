@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../css/services/Cards.css";
 import BackCard from "./BackCard";
 import FrontCard from "./FrontCard";

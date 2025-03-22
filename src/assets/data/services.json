@@ -11,7 +11,9 @@
           "mini_service_id":101,
           "title":"Eyebrow Threading",
           "cost":10,
-          "time":5
+          "time":5,
+          "sale": true,
+          "sale_cost":5
         },
         {
           "mini_service_id":102,
@@ -87,7 +89,9 @@
           "mini_service_id":204,
           "title":"Lashes Tintings",
           "cost":30,
-          "time":25
+          "time":25,
+          "sale": true,
+          "sale_cost":20
         }
       ]
     },

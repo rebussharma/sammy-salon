@@ -1,7 +1,7 @@
 .testimonials {
-  height: 580px;
+  height: 500px;
   position: relative;
-  background-color: #2d2c2a;
+  background-color: #2d2c2ad9;
   width: 100%;
   left: 0;
   right: 0;
@@ -42,11 +42,11 @@
 
 .custom-dot-list-style button{
   border: none;
-  background: rgb(68, 127, 255);
+  background: black;
 }
 
 .react-multi-carousel-dot.react-multi-carousel-dot--active button{
-  background: rgb(124, 255, 68) !important;
+  background: peachpuff !important;
 }
 
 .react-multiple-carousel__arrow {
@@ -69,6 +69,7 @@
   text-align: center;
   font-family: 'Playfair Display';
   top: 10px;
+  margin-bottom: 30px;
 }
 
 .testimonial-title .main-title{

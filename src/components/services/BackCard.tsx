@@ -32,9 +32,43 @@ const BackCard = ({param, props}:any) => {
                                             {mini.title}
                                         </div> 
                                         <div className='time-cost'>
-                                            <div className='mini-cost'>
-                                                ${mini.cost}
-                                            </div>
+                                            {
+                                                mini.sale ? 
+                                                (
+                                                    <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                                                        <span style={{
+                                                            position: 'relative', 
+                                                            color: '#888',
+                                                            display: 'inline-block'
+                                                        }}>
+                                                            ${mini.cost}
+                                                            <span style={{
+                                                                position: 'absolute',
+                                                                left: 0,
+                                                                top: '50%',
+                                                                width: '100%',
+                                                                height: '2px',
+                                                                backgroundColor: 'red',
+                                                                transform: 'rotate(-10deg)'
+                                                            }}></span>
+                                                        </span>
+                                                        <span style={{
+                                                            fontWeight: 'bolder',
+                                                            color: '#f2d7d7'
+                                                        }}>
+                                                            ${mini.sale_cost}
+                                                        </span>
+                                                    </div>
+                                                )
+                                                :
+                                                (
+                                                    <div className='mini-cost'>
+                                                        ${mini.cost}
+                                                    </div>
+                                                )
+                                                
+                                            }
+                                            
                                             <div className='mini-time'>
                                                 {mini.time} mins
                                             </div>
