@@ -220,49 +220,5 @@
           "time":15
         }
       ]
-    },
-    {
-      "service_id": 600,
-      "main_img":"../images/services/tinting.jpeg",
-      "title":"Other",
-      "cost":40,
-      "time":30,
-      "back_essay":"Tinting brows to make them look darker in shade. It lasts up to 1 month",
-      "mini_content":[
-        {
-          "mini_service_id":601,
-          "title":"Other1",
-          "cost":20,
-          "time":25
-        },
-        {
-          "mini_service_id":602,
-          "title":"Other 2",
-          "cost":30,
-          "time":15
-        }
-      ]
-    },
-    {
-      "service_id": 700,
-      "main_img":"../images/services/tinting.jpeg",
-      "title":"Other2",
-      "cost":40,
-      "time":30,
-      "back_essay":"Tinting brows to make them look darker in shade. It lasts up to 1 month",
-      "mini_content":[
-        {
-          "mini_service_id":701,
-          "title":"other3",
-          "cost":20,
-          "time":25
-        },
-        {
-          "mini_service_id":702,
-          "title":"Other4",
-          "cost":30,
-          "time":15
-        }
-      ]
     }
   ]

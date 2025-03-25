@@ -1,9 +1,4 @@
 import React from "react"
-// import facial from '../../assets/services/facial.jpeg'
-// import lashes from '../../assets/services/lashes.jpeg'
-// import threading from '../../assets/services/threading.png'
-// import tinting from '../../assets/services/tinting.jpeg'
-// import waxing from '../../assets/services/waxing.jpeg'
 import contents from '../../assets/data/services.json'
 
 
