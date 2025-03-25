@@ -45,7 +45,7 @@ const NavElements: React.FC = () => {
               <Link to="services" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Services</Link>
             </li>
             <li className='nav-items'>
-              <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Our Story</Link>
+              <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Our Team</Link>
             </li>
             <li className='nav-items'>
               <Link to="testimonials" spy={true} smooth={true} offset={-100} duration={500} onClick={handleHamburger}>Testimonials</Link>

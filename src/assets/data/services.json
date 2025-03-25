@@ -11,7 +11,9 @@
           "mini_service_id":101,
           "title":"Eyebrow Threading",
           "cost":10,
-          "time":5
+          "time":5,
+          "sale": true,
+          "sale_cost":5
         },
         {
           "mini_service_id":102,
@@ -87,7 +89,9 @@
           "mini_service_id":204,
           "title":"Lashes Tintings",
           "cost":30,
-          "time":25
+          "time":25,
+          "sale": true,
+          "sale_cost":20
         }
       ]
     },
@@ -212,50 +216,6 @@
         {
           "mini_service_id":502,
           "title":"Lash Tinting",
-          "cost":30,
-          "time":15
-        }
-      ]
-    },
-    {
-      "service_id": 600,
-      "main_img":"../images/services/tinting.jpeg",
-      "title":"Other",
-      "cost":40,
-      "time":30,
-      "back_essay":"Tinting brows to make them look darker in shade. It lasts up to 1 month",
-      "mini_content":[
-        {
-          "mini_service_id":601,
-          "title":"Other1",
-          "cost":20,
-          "time":25
-        },
-        {
-          "mini_service_id":602,
-          "title":"Other 2",
-          "cost":30,
-          "time":15
-        }
-      ]
-    },
-    {
-      "service_id": 700,
-      "main_img":"../images/services/tinting.jpeg",
-      "title":"Other2",
-      "cost":40,
-      "time":30,
-      "back_essay":"Tinting brows to make them look darker in shade. It lasts up to 1 month",
-      "mini_content":[
-        {
-          "mini_service_id":701,
-          "title":"other3",
-          "cost":20,
-          "time":25
-        },
-        {
-          "mini_service_id":702,
-          "title":"Other4",
           "cost":30,
           "time":15
         }
