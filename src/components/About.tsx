@@ -20,7 +20,7 @@ const About: React.FC = () => {
       id: 1,
       name: "Sammy Shrestha",
       position: "Founder",
-      image: `${process.env.PUBLIC_URL}/images/team/johnathan.jpg`,
+      image: `${process.env.PUBLIC_URL}/images/team/sammy.jpg`,
       description: "Sammy has over 10 years of experience in the beauty industry. Within each stroke of her brush and every gentle conversation, Sammy believes that that success isn't just measured in profits, but in the smiles of those she touched.",
       socialLinks: {
         instagram: "#",
@@ -31,7 +31,7 @@ const About: React.FC = () => {
       id: 2,
       name: "Sushi",
       position: "Founder",
-      image: `${process.env.PUBLIC_URL}/images/team/alexandra.jpg`,
+      image: `${process.env.PUBLIC_URL}/images/team/sushi.jpg`,
       description: "Has X years of Experience on",
       socialLinks: {
         instagram: "#",
@@ -42,7 +42,7 @@ const About: React.FC = () => {
       id: 3,
       name: "Gigi Shrestha",
       position: "Pawfessional Cuddler",
-      image: `${process.env.PUBLIC_URL}/images/team/elisa.jpg`,
+      image: `${process.env.PUBLIC_URL}/images/team/gigi.jpg`,
       description: "Gigi has a whopping 2 years of experience in cuddling, barking, zooming, eating and sleeping!",
       socialLinks: {
         instagram: "#",
@@ -62,11 +62,7 @@ const About: React.FC = () => {
 
   const TikTokIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
-      <path d="M15 8a4 4 0 0 0 0 8 4 4 0 0 0 0-8z"/>
-      <path d="M15 8a4 4 0 0 1 4 4"/>
-      <line x1="15" y1="8" x2="15" y2="16"/>
-      <line x1="9" y1="16" x2="9" y2="20"/>
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.596.027.89.09V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 5 17.66a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
     </svg>
   );
 
