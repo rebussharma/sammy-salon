@@ -20,7 +20,7 @@ const About: React.FC = () => {
       id: 1,
       name: "Sammy Shrestha",
       position: "Founder",
-      image: `${process.env.PUBLIC_URL}/images/team/johnathan.jpg`,
+      image: `${process.env.PUBLIC_URL}/images/team/sammy.jpg`,
       description: "Sammy has over 10 years of experience in the beauty industry. Within each stroke of her brush and every gentle conversation, Sammy believes that that success isn't just measured in profits, but in the smiles of those she touched.",
       socialLinks: {
         instagram: "#",
@@ -31,7 +31,7 @@ const About: React.FC = () => {
       id: 2,
       name: "Sushi",
       position: "Founder",
-      image: `${process.env.PUBLIC_URL}/images/team/alexandra.jpg`,
+      image: `${process.env.PUBLIC_URL}/images/team/sushi.jpg`,
       description: "Has X years of Experience on",
       socialLinks: {
         instagram: "#",
@@ -42,7 +42,7 @@ const About: React.FC = () => {
       id: 3,
       name: "Gigi Shrestha",
       position: "Pawfessional Cuddler",
-      image: `${process.env.PUBLIC_URL}/images/team/elisa.jpg`,
+      image: `${process.env.PUBLIC_URL}/images/team/gigi.jpg`,
       description: "Gigi has a whopping 2 years of experience in cuddling, barking, zooming, eating and sleeping!",
       socialLinks: {
         instagram: "#",
