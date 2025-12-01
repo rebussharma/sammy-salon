@@ -28,17 +28,6 @@ const About: React.FC = () => {
       }
     },
     {
-      id: 2,
-      name: "Sushi",
-      position: "Founder",
-      image: `${process.env.PUBLIC_URL}/images/team/sushi.jpg`,
-      description: "Has X years of Experience on",
-      socialLinks: {
-        instagram: "#",
-        tiktok: "#"
-      }
-    },
-    {
       id: 3,
       name: "Gigi Shrestha",
       position: "Pawfessional Cuddler",
