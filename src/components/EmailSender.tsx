@@ -71,7 +71,7 @@ const EmailSender:React.FC<ClientDetails> = (details: ClientDetails) => {
 
   }
 
-  const SERVICE_ID = "service_hr7wfln";
+  const SERVICE_ID = "service_al2p1jt";
   const TEMPLATE_ID = "template_y1syqfc";
   const PUBLIC_KEY = "48zrrLrcyVtY6tuNs"
   useEffect(() => emailjs.init({publicKey:PUBLIC_KEY}), []);  
